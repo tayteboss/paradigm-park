@@ -1,12 +1,13 @@
 import { createGlobalStyle } from 'styled-components';
 import { theme } from './theme';
+import pxToRem from '../utils/pxToRem';
 
 export const GlobalStyles = createGlobalStyle`
 	:root {
 		--colour-white: ${theme.colours.white};
 		--colour-black: ${theme.colours.black};
-		--colour-system-white-50: ${theme.colours.systemWhite.grey50};
-		--colour-system-black-50: ${theme.colours.systemBlack.grey50};
+		--colour-cream: ${theme.colours.cream};
+		--colour-yellow: ${theme.colours.yellow};
 		--font-default: ${theme.fonts.default};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
@@ -32,8 +33,8 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	::selection {
-		background-color: red;
-		color: black;
+		background-color: var(--colour-yellow);
+		color: var(--colour-black);
 	}
 
 	html {
@@ -86,69 +87,125 @@ export const GlobalStyles = createGlobalStyle`
 
 	h1,
 	.type-h1 {
-		font-size: ${theme.size.h1};
-		line-height: 2.813rem;
+		font-size: ${pxToRem(105)};
+		line-height: ${pxToRem(105)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
-			font-size: ${theme.sizeTablet.h1};
+			font-size: ${pxToRem(45)};
+			line-height: ${pxToRem(57)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.h1};
-			line-height: 2.125rem;
+			font-size: ${pxToRem(45)};
+			line-height: ${pxToRem(57)};
 		}
 	}
 
 	h2,
 	.type-h2 {
-		font-size: ${theme.size.h2};
-		line-height: 2.25rem;
+		font-size: ${pxToRem(82)};
+		line-height: ${pxToRem(120)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
-			font-size: ${theme.sizeTablet.h2};
+			font-size: ${pxToRem(45)};
+			line-height: ${pxToRem(45)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.h2};
-			line-height: 1.75rem;
+			font-size: ${pxToRem(45)};
+		line-height: ${pxToRem(45)};
 		}
 	}
 
 	h3,
 	.type-h3 {
-		font-size: ${theme.size.h3};
-		line-height: 1.938rem;
+		font-size: ${pxToRem(60)};
+		line-height: ${pxToRem(120)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
-			font-size: ${theme.sizeTablet.h3};
+			font-size: ${pxToRem(35)};
+			line-height: ${pxToRem(35)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.h3};
-			line-height: 1.563rem;
+			font-size: ${pxToRem(35)};
+			line-height: ${pxToRem(35)};
 		}
 	}
 
 	h4,
 	.type-h4 {
-		font-size: ${theme.size.h4};
-		line-height: 1.563rem;
+		font-size: ${pxToRem(60)};
+		line-height: ${pxToRem(120)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
-			font-size: ${theme.sizeTablet.h4};
+			font-size: ${pxToRem(25)};
+			line-height: ${pxToRem(25)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.h4};
-			line-height: 1.375rem;
+			font-size: ${pxToRem(25)};
+			line-height: ${pxToRem(25)};
+		}
+	}
+
+	h5,
+	.type-h5 {
+		font-size: ${pxToRem(20)};
+		line-height: ${pxToRem(32.6)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait}
+		{
+			font-size: ${pxToRem(20)};
+			line-height: ${pxToRem(57)};
+		}
+
+		@media ${theme.mediaBreakpoints.mobile}
+		{
+			font-size: ${pxToRem(20)};
+		line-height: ${pxToRem(57)};
+		}
+	}
+
+	.type-b1 {
+		font-size: ${pxToRem(30)};
+		line-height: ${pxToRem(30)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait}
+		{
+			font-size: ${pxToRem(21)};
+			line-height: ${pxToRem(21)};
+		}
+
+		@media ${theme.mediaBreakpoints.mobile}
+		{
+			font-size: ${pxToRem(21)};
+			line-height: ${pxToRem(21)};
+		}
+	}
+
+	.type-b2 {
+		font-size: ${pxToRem(16)};
+		line-height: ${pxToRem(16)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait}
+		{
+			font-size: ${pxToRem(15)};
+			line-height: ${pxToRem(15)};
+		}
+
+		@media ${theme.mediaBreakpoints.mobile}
+		{
+			font-size: ${pxToRem(15)};
+			line-height: ${pxToRem(15)};
 		}
 	}
 
@@ -157,13 +214,19 @@ export const GlobalStyles = createGlobalStyle`
 	a,
 	button,
 	div {
-		font-size: ${theme.size.body};
-		line-height: 1.938rem;
+		font-size: ${pxToRem(16)};
+		line-height: ${pxToRem(16)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait}
+		{
+			font-size: ${pxToRem(15)};
+			line-height: ${pxToRem(15)};
+		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
-			font-size: ${theme.sizeMobile.body};
-			line-height: 1.75rem;
+			font-size: ${pxToRem(15)};
+			line-height: ${pxToRem(15)};
 		}
 	}
 
@@ -171,7 +234,7 @@ export const GlobalStyles = createGlobalStyle`
 	{
 		opacity: 0;
 
-		transition: opacity 300ms ease;
+		transition: opacity ${theme.transitionSpeed.default} ease;
 
 		&--in-view
 		{
@@ -184,7 +247,7 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 		transform: translateY(15px);
 
-		transition: opacity 300ms cubic-bezier(0.65, 0, 0.35, 1), transform 300ms cubic-bezier(0.65, 0, 0.35, 1);
+		transition: opacity ${theme.transitionSpeed.default} cubic-bezier(0.65, 0, 0.35, 1), transform ${theme.transitionSpeed.default} cubic-bezier(0.65, 0, 0.35, 1);
 
 		&--in-view
 		{
@@ -198,7 +261,7 @@ export const GlobalStyles = createGlobalStyle`
 		transform: scale(0.95);
 		opacity: 0;
 
-		transition: opacity 300ms ease, transform 300ms ease;
+		transition: opacity ${theme.transitionSpeed.default} ease, transform ${theme.transitionSpeed.default} ease;
 
 		&--in-view
 		{
