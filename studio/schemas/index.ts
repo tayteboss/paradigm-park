@@ -6,6 +6,22 @@ import caseStudy from './caseStudy';
 import issue from './issue';
 import learnPage from './learnPage';
 import workPage from './workPage';
+import titleBlocks from './titleBlocks';
+import titleBlock from './titleBlock';
+import customUrl from './customUrl';
+import caseStudyTitleBlock from './caseStudyTitleBlock';
+import caseStudy2ColContentList from './caseStudy2ColContentList';
+import rightColumnListItem from './rightColumnListItem';
+import caseStudy2ColImage from './caseStudy2ColImage';
+import caseStudy1ColImage from './caseStudy1ColImage';
+import caseStudy2ColContent from './caseStudy2ColContent';
+import caseStudyStatistics from './caseStudyStatistics';
+import statisticItem from './statisticItem';
+import caseStudy2ColImageContent from './caseStudy2ColImageContent';
+import caseStudyImageGallery from './caseStudyImageGallery';
+import frameItem from './frameItem';
+import frameItemDotPoints from './frameItemDotPoints';
+import frameItemContent from './frameItemContent';
 
 export const schemaTypes = [
 	siteSettings,
@@ -15,5 +31,21 @@ export const schemaTypes = [
 	caseStudy,
 	issue,
 	learnPage,
-	workPage
+	workPage,
+	titleBlocks,
+	titleBlock,
+	customUrl,
+	caseStudyTitleBlock,
+	caseStudy2ColContentList,
+	rightColumnListItem,
+	caseStudy2ColImage,
+	caseStudy1ColImage,
+	caseStudy2ColContent,
+	caseStudyStatistics,
+	statisticItem,
+	caseStudy2ColImageContent,
+	caseStudyImageGallery,
+	frameItem,
+	frameItemDotPoints,
+	frameItemContent
 ];

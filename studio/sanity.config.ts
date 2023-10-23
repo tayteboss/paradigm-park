@@ -71,23 +71,23 @@ export default defineConfig({
                 .schemaType('contactPage')
                 .documentId('contactPage')
             ),
-          // Add a visual divider (optional)
           S.divider(),
           S.listItem()
-            .title('Case Study')
+            .title('Case Studies')  // Renamed the title to plural
             .icon(CaseIcon)
             .child(
-              S.editor()
-                .schemaType('caseStudy')
-                .documentId('caseStudy')
+              S.documentList()
+                .title('Case Studies')  // Add a title
+                .schemaType('caseStudy') // Specify the schema type
+                .filter('_type == "caseStudy"') // Add a filter to specify the type
             ),
           S.listItem()
             .title('Issue')
             .icon(BulbOutlineIcon)
             .child(
               S.editor()
-                .schemaType('Issue')
-                .documentId('Issue')
+                .schemaType('issue')
+                .documentId('issue')
             ),
           S.divider(),
           orderableDocumentListDeskItem({type: 'caseStudy', S, context}),

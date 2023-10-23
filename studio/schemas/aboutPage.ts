@@ -7,6 +7,22 @@ export default {
 			title: 'Title',
 			name: 'title',
 			type: 'string',
-		}
+		},
+		{
+			title: 'Hero Image',
+			name: 'heroImage',
+			type: 'image',
+		},
+		{
+			title: 'Frame Items',
+			name: 'frameItems',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'frameItem' }]
+				}
+			]
+		},
 	]
 }
