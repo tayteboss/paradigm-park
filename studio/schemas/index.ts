@@ -22,6 +22,7 @@ import caseStudyImageGallery from './caseStudyImageGallery';
 import frameItem from './frameItem';
 import frameItemDotPoints from './frameItemDotPoints';
 import frameItemContent from './frameItemContent';
+import contentModal from './contentModal';
 
 export const schemaTypes = [
 	siteSettings,
@@ -47,5 +48,6 @@ export const schemaTypes = [
 	caseStudyImageGallery,
 	frameItem,
 	frameItemDotPoints,
-	frameItemContent
+	frameItemContent,
+	contentModal
 ];

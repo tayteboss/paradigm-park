@@ -47,6 +47,13 @@ export default {
 			title: 'Hero Image',
 			name: 'heroImage',
 			type: 'image',
+			description: 'Please use a landscape image for the best result.'
+		},
+		{
+			title: 'Thumbnail Image',
+			name: 'thumbnailImage',
+			type: 'image',
+			description: 'This image will display on the In Progress card module. Please use a PNG masked image.'
 		},
 		{
 			title: 'Desktop Hero Mask',

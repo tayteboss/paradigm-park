@@ -11,7 +11,7 @@ export default {
 			name: 'title',
 			type: 'string',
 			description: 'This is an internal reference title.',
-			initialValue: 'Two Column (Content & List)'
+			initialValue: 'Two Column (Content)'
 		},
 		{
 			title: "Left Column Top Content",
@@ -33,7 +33,8 @@ export default {
 					marks: {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
-							{title: 'Emphasis', value: 'em'}
+							{title: 'Emphasis', value: 'em'},
+							{ title: 'Superscript', value: 'superscript' },
 						],
 					}
 				},
@@ -59,7 +60,8 @@ export default {
 					marks: {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
-							{title: 'Emphasis', value: 'em'}
+							{title: 'Emphasis', value: 'em'},
+							{ title: 'Superscript', value: 'superscript' },
 						],
 					}
 				},
@@ -85,7 +87,8 @@ export default {
 					marks: {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
-							{title: 'Emphasis', value: 'em'}
+							{title: 'Emphasis', value: 'em'},
+							{ title: 'Superscript', value: 'superscript' },
 						],
 					}
 				},
@@ -111,11 +114,18 @@ export default {
 					marks: {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
-							{title: 'Emphasis', value: 'em'}
+							{title: 'Emphasis', value: 'em'},
+							{ title: 'Superscript', value: 'superscript' },
 						],
 					}
 				},
 			]
 		},
+		{
+			title: 'Modal',
+			name: 'modal',
+			type: 'reference',
+			to: [{ type: 'contentModal' }]
+		}
 	]
 }

@@ -1,0 +1,5 @@
+/* Style the superscript mark in the editor */
+[data-sanity-block] .superscript {
+	vertical-align: super; /* Apply superscript positioning */
+	font-size: 0.8em; /* Adjust the font size as needed */
+}
