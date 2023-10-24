@@ -74,21 +74,22 @@ export default defineConfig({
             ),
           S.divider(),
           S.listItem()
-            .title('Case Studies')  // Renamed the title to plural
+            .title('Case Studies')
             .icon(CaseIcon)
             .child(
               S.documentList()
-                .title('Case Studies')  // Add a title
-                .schemaType('caseStudy') // Specify the schema type
-                .filter('_type == "caseStudy"') // Add a filter to specify the type
+                .title('Case Studies')
+                .schemaType('caseStudy')
+                .filter('_type == "caseStudy"')
             ),
           S.listItem()
-            .title('Issue')
+            .title('Issues')
             .icon(BulbOutlineIcon)
             .child(
-              S.editor()
-                .schemaType('issue')
-                .documentId('issue')
+              S.documentList()
+              .title('Issues')
+              .schemaType('issue')
+              .filter('_type == "issue"')
             ),
           S.divider(),
           orderableDocumentListDeskItem({type: 'caseStudy', S, context}),

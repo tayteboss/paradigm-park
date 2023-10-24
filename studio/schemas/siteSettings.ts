@@ -14,8 +14,13 @@ export default {
 			type: "url"
 		},
 		{
-			title: "Email",
-			name: "email",
+			title: "New Business and General Email",
+			name: "generalEmail",
+			type: "string"
+		},
+		{
+			title: "Collaborations and Writing Submissions Email",
+			name: "collaborationsEmail",
 			type: "string"
 		},
 		{
@@ -39,7 +44,14 @@ export default {
 			type: "array",
 			of: [
 				{
-					type: "block"
+					type: "block",
+					styles: [
+						{title: 'Normal', value: 'normal'},
+					],
+					lists: [],
+					marks: {
+						decorators: [],
+					}
 				}
 			]
 		},

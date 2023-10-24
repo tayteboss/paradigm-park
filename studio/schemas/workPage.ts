@@ -4,8 +4,8 @@ export default {
 	type: 'document',
 	fields: [
 		{
-			title: 'Title',
-			name: 'title',
+			title: 'Reference Title',
+			name: 'referenceTitle',
 			type: 'string',
 			description: 'This is an internal reference title.'
 		},
@@ -15,7 +15,7 @@ export default {
 			type: 'slug',
 			description: 'NOTE: Please do not change this value.',
 			options: {
-				source: 'title',
+				source: 'referenceTitle',
 				maxLength: 200,
 				slugify: input => input
 						.toLowerCase()
