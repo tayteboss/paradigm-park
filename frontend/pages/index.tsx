@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
+import client from '../client';
+import { siteSettingsQueryString } from '../queries';
 
 const PageWrapper = styled.div``;
 
@@ -9,8 +11,10 @@ type Props = {
 
 const Page = (props: Props) => {
 	const {
-		data
+		siteSettings
 	} = props;
+
+	console.log('siteSettings', siteSettings);
 
 	return (
 	<PageWrapper>
@@ -24,12 +28,11 @@ const Page = (props: Props) => {
 };
 
 export async function getStaticProps() {
-	// const data = await getPage('home');
-	const data = false;
+	const siteSettings = await client.fetch(siteSettingsQueryString);
 
 	return {
 		props: {
-			data,
+			siteSettings,
 		},
 	};
 }

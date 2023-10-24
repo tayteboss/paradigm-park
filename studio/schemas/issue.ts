@@ -84,45 +84,7 @@ export default {
 			name: 'imageGallery',
 			title: 'Image Gallery',
 			type: 'array',
-			of: [
-				{
-					type: 'object',
-					name: 'imageBlock',
-					title: 'Image Block',
-					fields: [
-						{
-							name: 'imageType',
-							title: 'Image Type',
-							type: 'string',
-							options: {
-								list: ['Single Image', 'Two Images Side by Side'],
-							},
-						},
-						{
-							name: 'singleImage',
-							title: 'Single Image',
-							type: 'image',
-							description: 'Select a single image',
-							hidden: ({ parent }) => parent?.imageType !== 'Single Image',
-						},
-						{
-							name: 'twoImages',
-							title: 'Two Images',
-							type: 'array',
-							of: [{ type: 'image' }],
-							description: 'Select two images to display side by side',
-							hidden: ({ parent }) => parent?.imageType !== 'Two Images Side by Side',
-							validation: (Rule) =>
-								Rule.custom((images) => {
-								if (images && images.length !== 2) {
-									return 'You must select exactly two images for Two Images Side by Side.';
-								}
-									return true;
-								}),
-						},
-					],
-				},
-			],
+			of: [{ type: 'issueImageBlock' }], // Reference to the imageBlock type
 		},
 		{
 			title: 'Inside the Issue Heading',
@@ -160,5 +122,5 @@ export default {
 			name: 'insideTheIssueBlockColour',
 			type: 'color',
 		}
-	]
+	],
 }

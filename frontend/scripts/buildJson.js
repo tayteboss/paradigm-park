@@ -3,17 +3,8 @@
 const api = require('./api');
 
 const buildSiteData = async () => {
-	const options = await api.getSiteData();
-	writeToJson('siteData.json', options);
-};
-
-const writeToJson = (file, data) => {
-	const path = 'json';
-	const json = JSON.stringify(data);
-	const fs = require('fs');
-	fs.writeFile(`${path}/${file}`, json, 'utf8', () => {
-		console.log(`Wrote ${file} file.`);
-	});
+	const siteSettings = await api.getSiteData();
+	console.log(siteSettings);
 };
 
 buildSiteData();
