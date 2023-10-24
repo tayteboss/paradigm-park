@@ -4,6 +4,7 @@ export const theme = {
 		white: '#FFFFFF',
 		cream: '#F6F7E8',
 		yellow: '#FBFF44',
+		grey: '#B4B4B4',
 	},
 	fonts: {
 		default: 'arial',

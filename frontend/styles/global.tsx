@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
 		--colour-black: ${theme.colours.black};
 		--colour-cream: ${theme.colours.cream};
 		--colour-yellow: ${theme.colours.yellow};
+		--colour-grey: ${theme.colours.grey};
 		--font-default: ${theme.fonts.default};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
@@ -53,6 +54,8 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
+		min-height: 300vh;
+		background: orange;
 	}
 
 	input,
@@ -76,7 +79,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	a {
-		text-decoration: underline;
+		text-decoration: none;
 		color: var(--colour-black);
 		transition: all var(--transition-speed-default) var(--transition-ease);
 	}

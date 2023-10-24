@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
-import { homePageQueryString, siteSettingsQueryString } from '../queries';
-import { HomePageType, TransitionsType } from '../shared/types/types';
+import { contactPageQueryString, siteSettingsQueryString } from '../queries';
+import { TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: HomePageType;
+	data: {};
 	pageTransitionVariants: TransitionsType;
 };
 
@@ -26,17 +26,17 @@ const Page = (props: Props) => {
 		exit='hidden'
 	>
 		<NextSeo
-			title={data.seoTitle || "Paradigm Park | Home"}
+			title={data.seoTitle || "Paradigm Park | Contact"}
 			description={data.seoDescription || ""}
 		/>
-		Home
+		Contact
 	</PageWrapper>
 	);
 };
 
 export async function getStaticProps() {
 	const siteSettings = await client.fetch(siteSettingsQueryString);
-	const data = await client.fetch(homePageQueryString);
+	const data = await client.fetch(contactPageQueryString);
 
 	return {
 		props: {

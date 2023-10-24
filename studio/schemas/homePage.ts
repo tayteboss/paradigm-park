@@ -25,6 +25,18 @@ export default {
 			validation: Rule => Rule.required()
 		},
 		{
+			title: 'SEO Title',
+			name: 'seoTitle',
+			type: 'string',
+			description: 'This is the SEO title that appears in search engines.'
+		},
+		{
+			title: 'SEO Description',
+			name: 'seoDescription',
+			type: 'string',
+			description: 'This is the SEO description that appears in search engines.'
+		},
+		{
 			title: 'Hero Media',
 			name: 'heroMedia',
 			type: "mux.video",

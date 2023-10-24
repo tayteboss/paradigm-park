@@ -35,7 +35,6 @@ const getSiteData = async () => {
 	const query = `
 		query {
 			allSiteSettings {
-				seoDescription,
 				instagramUrl,
 				generalEmail,
 				collaborationsEmail,
@@ -54,7 +53,7 @@ const getSiteData = async () => {
 
   const path = 'json';
   const file = 'siteSettings.json';
-  const jsonData = JSON.stringify(data);
+  const jsonData = JSON.stringify(data?.allSiteSettings[0]);
 
   fs.writeFile(`${path}/${file}`, jsonData, 'utf8', () => {
     console.log(`Wrote ${file} file.`);

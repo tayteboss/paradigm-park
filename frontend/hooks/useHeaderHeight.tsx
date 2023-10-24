@@ -12,6 +12,11 @@ const useHeaderHeight = () => {
 				'--header-h',
 				`${headerHeight}px`
 			);
+
+			document.documentElement.style.setProperty(
+				'--negative-header-h',
+				`-${headerHeight}px`
+			);
 		};
 
 		setHeaderHeight();
