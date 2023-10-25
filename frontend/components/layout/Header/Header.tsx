@@ -21,6 +21,7 @@ const HeaderWrapper = styled.header<StyledProps>`
 	left: 0;
 	width: 100%;
 	transform: translateY(${props => props.$headerIsActive ? '0' : 'calc(var(--negative-header-h) - 50px)'});
+	z-index: 100;
 
 	transition: all var(--transition-speed-slow) var(--transition-ease);
 `;

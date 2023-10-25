@@ -11,6 +11,8 @@
     "lint:fix": "eslint . --fix"
   },
   "dependencies": {
+    "@mux/mux-player-react": "^2.1.0",
+    "@portabletext/react": "^3.0.11",
     "@sanity/client": "^6.7.0",
     "@styled-jsx/plugin-sass": "^4.0.2",
     "@types/js-cookie": "^3.0.3",

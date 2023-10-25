@@ -13,6 +13,7 @@ export const GlobalStyles = createGlobalStyle`
 		--font-graphik-black: ${theme.fonts.graphikBlack};
 		--font-graphik-bold: ${theme.fonts.graphikBold};
 		--font-reslindale: ${theme.fonts.reslindale};
+		--block-border-radius: ${pxToRem(20)};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
 		--transition-speed-extra-fast: ${theme.transitionSpeed.extraFast};
@@ -36,6 +37,14 @@ export const GlobalStyles = createGlobalStyle`
 		font-weight: 100;
 	}
 
+	mux-player {
+		--media-object-fit: contain;
+		--media-object-position: center;
+		--controls: none;
+		--media-object-fit: cover;
+		--media-object-position: center;
+	}
+
 	::selection {
 		background-color: var(--colour-yellow);
 		color: var(--colour-black);
@@ -57,8 +66,6 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
-		min-height: 300vh;
-		background: orange;
 	}
 
 	input,
@@ -135,19 +142,19 @@ export const GlobalStyles = createGlobalStyle`
 	h3,
 	.type-h3 {
 		font-size: ${pxToRem(60)};
-		line-height: ${pxToRem(120)};
+		line-height: ${pxToRem(78)};
 		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
 			font-size: ${pxToRem(35)};
-			line-height: ${pxToRem(35)};
+			line-height: normal;
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
 			font-size: ${pxToRem(35)};
-			line-height: ${pxToRem(35)};
+			line-height: normal;
 		}
 	}
 
@@ -223,6 +230,16 @@ export const GlobalStyles = createGlobalStyle`
 			font-size: ${pxToRem(15)};
 			line-height: ${pxToRem(15)};
 		}
+	}
+
+	.type-b3 {
+		font-family: var(--font-graphik-regular);
+		font-size: ${pxToRem(12)};
+		line-height: ${pxToRem(11.5)};
+	}
+
+	button {
+		cursor: pointer;
 	}
 
 	p,

@@ -50,5 +50,10 @@ export default {
 				}
 			]
 		},
+		{
+			title: 'Newsletter Media',
+			name: 'newsletterMedia',
+			type: "mux.video",
+		},
 	]
 }

@@ -40,6 +40,12 @@ export type ImageType = {
 	}
 };
 
+export type MuxVideoType = {
+	asset: {
+		playbackId: string;
+	}
+}
+
 export type CaseStudyType = {
 	title: string;
 }
