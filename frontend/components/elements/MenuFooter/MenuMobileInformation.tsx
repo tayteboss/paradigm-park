@@ -11,7 +11,7 @@ const MenuMobileInformationWrapper = styled.div`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-bottom: ${pxToRem(60)};
+		margin-bottom: ${pxToRem(40)};
 	}
 `;
 
@@ -19,6 +19,7 @@ const LinkTag = styled.a`
 	font-size: ${pxToRem(25)};
 	line-height: normal;
 	text-align: center;
+	font-family: var(--font-reslindale);
 `;
 
 const MenuMobileInformation = () => {

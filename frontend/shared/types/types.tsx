@@ -14,7 +14,7 @@ export type MediaType = {
 	];
 };
 
-export type Transitions = {
+export type TransitionsType = {
 	hidden: {
 		opacity: number;
 		transition: {

@@ -7,7 +7,10 @@ export const theme = {
 		grey: '#B4B4B4',
 	},
 	fonts: {
-		default: 'arial',
+		graphikRegular: 'graphik-regular',
+		graphikBlack: 'graphik-black',
+		graphikBold: 'graphik-bold',
+		reslindale: 'roslindale-condensed-bold',
 	},
 	size: {
 		small: '1rem',

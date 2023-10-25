@@ -24,6 +24,9 @@ const LinkInner = styled.div<StyledProps>`
 	text-align: center;
 	opacity: ${(props) => props.$itemIsHovered ? '0.1' : '1'};
 	position: relative;
+	font-family: var(--font-graphik-bold);
+	letter-spacing: -${pxToRem(1.7)};
+	text-transform: uppercase;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 

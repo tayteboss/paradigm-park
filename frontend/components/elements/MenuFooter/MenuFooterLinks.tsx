@@ -9,11 +9,7 @@ const MenuFooterLinksWrapper = styled.div`
 	column-gap: ${pxToRem(12)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		column-gap: 0;
-
-		.primary-link {
-			border: none;
-		}
+		column-gap: ${pxToRem(15)};
 	}
 `;
 
@@ -32,11 +28,6 @@ const MenuFooterLinks = () => {
 					isOutline
 				/>
 			)}
-			<PrimaryLink
-				title="Studio News"
-				url="/learn"
-				isOutline
-			/>
 			{generalEmail && (
 				<PrimaryLink
 					title="Email"

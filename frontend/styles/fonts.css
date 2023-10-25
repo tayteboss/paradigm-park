@@ -1,5 +1,27 @@
-/* @font-face {
-	font-family: 'HaasGrot';
-	src: url('/fonts/HaasGrotDisp-55Roman.woff2') format('woff2'), url('/fonts/HaasGrotDisp-55Roman.woff') format('woff'), url('/fonts/HaasGrotDisp-55Roman.ttf') format('truetype'), url('/fonts/HaasGrotDisp-55Roman.otf') format('opentype');
+@font-face {
+	font-family: 'graphik-black';
+	src: url('/fonts/Graphik-Black-Web.woff2') format('woff2'), url('/fonts/Graphik-Black-Web.woff');
 	font-display: swap;
-} */
+	font-weight: 900;
+}
+
+@font-face {
+	font-family: 'graphik-bold';
+	src: url('/fonts/Graphik-Bold-Web.woff2') format('woff2'), url('/fonts/Graphik-Bold-Web.woff');
+	font-display: swap;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'graphik-regular';
+	src: url('/fonts/Graphik-Regular-Web.woff2') format('woff2'), url('/fonts/Graphik-Regular-Web.woff');
+	font-display: swap;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: 'roslindale-condensed-bold';
+	src: url('/fonts/Roslindale-DisplayCondensedLight.woff2') format('woff2'), url('/fonts/Roslindale-DisplayCondensedLight.woff');
+	font-display: swap;
+	font-weight: 400;
+}

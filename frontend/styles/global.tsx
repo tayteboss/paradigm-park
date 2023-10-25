@@ -9,7 +9,10 @@ export const GlobalStyles = createGlobalStyle`
 		--colour-cream: ${theme.colours.cream};
 		--colour-yellow: ${theme.colours.yellow};
 		--colour-grey: ${theme.colours.grey};
-		--font-default: ${theme.fonts.default};
+		--font-graphik-regular: ${theme.fonts.graphikRegular};
+		--font-graphik-black: ${theme.fonts.graphikBlack};
+		--font-graphik-bold: ${theme.fonts.graphikBold};
+		--font-reslindale: ${theme.fonts.reslindale};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
 		--transition-speed-extra-fast: ${theme.transitionSpeed.extraFast};
@@ -64,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
 	button,
 	label,
 	body {
-		font-family: var(--font-default);
+		font-family: var(--font-graphik-regular);
 		color: var(--colour-black);
 		line-height: 1.4;
 	}
@@ -92,11 +95,15 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h1 {
 		font-size: ${pxToRem(105)};
 		line-height: ${pxToRem(105)};
+		font-family: var(--font-graphik-bold);
+		letter-spacing: -${pxToRem(2.1)};
+		text-transform: uppercase;
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
 			font-size: ${pxToRem(45)};
 			line-height: ${pxToRem(57)};
+			letter-spacing: -${pxToRem(0.9)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
@@ -110,6 +117,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h2 {
 		font-size: ${pxToRem(82)};
 		line-height: ${pxToRem(120)};
+		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -128,6 +136,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h3 {
 		font-size: ${pxToRem(60)};
 		line-height: ${pxToRem(120)};
+		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -146,6 +155,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h4 {
 		font-size: ${pxToRem(60)};
 		line-height: ${pxToRem(120)};
+		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -164,6 +174,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h5 {
 		font-size: ${pxToRem(20)};
 		line-height: ${pxToRem(32.6)};
+		font-family: var(--font-graphik-bold);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -181,6 +192,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-b1 {
 		font-size: ${pxToRem(30)};
 		line-height: ${pxToRem(30)};
+		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -198,6 +210,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-b2 {
 		font-size: ${pxToRem(16)};
 		line-height: ${pxToRem(16)};
+		font-family: var(--font-graphik-regular);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -219,6 +232,7 @@ export const GlobalStyles = createGlobalStyle`
 	div {
 		font-size: ${pxToRem(16)};
 		line-height: ${pxToRem(16)};
+		font-family: var(--font-graphik-regular);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
