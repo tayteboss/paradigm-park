@@ -161,19 +161,19 @@ export const GlobalStyles = createGlobalStyle`
 	h4,
 	.type-h4 {
 		font-size: ${pxToRem(60)};
-		line-height: ${pxToRem(120)};
+		line-height: ${pxToRem(54)};
 		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
 			font-size: ${pxToRem(25)};
-			line-height: ${pxToRem(25)};
+			line-height: normal;
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
 			font-size: ${pxToRem(25)};
-			line-height: ${pxToRem(25)};
+			line-height: normal;
 		}
 	}
 
@@ -268,7 +268,7 @@ export const GlobalStyles = createGlobalStyle`
 	{
 		opacity: 0;
 
-		transition: opacity ${theme.transitionSpeed.default} ease;
+		transition: opacity ${theme.transitionSpeed.slow} ease;
 
 		&--in-view
 		{
@@ -306,6 +306,10 @@ export const GlobalStyles = createGlobalStyle`
 
 	.performance {
 		-webkit-transform: translateZ(0);
+		backface-visibility: hidden;
+		perspective: 1000;
+		transform: translate3d(0,0,0);
+		transform: translateZ(0);
 	}
 
 	::placeholder {

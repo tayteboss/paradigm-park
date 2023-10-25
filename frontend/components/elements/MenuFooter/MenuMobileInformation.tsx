@@ -33,7 +33,7 @@ const MenuMobileInformation = () => {
 		<MenuMobileInformationWrapper>
 			{(address && addressUrl) && (
 				<Link href={addressUrl} passHref>
-					<LinkTag>
+					<LinkTag target='_blank'>
 						{address}
 					</LinkTag>
 				</Link>

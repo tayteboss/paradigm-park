@@ -15,11 +15,22 @@ const siteOptions = require('../../../json/siteSettings.json');
 
 const NewsletterFormWrapper = styled.section<StyledProps>`
 	position: relative;
+	z-index: 2;
 
 	.mux-player-wrapper {
 		transform: ${(props) => props.$inView ? 'scale(1)' : 'scale(1.05)'};
 
 		transition: all 5000ms var(--transition-ease);
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100px;
+		color: var(--colour-red);
 	}
 `;
 
@@ -142,7 +153,6 @@ const NewsletterForm = () => {
 
 		const formData = new FormData(event.currentTarget);
 
-		console.log('formData', formData);
 		setTimeout(() => {
 			setResult('Success');
 		}, 1000);
@@ -157,7 +167,6 @@ const NewsletterForm = () => {
 		// if (res.success) {
 		// 	setResult("Success");
 		// } else {
-		// 	console.log("Error", res);
 		// 	setResult(res.message);
 		// }
 	};
@@ -171,6 +180,7 @@ const NewsletterForm = () => {
 	return (
 		<NewsletterFormWrapper
 			$inView={inView}
+			className="performance"
 		>
 			<NewsletterPlayer newsletterMedia={newsletterMedia} />
 			<Inner

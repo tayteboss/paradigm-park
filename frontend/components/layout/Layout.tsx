@@ -6,6 +6,9 @@ import NewsletterForm from './NewsletterForm';
 
 const Main = styled.main`
 	min-height: 100vh;
+	position: relative;
+	z-index: 2;
+	background: var(--colour-white);
 `;
 
 type Props = {
