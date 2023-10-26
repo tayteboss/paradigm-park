@@ -22,6 +22,7 @@ const BlankBlock = styled.div`
 	top: 30px;
 	height: calc(100vh - 30px);
 	height: calc(100dvh - 30px);
+	pointer-events: none;
 `;
 
 const HomeTitleBlocks = (props: Props) => {

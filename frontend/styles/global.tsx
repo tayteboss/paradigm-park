@@ -14,7 +14,7 @@ export const GlobalStyles = createGlobalStyle`
 		--font-graphik-bold: ${theme.fonts.graphikBold};
 		--font-reslindale: ${theme.fonts.reslindale};
 		--block-border-radius: ${pxToRem(20)};
-		--transition-speed-default: ${theme.transitionSpeed.default};
+		--transition-speed-default: ${theme.transitionSpeed.slow};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
 		--transition-speed-extra-fast: ${theme.transitionSpeed.extraFast};
 		--transition-speed-slow: ${theme.transitionSpeed.slow};
@@ -160,7 +160,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	h4,
 	.type-h4 {
-		font-size: ${pxToRem(60)};
+		font-size: ${pxToRem(45)};
 		line-height: ${pxToRem(54)};
 		font-family: var(--font-reslindale);
 
@@ -182,6 +182,7 @@ export const GlobalStyles = createGlobalStyle`
 		font-size: ${pxToRem(20)};
 		line-height: ${pxToRem(32.6)};
 		font-family: var(--font-graphik-bold);
+		text-transform: uppercase;
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -291,7 +292,7 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 		transform: translateY(15px);
 
-		transition: opacity ${theme.transitionSpeed.default} cubic-bezier(0.65, 0, 0.35, 1), transform ${theme.transitionSpeed.default} cubic-bezier(0.65, 0, 0.35, 1);
+		transition: opacity ${theme.transitionSpeed.slow} cubic-bezier(0.65, 0, 0.35, 1), transform ${theme.transitionSpeed.slow} cubic-bezier(0.65, 0, 0.35, 1);
 
 		&--in-view
 		{
@@ -300,17 +301,18 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
-	.view-element-scale-up
+	.view-element-image-scale-up
 	{
-		transform: scale(0.95);
-		opacity: 0;
+		img {
+			transform: scale(1.1) !important;
 
-		transition: opacity ${theme.transitionSpeed.default} ease, transform ${theme.transitionSpeed.default} ease;
+			transition: all 5000ms ease;
+		}
+
 
 		&--in-view
 		{
-			opacity: 1;
-			transform: scale(1);
+			transform: scale(1) !important;
 		}
 	}
 

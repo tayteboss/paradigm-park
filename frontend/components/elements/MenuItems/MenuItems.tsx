@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import pxToRem from '../../../utils/pxToRem';
 import { AnimatePresence, motion } from 'framer-motion';
 import MenuLinkItem from './menuLinkItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 type Props = {
 	menuIsActive: boolean;
@@ -55,6 +56,12 @@ const MenuItems = (props: Props) => {
 	} = props;
 
 	const [itemIsHovered, setItemIsHovered] = useState(false);
+
+	const router = useRouter();
+
+	useEffect(() => {
+		setItemIsHovered(false);
+	}, [router])
 
 	return (
 		<AnimatePresence>

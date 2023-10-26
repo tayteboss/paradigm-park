@@ -128,8 +128,8 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 	const transform = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + (windowHeight * 1.5)],
-		['scale(0.98)', 'scale(1.02)']
+		[distanceToTop, distanceToTop + (windowHeight * 3)],
+		['scale(0.95)', 'scale(1.05)']
 	);
 
 	const fadeIn = {

@@ -28,7 +28,7 @@ const LinkInner = styled.div<StyledProps>`
 	letter-spacing: -${pxToRem(1.7)};
 	text-transform: uppercase;
 
-	transition: all var(--transition-speed-default) var(--transition-ease);
+	transition: all 300ms var(--transition-ease);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		font-size: ${pxToRem(65)};

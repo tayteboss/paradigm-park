@@ -8,7 +8,7 @@ type StyledProps = {
 
 type Props = {
 	title: string;
-	url: string;
+	url?: string;
 	isOutline?: boolean;
 };
 
@@ -24,6 +24,8 @@ const LinkTag = styled.a<StyledProps>`
 	border-color: ${({ $isOutline }) => $isOutline ? 'var(--colour-black)' : 'var(--colour-yellow)'};
 	white-space: nowrap;
 
+	transition: all 300ms var(--transition-ease);
+
 	&:hover {
 		background: ${({ $isOutline }) => $isOutline ? 'var(--colour-black)' : 'transparent'};
 		color: ${({ $isOutline }) => $isOutline ? 'var(--colour-white)' : 'var(--colour-black)'};
@@ -34,7 +36,7 @@ const LinkTag = styled.a<StyledProps>`
 const PrimaryLink = (props: Props) => {
 	const {
 		title,
-		url,
+		url = '/',
 		isOutline = false
 	} = props;
 

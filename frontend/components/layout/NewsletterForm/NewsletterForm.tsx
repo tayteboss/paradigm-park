@@ -32,13 +32,17 @@ const Inner = styled.div`
 	z-index: 2;
 	background: var(--colour-cream);
 	border-radius: var(--block-border-radius);
-	padding: ${pxToRem(60)} ${pxToRem(30)};
+	padding: ${pxToRem(60)} ${pxToRem(72)};
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
 		width: 80%;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		opacity: 1 !important;
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {

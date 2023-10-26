@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
 import { aboutPageQueryString, siteSettingsQueryString } from '../queries';
-import { TransitionsType } from '../shared/types/types';
+import { AboutPageType, TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
-	data: {};
+	data: AboutPageType;
 	pageTransitionVariants: TransitionsType;
 };
 
@@ -17,6 +17,8 @@ const Page = (props: Props) => {
 		data,
 		pageTransitionVariants
 	} = props;
+
+	console.log('data', data);
 
 	return (
 	<PageWrapper
@@ -29,7 +31,7 @@ const Page = (props: Props) => {
 			title={data.seoTitle || "Paradigm Park | About"}
 			description={data.seoDescription || ""}
 		/>
-		About
+		<FramesScroller />
 	</PageWrapper>
 	);
 };

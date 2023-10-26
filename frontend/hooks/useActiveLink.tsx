@@ -10,6 +10,8 @@ const useActiveLink = (): string => {
 			setActiveLink('Home');
 		} else if (router.pathname === '/learn') {
 			setActiveLink('Learn');
+		} else if (router.pathname === '/about') {
+			setActiveLink('About');
 		} else if (router.pathname === '/work') {
 			setActiveLink('Work');
 		} else if (router.pathname === '/contact') {

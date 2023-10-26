@@ -22,7 +22,7 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
-	// console.log('data', data);
+	console.log('data', data);
 
 	return (
 		<PageWrapper
@@ -38,7 +38,18 @@ const Page = (props: Props) => {
 			<HomeHero data={data?.heroMedia} />
 			<HomeTitleBlocks data={data?.titleBlocks} />
 			<CaseStudies data={data?.caseStudies} />
-			<HomeExploreBlocks />
+			<HomeExploreBlocks
+				learnBackgroundColor={data?.exploreLearnBackgroundColor}
+				learnBackgroundShape={data?.exploreLearnBackgroundShape}
+				learnTitle={data?.exploreLearnTitle}
+				learnDescription={data?.exploreLearnDescription}
+				learnButtonTitle={data?.exploreLearnButtonTitle}
+				projectsTitle={data?.exploreProjectsTitle}
+				projectsDescription={data?.exploreProjectsDescription}
+				projectsButtonTitle={data?.exploreProjectsButtonTitle}
+				projectsBackgroundImage={data?.exploreProjectsBackgroundImage}
+				projectsBackgroundShape={data?.exploreProjectsBackgroundShape}
+			/>
 		</PageWrapper>
 	);
 };

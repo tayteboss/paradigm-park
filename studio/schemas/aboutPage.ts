@@ -42,6 +42,11 @@ export default {
 			type: 'image',
 		},
 		{
+			title: 'Hero Title',
+			name: 'heroTitle',
+			type: 'string'
+		},
+		{
 			title: 'Frame Items',
 			name: 'frameItems',
 			type: 'array',

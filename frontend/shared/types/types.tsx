@@ -72,20 +72,36 @@ export type HomePageType = {
 	seoDescription: string;
 	exploreProjectsButtonTitle: string;
 	exploreLearnBackgroundColor: ColorType;
-	exploreLearnBackgroundShape: ImageType;
+	exploreLearnBackgroundShape: string;
 	exploreLearnTitle: string;
 	exploreProjectsTitle: string;
-	exploreProjectsBackgroundImage: ImageType;
+	exploreProjectsBackgroundImage: string;
 	exploreProjectsDescription: string;
 	titleBlocks: {
 		title: string;
 		titleBlock: TitleBlockType[];
 	};
-	exploreProjectsBackgroundShape: ImageType;
+	exploreProjectsBackgroundShape: string;
 	exploreLearnDescription: string;
 	caseStudies: CaseStudyType[];
 	exploreLearnButtonTitle: string;
 	seoTitle: string;
 	slug: SlugType;
 	heroMedia: MuxVideoType;
+}
+
+export type FrameItemType = {
+	title: string;
+	subTitle: string;
+	image: string;
+	contentBlock: any;
+}
+
+export type AboutPageType = {
+	seoDescription: string;
+	seoTitle: string;
+	slug: SlugType;
+	frameItems: FrameItemType[];
+	heroImage: string;
+	heroTitle: string;
 }

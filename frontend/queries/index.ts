@@ -19,14 +19,27 @@ export const homePageQueryString = `
 		},
 		caseStudies[]-> {
 			...,
-			"thumbnailImageUrl": thumbnailImage.asset->url
-		}
+			"thumbnailImageUrl": thumbnailImage.asset->url,
+		},
+		"exploreLearnBackgroundShape": exploreLearnBackgroundShape.asset->url,
+		"exploreProjectsBackgroundImage": exploreProjectsBackgroundImage.asset->url,
+		"exploreProjectsBackgroundShape": exploreProjectsBackgroundShape.asset->url,
+
 	}
 `;
 
 export const aboutPageQueryString = `
 	*[_type == 'aboutPage'][0] {
 		...,
+		frameItems[]-> {
+			...,
+			"contentBlock": contentBlock[]-> {
+				...,
+				frameItemContent-> {...},
+				frameItemDotPoints-> {...}
+			},
+			"image": image.asset->url,
+		},
 	}
 `;
 

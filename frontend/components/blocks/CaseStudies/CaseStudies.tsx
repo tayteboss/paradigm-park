@@ -19,6 +19,7 @@ const BlankBlock = styled.div`
 	top: 30px;
 	height: calc(200vh);
 	height: calc(200dvh);
+	pointer-events: none;
 `;
 
 const CaseStudies = (props: Props) => {
