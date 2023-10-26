@@ -7,6 +7,16 @@ export const siteSettingsQueryString = `
 export const homePageQueryString = `
 	*[_type == 'homePage'][0] {
 		...,
+		heroMedia {
+			asset->
+		},
+		titleBlocks-> {
+			...,
+			titleBlock[] {
+				...,
+				internal->
+			}
+		}
 	}
 `;
 

@@ -4,6 +4,10 @@ import client from '../client';
 import { homePageQueryString, siteSettingsQueryString } from '../queries';
 import { HomePageType, TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
+import HomeHero from '../components/blocks/HomeHero';
+import HomeTitleBlocks from '../components/blocks/HomeTitleBlocks';
+import CaseStudies from '../components/blocks/CaseStudies';
+import HomeExploreBlocks from '../components/blocks/HomeExploreBlocks';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -18,19 +22,24 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
+	// console.log('data', data);
+
 	return (
-	<PageWrapper
-		variants={pageTransitionVariants}
-		initial='hidden'
-		animate='visible'
-		exit='hidden'
-	>
-		<NextSeo
-			title={data.seoTitle || "Paradigm Park | Home"}
-			description={data.seoDescription || ""}
-		/>
-		Home
-	</PageWrapper>
+		<PageWrapper
+			variants={pageTransitionVariants}
+			initial='hidden'
+			animate='visible'
+			exit='hidden'
+		>
+			<NextSeo
+				title={data.seoTitle || "Paradigm Park | Home"}
+				description={data.seoDescription || ""}
+			/>
+			<HomeHero data={data.heroMedia} />
+			<HomeTitleBlocks data={data.titleBlocks} />
+			<CaseStudies />
+			<HomeExploreBlocks />
+		</PageWrapper>
 	);
 };
 

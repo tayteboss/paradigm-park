@@ -20,8 +20,10 @@ const HeaderWrapper = styled.header<StyledProps>`
 	top: 0;
 	left: 0;
 	width: 100%;
-	transform: translateY(${props => props.$headerIsActive ? '0' : 'calc(var(--negative-header-h) - 50px)'});
+	transform: translateY(${props => props.$headerIsActive ? '0' : 'calc(var(--negative-header-h))'});
 	z-index: 100;
+	backface-visibility: hidden;
+	perspective: 1000;
 
 	transition: all var(--transition-speed-slow) var(--transition-ease);
 `;
@@ -84,7 +86,7 @@ const Header = () => {
 	}, [router]);
 
 	useEffect(() => {
-		const throttledHandleScroll = throttle(handleScroll, 50);
+		const throttledHandleScroll = throttle(handleScroll, 100);
 		window.addEventListener('scroll', throttledHandleScroll);
 
 		return () => {

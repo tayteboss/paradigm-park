@@ -9,6 +9,7 @@ const Main = styled.main`
 	position: relative;
 	z-index: 2;
 	background: var(--colour-white);
+	padding-top: calc(var(--header-h) + 2px);
 `;
 
 type Props = {

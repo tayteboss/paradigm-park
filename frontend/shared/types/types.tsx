@@ -1,19 +1,3 @@
-export type MediaType = {
-	media: [
-		{
-			webmVideoFile: {
-				url: string;
-			};
-			mp4VideoFile: {
-				url: string;
-			};
-			placeholderImage: {
-				url: string;
-			}
-		}
-	];
-};
-
 export type TransitionsType = {
 	hidden: {
 		opacity: number;
@@ -54,6 +38,16 @@ export type SlugType = {
 	current: string;
 }
 
+export type TitleBlockType = {
+	title: string;
+	linkTitle: string;
+	internal: {
+		slug: {
+			current: string;
+		}
+	}
+}
+
 export type HomePageType = {
 	seoDescription: string;
 	exploreProjectsButtonTitle: string;
@@ -63,11 +57,15 @@ export type HomePageType = {
 	exploreProjectsTitle: string;
 	exploreProjectsBackgroundImage: ImageType;
 	exploreProjectsDescription: string;
-	titleBlocks: {};
+	titleBlocks: {
+		title: string;
+		titleBlock: TitleBlockType[];
+	};
 	exploreProjectsBackgroundShape: ImageType;
 	exploreLearnDescription: string;
 	caseStudies: CaseStudyType[];
 	exploreLearnButtonTitle: string;
 	seoTitle: string;
 	slug: SlugType;
+	heroMedia: MuxVideoType;
 }

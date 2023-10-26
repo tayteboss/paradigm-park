@@ -123,7 +123,7 @@ export const GlobalStyles = createGlobalStyle`
 	h2,
 	.type-h2 {
 		font-size: ${pxToRem(82)};
-		line-height: ${pxToRem(120)};
+		line-height: ${pxToRem(98)};
 		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
@@ -261,6 +261,16 @@ export const GlobalStyles = createGlobalStyle`
 		{
 			font-size: ${pxToRem(15)};
 			line-height: ${pxToRem(15)};
+		}
+	}
+
+	.full-height-block {
+		height: calc(100vh - 60px);
+		height: calc(100dvh - 60px);
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			height: calc(100vh - 30px);
+			height: calc(100dvh - 30px);
 		}
 	}
 

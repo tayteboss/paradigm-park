@@ -36,8 +36,12 @@ const LinkTag = styled.a`
 const LHSRoundingElement = styled.div<StyledProps>`
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	left: 30px;
 	z-index: 1;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		left: 15px;
+	}
 
 	&::before {
 		content: "";
@@ -58,8 +62,12 @@ const LHSRoundingElement = styled.div<StyledProps>`
 const RHSRoundingElement = styled.div<StyledProps>`
 	position: absolute;
 	bottom: 0;
-	right: 0;
+	right: 30px;
 	z-index: 1;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		right: 15px;
+	}
 
 	&::before {
 		content: "";

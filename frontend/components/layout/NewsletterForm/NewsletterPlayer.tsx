@@ -17,8 +17,6 @@ const NewsletterPlayerWrapper = styled.div`
 
 const Inner = styled.div`
 	min-height: ${pxToRem(620)};
-	height: calc(100vh - 60px);
-	height: calc(100dvh - 60px);
 	border-radius: var(--block-border-radius);
 	overflow: hidden;
 
@@ -43,7 +41,7 @@ const NewsletterPlayer = (props: Props) => {
 	return (
 		<NewsletterPlayerWrapper>
 			<LayoutWrapper>
-				<Inner>
+				<Inner className="full-height-block">
 					<MuxPlayerWrapper className="mux-player-wrapper">
 						{newsletterMedia?.asset?.playbackId && (
 							<MuxPlayer
