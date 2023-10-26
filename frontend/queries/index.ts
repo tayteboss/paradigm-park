@@ -16,6 +16,10 @@ export const homePageQueryString = `
 				...,
 				internal->
 			}
+		},
+		caseStudies[]-> {
+			...,
+			"thumbnailImageUrl": thumbnailImage.asset->url
 		}
 	}
 `;

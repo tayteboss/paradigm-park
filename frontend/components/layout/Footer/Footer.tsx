@@ -11,7 +11,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 const siteOptions = require('../../../json/siteSettings.json');
 
 const FooterWrapper = styled(motion.footer)`
-	padding: ${pxToRem(30)} 0;
 	position: sticky;
 	bottom: 0;
 	left: 0;
@@ -22,10 +21,13 @@ const FooterWrapper = styled(motion.footer)`
 		opacity: 1 !important;
 		transform: unset !important;
 	}
+`;
 
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: ${pxToRem(30)} 0 ${pxToRem(50)};
-	}
+const Inner = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: ${pxToRem(30)} 0;
 `;
 
 const TopContainer = styled.div`
@@ -113,6 +115,7 @@ const Footer = () => {
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [footerHeight, setFooterHeight] = useState(500);
+	const [documentHeight, setDocumentHeight] = useState(0);
 
 	const ref = useRef<HTMLDivElement>(null);
 
@@ -120,13 +123,13 @@ const Footer = () => {
 
 	const opacity = useTransform(
 		scrollY,
-		[windowHeight, windowHeight + footerHeight],
+		[documentHeight - (windowHeight * 2), documentHeight - windowHeight],
 		['0', '1']
 	);
 
 	const transform = useTransform(
 		scrollY,
-		[windowHeight, windowHeight + footerHeight],
+		[documentHeight - (windowHeight * 2), documentHeight - windowHeight],
 		['translateY(100px)', 'translateY(0px)']
 	);
 
@@ -134,55 +137,63 @@ const Footer = () => {
 		if (!ref?.current) return;
 
 		const footerHeight = ref.current.clientHeight;
-
 		document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
+
 		setFooterHeight(footerHeight);
 		setWindowHeight(window.innerHeight);
+
+		var body = document.body,
+    	html = document.documentElement;
+
+		var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+		setDocumentHeight(height);
 	}, []);
 
 	return (
 		<FooterWrapper
-			ref={ref}
 			style={{ opacity, transform }}
 		>
 			<LayoutWrapper>
-				<TopContainer>
-					<MenuFooterLinks />
-					<DesktopCopyrightWrapper>
-						<MenuFooterCopyright />
-					</DesktopCopyrightWrapper>
-				</TopContainer>
-				<BottomContainer>
-					<LinksWrapper>
-						{(address && addressUrl) && (
-							<Link href={addressUrl}>
-								<LinkTag
-									className="type-h4"
-									target='_blank'
-								>
-									{address}
-								</LinkTag>
+				<Inner ref={ref}>
+					<TopContainer>
+						<MenuFooterLinks />
+						<DesktopCopyrightWrapper>
+							<MenuFooterCopyright />
+						</DesktopCopyrightWrapper>
+					</TopContainer>
+					<BottomContainer>
+						<LinksWrapper>
+							{(address && addressUrl) && (
+								<Link href={addressUrl}>
+									<LinkTag
+										className="type-h4"
+										target='_blank'
+									>
+										{address}
+									</LinkTag>
+								</Link>
+							)}
+							{generalEmail && (
+								<Link href={`mailto:${generalEmail}`}>
+									<LinkTag className="type-h4">
+										{generalEmail}
+									</LinkTag>
+								</Link>
+							)}
+						</LinksWrapper>
+						<MobileCopyrightWrapper>
+							<MenuFooterCopyright />
+						</MobileCopyrightWrapper>
+						<LogoWrapper>
+							<Link href="/" passHref scroll={false}>
+								<LogoLinkTag>
+									<LogoTextSvg color="var(--colour-black)" />
+								</LogoLinkTag>
 							</Link>
-						)}
-						{generalEmail && (
-							<Link href={`mailto:${generalEmail}`}>
-								<LinkTag className="type-h4">
-									{generalEmail}
-								</LinkTag>
-							</Link>
-						)}
-					</LinksWrapper>
-					<MobileCopyrightWrapper>
-						<MenuFooterCopyright />
-					</MobileCopyrightWrapper>
-					<LogoWrapper>
-						<Link href="/" passHref scroll={false}>
-							<LogoLinkTag>
-								<LogoTextSvg color="var(--colour-black)" />
-							</LogoLinkTag>
-						</Link>
-					</LogoWrapper>
-				</BottomContainer>
+						</LogoWrapper>
+					</BottomContainer>
+				</Inner>
 			</LayoutWrapper>
 		</FooterWrapper>
 	)

@@ -22,16 +22,6 @@ const NewsletterFormWrapper = styled.section<StyledProps>`
 
 		transition: all 5000ms var(--transition-ease);
 	}
-
-	&::after {
-		content: '';
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		width: 100%;
-		height: 100px;
-		color: var(--colour-red);
-	}
 `;
 
 const Inner = styled.div`
@@ -68,7 +58,8 @@ const Inner = styled.div`
 
 const Title = styled.h3`
 	text-align: center;
-	margin-bottom: ${pxToRem(30)};
+	max-width: ${pxToRem(490)};
+	margin: 0 auto ${pxToRem(30)};
 `;
 
 const Subtitle = styled.h4`

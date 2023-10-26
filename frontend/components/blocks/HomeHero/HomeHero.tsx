@@ -53,7 +53,7 @@ const LogoWrapper = styled.div`
 	}
 
 	&.view-element-fade-in {
-		transition-delay: 1000ms;
+		transition-delay: 500ms;
 	}
 `;
 

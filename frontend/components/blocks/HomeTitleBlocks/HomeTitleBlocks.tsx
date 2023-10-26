@@ -11,7 +11,8 @@ type Props = {
 };
 
 const HomeTitleBlocksWrapper = styled.section`
-	margin-bottom: calc(-100vh + 30px);
+	margin-bottom: calc(-100vh);
+	margin-bottom: calc(-100dvh);
 `;
 
 const Inner = styled.div``;
@@ -19,7 +20,8 @@ const Inner = styled.div``;
 const BlankBlock = styled.div`
 	position: sticky;
 	top: 30px;
-	height: 100vh;
+	height: calc(100vh - 30px);
+	height: calc(100dvh - 30px);
 `;
 
 const HomeTitleBlocks = (props: Props) => {

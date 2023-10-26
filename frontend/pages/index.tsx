@@ -35,9 +35,9 @@ const Page = (props: Props) => {
 				title={data.seoTitle || "Paradigm Park | Home"}
 				description={data.seoDescription || ""}
 			/>
-			<HomeHero data={data.heroMedia} />
-			<HomeTitleBlocks data={data.titleBlocks} />
-			<CaseStudies />
+			<HomeHero data={data?.heroMedia} />
+			<HomeTitleBlocks data={data?.titleBlocks} />
+			<CaseStudies data={data?.caseStudies} />
 			<HomeExploreBlocks />
 		</PageWrapper>
 	);

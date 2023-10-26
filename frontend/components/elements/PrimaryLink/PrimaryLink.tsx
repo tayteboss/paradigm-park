@@ -13,7 +13,8 @@ type Props = {
 };
 
 const LinkTag = styled.a<StyledProps>`
-	padding: ${pxToRem(6)} ${pxToRem(20)} ${pxToRem(8)};
+	padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
+	display: inline-block;
 	font-size: ${pxToRem(16)};
 	line-height: ${pxToRem(11.5)};
 	background: ${({ $isOutline }) => $isOutline ? 'transparent' : 'var(--colour-yellow)'};
@@ -21,6 +22,7 @@ const LinkTag = styled.a<StyledProps>`
 	border-radius: 100px;
 	border: 1px solid var(--colour-black);
 	border-color: ${({ $isOutline }) => $isOutline ? 'var(--colour-black)' : 'var(--colour-yellow)'};
+	white-space: nowrap;
 
 	&:hover {
 		background: ${({ $isOutline }) => $isOutline ? 'var(--colour-black)' : 'transparent'};

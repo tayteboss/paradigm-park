@@ -12,6 +12,7 @@ const TitleBlockWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 60px);
+	height: calc(100dvh - 60px);
 	position: sticky;
 	top: 30px;
 	border-radius: var(--block-border-radius);
@@ -23,8 +24,8 @@ const TitleBlockWrapper = styled.div`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 15px;
-		margin-bottom: ${pxToRem(30)};
 		height: calc(100vh - 30px);
+		height: calc(100dvh - 30px);
 		padding: 0 ${pxToRem(16)};
 	}
 `;
@@ -38,6 +39,7 @@ const Title = styled(motion.h2)`
 		font-size: ${pxToRem(35)};
 		line-height: normal;
 		margin: 0 auto ${pxToRem(30)};
+		max-width: ${pxToRem(600)};
 	}
 `;
 
