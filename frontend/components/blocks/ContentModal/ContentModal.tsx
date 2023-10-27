@@ -28,19 +28,38 @@ const Inner = styled(motion.div)`
 	height: 100vh;
 	height: 100dvh;
 	width: ${pxToRem(620)};
-	padding: ${pxToRem(60)};
+	padding: ${pxToRem(60)} ${pxToRem(60)} ${pxToRem(100)};
 	overflow-y: auto;
-	padding-bottom: ${pxToRem(100)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		width: 100%;
+		padding: ${pxToRem(30)} ${pxToRem(30)} ${pxToRem(100)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: ${pxToRem(30)} ${pxToRem(15)} ${pxToRem(100)};
+	}
 `;
 
 const Title = styled.h1`
 	margin-bottom: ${pxToRem(50)};
 	text-align: center;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(30)};
+	}
 `;
 
 const SubTitle = styled.h3`
 	margin-bottom: ${pxToRem(50)};
 	text-align: center;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		&.type-h4 {
+			font-size: ${pxToRem(35)};
+			line-height: normal;
+		}
+	}
 `;
 
 const ContentWrapper = styled.div``;

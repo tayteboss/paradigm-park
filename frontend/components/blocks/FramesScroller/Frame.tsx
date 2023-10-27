@@ -5,15 +5,25 @@ import pxToRem from '../../../utils/pxToRem';
 const FrameWrapper = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
 	height: calc(100dvh - var(--header-h) - 30px);
-	padding: 0 5vw;
+	padding: 0 8vw;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	width: 100%;
+	position: relative;
+	z-index: 5;
 `;
 
 const ImageWrapper = styled.button`
 	height: ${pxToRem(486)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: ${pxToRem(350)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		height: ${pxToRem(200)};
+	}
 `;
 
 const Image = styled.img`

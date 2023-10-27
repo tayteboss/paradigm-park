@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
 import { aboutPageQueryString, siteSettingsQueryString } from '../queries';
-import { AboutPageType, FrameItemType, TransitionsType } from '../shared/types/types';
+import { AboutPageType, TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
 import FramesScroller from '../components/blocks/FramesScroller';
-import { useState } from 'react';
-import ContentModal from '../components/blocks/ContentModal';
 
-const PageWrapper = styled(motion.div)``;
+const PageWrapper = styled(motion.div)`
+	background: var(--colour-white);
+`;
 
 type Props = {
 	data: AboutPageType;
