@@ -11,6 +11,7 @@ import use1vh from '../hooks/use1vh';
 import { FrameItemType, Transitions } from '../shared/types/types';
 import useHeaderHeight from '../hooks/useHeaderHeight';
 import ContentModal from '../components/blocks/ContentModal';
+import Cursor from '../components/elements/Cursor';
 
 const pageTransitionVariants: Transitions = {
 	hidden: { opacity: 0, transition: { duration: 0.3 } },
@@ -30,6 +31,7 @@ const App = (props: Props) => {
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
 	const [content, setContent] = useState<FrameItemType | false>(false);
+	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
 
 	const router= useRouter();
 	const routerEvents = router.events;
@@ -57,6 +59,16 @@ const App = (props: Props) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAppCursorRefresh(appCursorRefresh + 1);
+		}, 300);
+
+		return () => {
+			clearTimeout(timer);
+		}
+	}, [router.pathname]);
+
 	return (
 		<>
 			<GlobalStyles />
@@ -77,6 +89,9 @@ const App = (props: Props) => {
 				<ContentModal
 					content={content}
 					setContent={setContent}
+				/>
+				<Cursor
+					cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)}
 				/>
 			</ThemeProvider>
 		</>

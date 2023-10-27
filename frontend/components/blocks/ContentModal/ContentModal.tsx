@@ -167,6 +167,21 @@ const ContentModal = (props: Props) => {
 		}
 	};
 
+	useEffect(() => {
+		const body = document.body as HTMLElement;
+		const framerScroller = document.querySelector('.frame-scroller') as HTMLElement;
+
+		if (!framerScroller) return;
+
+		if (content) {
+			body.style.overflow = 'hidden';
+			framerScroller.style.overflow = 'hidden';
+		} else {
+			body.style.overflow = 'auto';
+			framerScroller.style.overflow = 'auto';
+		}
+	}, [content]);
+
 	return (
 		<AnimatePresence mode="wait">
 			{content && (

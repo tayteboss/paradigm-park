@@ -31,23 +31,37 @@ const Outside = styled.div<StyledProps>`
 
 	.frame:nth-child(even) {
 		flex-direction: row-reverse;
+
+		.frame__button {
+			right: 70%;
+
+			@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+				right: 60%;
+			}
+		}
+	}
+
+	.frame:nth-child(odd) {
+		.frame__button {
+			left: 70%;
+
+			@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+				left: 60%;
+			}
+		}
 	}
 `;
 
 const Inner = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
 	height: calc(100dvh - var(--header-h) - 30px);
-	overflow: scroll;
+	overflow: auto;
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 	position: sticky;
 	top: ${pxToRem(30)};
 	padding-top: 50vh;
 	z-index: 5;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding-top: 30vh;
-	}
 
 	&::-webkit-scrollbar {
 		display: none;
@@ -90,7 +104,7 @@ const FramesScroller = (props: Props) => {
 					{title && (
 						<Title>{title}</Title>
 					)}
-					<Inner>
+					<Inner className="frame-scroller">
 						{hasFrames && frames.map((item, i) => (
 							<Frame
 								key={i}

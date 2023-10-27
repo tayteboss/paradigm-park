@@ -23,8 +23,6 @@ const Page = (props: Props) => {
 		setContent
 	} = props;
 
-	console.log('data', data);
-
 	return (
 		<>
 			<PageWrapper
