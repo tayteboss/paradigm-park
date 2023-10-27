@@ -21,6 +21,7 @@ const FramesScrollerWrapper = styled.section`
 `;
 
 const Outside = styled.div<StyledProps>`
+	background-color: var(--colour-cream);
 	background-image: url(${(props) => props.$bg});
 	background-size: cover;
 	background-position: center;
@@ -31,24 +32,6 @@ const Outside = styled.div<StyledProps>`
 
 	.frame:nth-child(even) {
 		flex-direction: row-reverse;
-
-		.frame__button {
-			right: 70%;
-
-			@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-				right: 60%;
-			}
-		}
-	}
-
-	.frame:nth-child(odd) {
-		.frame__button {
-			left: 70%;
-
-			@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-				left: 60%;
-			}
-		}
 	}
 `;
 

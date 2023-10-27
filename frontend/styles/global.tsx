@@ -224,13 +224,13 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
 			font-size: ${pxToRem(15)};
-			line-height: ${pxToRem(15)};
+			line-height: ${pxToRem(22)};
 		}
 
 		@media ${theme.mediaBreakpoints.mobile}
 		{
 			font-size: ${pxToRem(15)};
-			line-height: ${pxToRem(15)};
+			line-height: ${pxToRem(22)};
 		}
 	}
 

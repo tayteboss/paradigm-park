@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { FrameItemType } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
+import { useInView } from 'react-intersection-observer';
 
 const FrameWrapper = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
@@ -30,6 +31,10 @@ const ImageWrapper = styled.button`
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		height: ${pxToRem(200)};
 	}
+
+	&.view-element-bottom-top {
+		transition: opacity 500ms ease;
+	}
 `;
 
 const Image = styled.img`
@@ -39,9 +44,15 @@ const Image = styled.img`
 `;
 
 const ButtonWrapper = styled.div`
+	display: none;
 	position: absolute;
 	top: 50%;
-	transform: translateY(-50%);
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: block;
+	}
 `;
 
 const Button = styled.div`
@@ -75,20 +86,31 @@ const Frame = (props: FrameItemType) => {
 		});
 	};
 
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-100px'
+	});
+
 	return (
-		<FrameWrapper className="frame">
+		<FrameWrapper className="frame" ref={ref}>
 			<ImageWrapper
 				onClick={() => handleClick()}
-				className="frame-link"
 				data-title={title}
+				className={`frame-link view-element-bottom-top ${
+					inView ? 'view-element-bottom-top--in-view' : ''
+				}`}
 			>
 				<Image src={image} />
-				{title && (
-					<ButtonWrapper className="frame__button">
-						<Button>{title}</Button>
-					</ButtonWrapper>
-				)}
 			</ImageWrapper>
+			{title && (
+				<ButtonWrapper
+					className="frame__button"
+					onClick={() => handleClick()}
+				>
+					<Button>{title}</Button>
+				</ButtonWrapper>
+			)}
 		</FrameWrapper>
 	);
 };

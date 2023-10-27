@@ -104,6 +104,12 @@ const DotPointsWrapper = styled.ul`
 	columns: 2;
 	-webkit-columns: 2;
 	-moz-columns: 2;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		columns: 1;
+		-webkit-columns: 1;
+		-moz-columns: 1;
+	}
 `;
 
 const DotPoint = styled.li`
