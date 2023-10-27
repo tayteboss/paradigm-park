@@ -108,3 +108,23 @@ export type AboutPageType = {
 	heroImage: string;
 	heroTitle: string;
 }
+
+export type ContactPageType = {
+	seoDescription: string;
+	seoTitle: string;
+	slug: SlugType;
+	cta: string;
+	heroColor: ColorType;
+	title: string;
+}
+
+export type SiteSettingsType = {
+	address: string;
+	addressUrl: string;
+	collaborationsEmail: string;
+	generalEmail: string;
+	instagramUrl: string;
+	newsletterMedia: MuxVideoType;
+	newsletterTermsText: [];
+	newsletterTitle: string;
+}
