@@ -67,7 +67,7 @@ const Header = () => {
 	const handleScroll = () => {
 		const currentScrollPos = window.pageYOffset;
 
-		if (currentScrollPos < 100) {
+		if (currentScrollPos < 30) {
 			setHeaderIsActive(true);
 			return;
 		}

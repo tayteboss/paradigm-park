@@ -8,8 +8,9 @@ import Layout from '../components/layout';
 import { theme } from '../styles/theme';
 import { GlobalStyles } from '../styles/global';
 import use1vh from '../hooks/use1vh';
-import { Transitions } from '../shared/types/types';
+import { FrameItemType, Transitions } from '../shared/types/types';
 import useHeaderHeight from '../hooks/useHeaderHeight';
+import ContentModal from '../components/blocks/ContentModal';
 
 const pageTransitionVariants: Transitions = {
 	hidden: { opacity: 0, transition: { duration: 0.3 } },
@@ -28,6 +29,7 @@ const App = (props: Props) => {
 	} = props;
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
+	const [content, setContent] = useState<FrameItemType | false>(false);
 
 	const router= useRouter();
 	const routerEvents = router.events;
@@ -68,9 +70,14 @@ const App = (props: Props) => {
 							{...pageProps}
 							key={router.asPath}
 							pageTransitionVariants={pageTransitionVariants}
+							setContent={setContent}
 						/>
 					</AnimatePresence>
 				</Layout>
+				<ContentModal
+					content={content}
+					setContent={setContent}
+				/>
 			</ThemeProvider>
 		</>
 	);

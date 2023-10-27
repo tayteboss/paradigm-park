@@ -183,6 +183,7 @@ export const GlobalStyles = createGlobalStyle`
 		line-height: ${pxToRem(32.6)};
 		font-family: var(--font-graphik-bold);
 		text-transform: uppercase;
+		letter-spacing: ${pxToRem(0.1)};
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
@@ -217,7 +218,7 @@ export const GlobalStyles = createGlobalStyle`
 
 	.type-b2 {
 		font-size: ${pxToRem(16)};
-		line-height: ${pxToRem(16)};
+		line-height: ${pxToRem(25)};
 		font-family: var(--font-graphik-regular);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
@@ -262,6 +263,23 @@ export const GlobalStyles = createGlobalStyle`
 		{
 			font-size: ${pxToRem(15)};
 			line-height: ${pxToRem(15)};
+		}
+	}
+
+	.content {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6,
+		p {
+			margin-bottom: ${pxToRem(20)};
+			line-height: normal;
+		}
+
+		p {
+			line-height: ${pxToRem(26)};
 		}
 	}
 

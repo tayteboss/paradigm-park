@@ -31,6 +31,7 @@ export const homePageQueryString = `
 export const aboutPageQueryString = `
 	*[_type == 'aboutPage'][0] {
 		...,
+		"heroImage": heroImage.asset->url,
 		frameItems[]-> {
 			...,
 			"contentBlock": contentBlock[]-> {

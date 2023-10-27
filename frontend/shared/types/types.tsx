@@ -95,6 +95,9 @@ export type FrameItemType = {
 	subTitle: string;
 	image: string;
 	contentBlock: any;
+	setContent?: any;
+	index: number;
+	isRHS?: boolean;
 }
 
 export type AboutPageType = {
