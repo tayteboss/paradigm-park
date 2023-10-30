@@ -53,5 +53,13 @@ export const contactPageQueryString = `
 export const workPageQueryString = `
 	*[_type == 'workPage'][0] {
 		...,
+		activeCaseStudies[]-> {
+			...,
+			"thumbnailImageUrl": thumbnailImage.asset->url,
+		},
+		inProgressCaseStudies[]-> {
+			...,
+			"thumbnailImageUrl": thumbnailImage.asset->url,
+		},
 	}
 `;

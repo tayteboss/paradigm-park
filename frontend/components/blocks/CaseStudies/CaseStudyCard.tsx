@@ -94,10 +94,7 @@ const TagsWrapper = styled.div`
 
 const Tag = styled.span``;
 
-const Excerpt = styled.h3`
-	font-size: ${pxToRem(30)};
-	line-height: ${pxToRem(36)};
-
+const Excerpt = styled.h4`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		font-size: ${pxToRem(25)};
 		line-height: normal;
@@ -168,6 +165,9 @@ const CaseStudyCard = (props: CaseStudyType) => {
 			if (window.scrollY >= ref.current.offsetTop) {
 				setIsSticky(true);
 			} else {
+				if (isFirstBlock) {
+					setIsSticky(true); return;
+				}
 				setIsSticky(false);
 			}
 		};

@@ -15,17 +15,13 @@ const PageWrapper = styled(motion.div)`
 type Props = {
 	data: WorkPageType;
 	pageTransitionVariants: TransitionsType;
-	siteSettings: SiteSettingsType;
 };
 
 const Page = (props: Props) => {
 	const {
 		data,
-		siteSettings,
 		pageTransitionVariants
 	} = props;
-
-	console.log('data', data);
 
 	return (
 		<PageWrapper
@@ -35,26 +31,27 @@ const Page = (props: Props) => {
 			exit='hidden'
 		>
 			<NextSeo
-				title={data.seoTitle || "Paradigm Park | Work"}
-				description={data.seoDescription || ""}
+				title={data?.seoTitle || "Paradigm Park | Work"}
+				description={data?.seoDescription || ""}
 			/>
 			<WorkHeroBlock
-				heroTitle={data.heroTitle}
-				heroColor={data.heroColor?.hex}
+				heroTitle={data?.heroTitle}
+				heroColor={data?.heroColor?.hex}
 			/>
 			<CaseStudies data={data?.activeCaseStudies} />
-			<WorkInProgress />
+			<WorkInProgress
+				title={data?.inProgressTitle}
+				data={data?.inProgressCaseStudies}
+			/>
 		</PageWrapper>
 	);
 };
 
 export async function getStaticProps() {
-	const siteSettings = await client.fetch(siteSettingsQueryString);
 	const data = await client.fetch(workPageQueryString);
 
 	return {
 		props: {
-			siteSettings,
 			data
 		},
 	};

@@ -44,6 +44,10 @@ const App = (props: Props) => {
 	useHeaderHeight();
 
 	useEffect(() => {
+		window.history.scrollRestoration = 'manual'
+
+		handleExitComplete();
+
 		const hasCookies = Cookies.get('visited');
 
 		if (hasCookies) {

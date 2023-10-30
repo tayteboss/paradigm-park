@@ -134,7 +134,7 @@ export type WorkPageType = {
 	heroColor: ColorType;
 	heroTitle: string;
 	inProgressCaseStudies: CaseStudyType[];
-	inProgressTitle: string;
+	inProgressTitle: [];
 	seoDescription: string;
 	seoTitle: string;
 	slug: SlugType;
