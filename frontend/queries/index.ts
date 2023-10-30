@@ -49,3 +49,9 @@ export const contactPageQueryString = `
 		...,
 	}
 `;
+
+export const workPageQueryString = `
+	*[_type == 'workPage'][0] {
+		...,
+	}
+`;

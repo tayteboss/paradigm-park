@@ -128,3 +128,14 @@ export type SiteSettingsType = {
 	newsletterTermsText: [];
 	newsletterTitle: string;
 }
+
+export type WorkPageType = {
+	activeCaseStudies: CaseStudyType[];
+	heroColor: ColorType;
+	heroTitle: string;
+	inProgressCaseStudies: CaseStudyType[];
+	inProgressTitle: string;
+	seoDescription: string;
+	seoTitle: string;
+	slug: SlugType;
+}
