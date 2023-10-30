@@ -22,8 +22,6 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
-	console.log('data', data);
-
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}

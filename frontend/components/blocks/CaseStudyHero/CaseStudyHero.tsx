@@ -33,10 +33,6 @@ const Outer = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
 	height: calc(100dvh - var(--header-h) - 30px);
 	overflow: hidden;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding: 0 ${pxToRem(15)};
-	}
 `;
 
 const Inner = styled.div<StyledProps>`
@@ -126,7 +122,7 @@ const CaseStudyHero = (props: Props) => {
 
 	const imageTransform = useTransform(
 		scrollY,
-		[0, windowHeight * 2],
+		[0, windowHeight * 3],
 		['scale(1.2)', 'scale(1)']
 	);
 
@@ -158,6 +154,7 @@ const CaseStudyHero = (props: Props) => {
 										src={heroImage}
 										layout="fill"
 										objectFit="cover"
+										priority
 									/>
 								)}
 							</MotionInner>
@@ -173,6 +170,7 @@ const CaseStudyHero = (props: Props) => {
 										src={desktopHeroMask}
 										layout="fill"
 										objectFit="cover"
+										priority
 									/>
 								)}
 							</MotionInner>
@@ -188,6 +186,7 @@ const CaseStudyHero = (props: Props) => {
 										src={mobileHeroMask}
 										layout="fill"
 										objectFit="cover"
+										priority
 									/>
 								)}
 							</MotionInner>

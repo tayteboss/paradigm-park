@@ -12,7 +12,7 @@ const useActiveLink = (): string => {
 			setActiveLink('Learn');
 		} else if (router.pathname === '/about') {
 			setActiveLink('About');
-		} else if (router.pathname === '/work') {
+		} else if (router.pathname.includes('/work')) {
 			setActiveLink('Work');
 		} else if (router.pathname === '/contact') {
 			setActiveLink('Contact');

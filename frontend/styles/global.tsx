@@ -280,6 +280,7 @@ export const GlobalStyles = createGlobalStyle`
 
 		p {
 			line-height: ${pxToRem(26)};
+			margin-bottom: ${pxToRem(15)};
 		}
 	}
 

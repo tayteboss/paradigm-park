@@ -23,6 +23,9 @@ const availableSections = {
 };
 
 const Sections = ({ sections }) => {
+
+	console.log('sections', sections);
+
 	return (
 		<>
 			{sections && sections.map((section) => {
@@ -30,7 +33,7 @@ const Sections = ({ sections }) => {
 					return <div key={Math.random() * 10000}>No section found for {section._type}</div>
 				} else {
 					const Component = availableSections[section._type];
-					return <Component key={section.id} {...section} />
+					return <Component key={section._key} {...section} />
 				}
 			})}
 		</>
