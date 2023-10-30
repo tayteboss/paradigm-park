@@ -42,7 +42,7 @@ export type CaseStudyType = {
 	heroImage?: ImageType;
 	inProgress?: boolean;
 	mobileHeroMask?: ImageType;
-	pageBuilder?: PageBuilderType;
+	pageBuilder?: any;
 	projectColor?: ColorType;
 	relatedCaseStudy?: CaseStudyType;
 	slug?: SlugType;

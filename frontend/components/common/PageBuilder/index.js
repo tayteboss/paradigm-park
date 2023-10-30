@@ -3,7 +3,9 @@ import Sections from './Sections';
 
 const PageBuilderWrapper = styled.div``;
 
-const PageBuilder = ({ modules, sections = [] }) => {
+const PageBuilder = ({ sections = [] }) => {
+
+	console.log('sections', sections);
 
 	return (
 		<PageBuilderWrapper>

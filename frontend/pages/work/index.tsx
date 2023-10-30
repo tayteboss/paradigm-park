@@ -55,6 +55,6 @@ export async function getStaticProps() {
 			data
 		},
 	};
-}
+};
 
 export default Page;
