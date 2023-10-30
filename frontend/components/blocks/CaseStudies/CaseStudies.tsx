@@ -9,7 +9,6 @@ type Props = {
 
 const CaseStudiesWrapper = styled.section`
 	margin-bottom: calc(-100vh);
-	margin-bottom: calc(-100dvh);
 `;
 
 const Inner = styled.div``;
@@ -18,7 +17,6 @@ const BlankBlock = styled.div`
 	position: sticky;
 	top: 30px;
 	height: calc(200vh);
-	height: calc(200dvh);
 	pointer-events: none;
 `;
 

@@ -19,6 +19,8 @@ type Props = {
 
 const HomeExploreBlocksWrapper = styled.section`
 	padding: ${pxToRem(30)} 0;
+	position: relative;
+	z-index: 2;
 `;
 
 const Inner = styled.div`

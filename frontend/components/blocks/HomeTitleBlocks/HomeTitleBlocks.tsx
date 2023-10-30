@@ -12,7 +12,6 @@ type Props = {
 
 const HomeTitleBlocksWrapper = styled.section`
 	margin-bottom: calc(-100vh);
-	margin-bottom: calc(-100dvh);
 `;
 
 const Inner = styled.div``;
@@ -20,9 +19,12 @@ const Inner = styled.div``;
 const BlankBlock = styled.div`
 	position: sticky;
 	top: 30px;
-	height: calc(100vh - 30px);
-	height: calc(100dvh - 30px);
+	height: calc(100vh - 60px);
 	pointer-events: none;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: calc(100vh - 30px);
+	}
 `;
 
 const HomeTitleBlocks = (props: Props) => {

@@ -12,7 +12,6 @@ const TitleBlockWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	height: calc(100vh - 60px);
-	height: calc(100dvh - 60px);
 	position: sticky;
 	top: 30px;
 	border-radius: var(--block-border-radius);
@@ -25,7 +24,6 @@ const TitleBlockWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 15px;
 		height: calc(100vh - 30px);
-		height: calc(100dvh - 30px);
 		padding: 0 ${pxToRem(16)};
 	}
 `;

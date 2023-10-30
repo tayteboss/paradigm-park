@@ -8,7 +8,6 @@ import throttle from 'lodash.throttle';
 
 const CaseStudyCardWrapper = styled(motion.div)`
 	height: 100vh;
-	height: 100dvh;
 	position: relative;
 	display: flex;
 	flex-direction: column;

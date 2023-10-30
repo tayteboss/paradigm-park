@@ -21,7 +21,6 @@ type Props = {
 
 const ExploreBlockWrapper = styled.div`
 	height: calc(100vh - 60px);
-	height: calc(100dvh - 60px);
 	flex: 1;
 	padding: ${pxToRem(60)};
 	position: relative;

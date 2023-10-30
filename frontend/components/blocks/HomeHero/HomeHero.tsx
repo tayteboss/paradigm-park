@@ -25,7 +25,6 @@ const Inner = styled(motion.div)`
 	overflow: hidden;
 	border-radius: var(--block-border-radius);
 	height: calc(100vh - var(--header-h) - 30px);
-	height: calc(100dvh - var(--header-h) - 30px);
 
 	mux-player {
 		height: 100%;

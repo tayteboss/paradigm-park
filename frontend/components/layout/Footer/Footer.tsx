@@ -20,6 +20,7 @@ const FooterWrapper = styled(motion.footer)`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		opacity: 1 !important;
 		transform: unset !important;
+		position: relative;
 	}
 `;
 
