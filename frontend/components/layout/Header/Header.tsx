@@ -46,7 +46,7 @@ const wrapperVariants = {
 		}
 	},
 	visible: {
-		height: '100vh',
+		height: '100dvh',
 		transition: {
 			duration: 0.5,
 			ease: 'easeInOut',

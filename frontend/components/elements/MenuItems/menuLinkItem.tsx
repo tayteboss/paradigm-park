@@ -16,9 +16,9 @@ type Props = {
 	setItemIsHovered: (itemIsHovered: boolean) => void;
 };
 
-const LinkTag = styled(motion.a)``;
+const LinkTag = styled(motion.div)``;
 
-const LinkInner = styled.div<StyledProps>`
+const LinkInner = styled.a<StyledProps>`
 	font-size: ${pxToRem(90)};
 	line-height: 1;
 	text-align: center;
