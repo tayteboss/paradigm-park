@@ -6,6 +6,7 @@ import CaseStudy2ColImageContent from "../../pageBuilder/CaseStudy2ColImageConte
 import CaseStudy2ColImageList from "../../pageBuilder/CaseStudy2ColImageList";
 import CaseStudyImageGallery from "../../pageBuilder/CaseStudyImageGallery";
 import CaseStudyStatistics from "../../pageBuilder/CaseStudyStatistics";
+import CaseStudyTicker from "../../pageBuilder/CaseStudyTicker";
 import CaseStudyTitleBlock from "../../pageBuilder/CaseStudyTitleBlock";
 
 const availableSections = {
@@ -18,18 +19,16 @@ const availableSections = {
 	caseStudyStatistics: CaseStudyStatistics,
 	caseStudy2ColImageContent: CaseStudy2ColImageContent,
 	caseStudyImageGallery: CaseStudyImageGallery,
+	caseStudyTicker: CaseStudyTicker,
 };
 
 const Sections = ({ sections }) => {
 	return (
 		<>
 			{sections && sections.map((section) => {
-				if(!availableSections[section._type])
-				{
+				if(!availableSections[section._type]) {
 					return <div key={Math.random() * 10000}>No section found for {section._type}</div>
-				}
-				else
-				{
+				} else {
 					const Component = availableSections[section._type];
 					return <Component key={section.id} {...section} />
 				}

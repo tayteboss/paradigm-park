@@ -80,6 +80,7 @@ export default {
 				{type: 'caseStudyStatistics'},
 				{type: 'caseStudy2ColImageContent'},
 				{type: 'caseStudyImageGallery'},
+				{type: 'caseStudyTicker'},
 			]
 		},
 		{

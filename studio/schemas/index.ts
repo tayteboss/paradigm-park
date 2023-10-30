@@ -24,6 +24,7 @@ import frameItemDotPoints from './frameItemDotPoints';
 import frameItemContent from './frameItemContent';
 import contentModal from './contentModal';
 import issueImageBlock from './issueImageBlock';
+import caseStudyTicker from './caseStudyTicker';
 
 export const schemaTypes = [
 	siteSettings,
@@ -51,5 +52,6 @@ export const schemaTypes = [
 	frameItemDotPoints,
 	frameItemContent,
 	contentModal,
-	issueImageBlock
+	issueImageBlock,
+	caseStudyTicker
 ];
