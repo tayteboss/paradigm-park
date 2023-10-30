@@ -31,7 +31,7 @@ const HomeTitleBlocks = (props: Props) => {
 	} = props;
 
 	return (
-		<HomeTitleBlocksWrapper>
+		<HomeTitleBlocksWrapper className="performance">
 			<LayoutWrapper>
 				<Inner>
 					{data.titleBlock.map((item, i) => (

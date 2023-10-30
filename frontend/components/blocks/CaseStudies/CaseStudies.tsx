@@ -30,7 +30,7 @@ const CaseStudies = (props: Props) => {
 	const hasData = data && data.length > 0;
 
 	return (
-		<CaseStudiesWrapper>
+		<CaseStudiesWrapper className="performance">
 			<LayoutWrapper>
 				<Inner>
 					{hasData && data.map((item, i) => (

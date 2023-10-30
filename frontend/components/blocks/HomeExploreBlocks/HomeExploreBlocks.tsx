@@ -47,7 +47,7 @@ const HomeExploreBlocks = (props: Props) => {
 	} = props;
 
 	return (
-		<HomeExploreBlocksWrapper>
+		<HomeExploreBlocksWrapper className="perforamnce">
 			<LayoutWrapper>
 				<Inner>
 					<ExploreBlock
