@@ -33,7 +33,13 @@ const Page = (props: Props) => {
 				title={`Paradigm Park | ${data?.title}`}
 				description={data?.excerpt || ""}
 			/>
-			<CaseStudyHero />
+			<CaseStudyHero
+				desktopHeroMask={data?.desktopHeroMask}
+				heroImage={data?.heroImage}
+				mobileHeroMask={data?.mobileHeroMask}
+				projectColor={data?.projectColor}
+				title={data?.title}
+			/>
 			<PageBuilder sections={data?.pageBuilder} />
 		</PageWrapper>
 	);

@@ -37,11 +37,11 @@ export type PageBuilderType = {
 
 export type CaseStudyType = {
 	title?: string;
-	desktopHeroMask?: ImageType;
+	desktopHeroMask?: string;
 	excerpt?: string;
-	heroImage?: ImageType;
+	heroImage?: string;
 	inProgress?: boolean;
-	mobileHeroMask?: ImageType;
+	mobileHeroMask?: string;
 	pageBuilder?: any;
 	projectColor?: ColorType;
 	relatedCaseStudy?: CaseStudyType;
