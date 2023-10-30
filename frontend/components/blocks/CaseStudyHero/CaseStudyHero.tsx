@@ -31,7 +31,6 @@ const Outer = styled.div`
 	align-items: center;
 	justify-content: center;
 	height: calc(100vh - var(--header-h) - 30px);
-	height: calc(100dvh - var(--header-h) - 30px);
 	overflow: hidden;
 `;
 

@@ -5,24 +5,24 @@ import { useInView } from 'react-intersection-observer';
 
 const FrameWrapper = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
-	height: calc(100dvh - var(--header-h) - 30px);
 	padding: 0 8vw;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: flex-start;
 	width: 100%;
 	position: relative;
 	z-index: 5;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: calc(70vh - var(--header-h) - 30px);
-		height: calc(70dvh - var(--header-h) - 30px);
 	}
 `;
 
 const ImageWrapper = styled.button`
 	height: ${pxToRem(486)};
 	position: relative;
+	display: inline-block;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: ${pxToRem(350)};
@@ -30,6 +30,7 @@ const ImageWrapper = styled.button`
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		height: ${pxToRem(200)};
+		width: ${pxToRem(150)};
 	}
 
 	&.view-element-bottom-top {
@@ -49,6 +50,7 @@ const ButtonWrapper = styled.div`
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+	text-align: left;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		display: block;

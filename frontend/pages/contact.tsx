@@ -32,7 +32,6 @@ const Inner = styled.div<StyledProps>`
 	align-items: center;
 	justify-content: center;
 	height: calc(100vh - var(--header-h) - 30px);
-	height: calc(100dvh - var(--header-h) - 30px);
 	border-radius: var(--block-border-radius);
 	padding: 0 ${pxToRem(60)};
 
