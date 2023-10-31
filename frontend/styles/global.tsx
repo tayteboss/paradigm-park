@@ -334,7 +334,11 @@ export const GlobalStyles = createGlobalStyle`
 
 	.view-element-image-scale-up
 	{
-		img {
+		opacity: 0;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
+
+		img  {
 			transform: scale(1.1) !important;
 
 			transition: all 5000ms ease;
@@ -343,7 +347,11 @@ export const GlobalStyles = createGlobalStyle`
 
 		&--in-view
 		{
-			transform: scale(1) !important;
+			opacity: 1;
+
+			img {
+				transform: scale(1) !important;
+			}
 		}
 	}
 

@@ -19,6 +19,8 @@ const Page = (props: Props) => {
 		pageTransitionVariants
 	} = props;
 
+	console.log('data', data);
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
@@ -67,6 +69,12 @@ export async function getStaticProps({ params }: any) {
 			"heroImage": heroImage.asset->url,
 			"mobileHeroMask": mobileHeroMask.asset->url,
 			"thumbnailImage": thumbnailImage.asset->url,
+			pageBuilder[] {
+				...,
+				"leftColImage": leftColImage.asset->url,
+				"rightColImage": rightColImage.asset->url,
+				"image": image.asset->url,
+			}
 		}
 	`;
 
