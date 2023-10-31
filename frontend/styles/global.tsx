@@ -101,7 +101,7 @@ export const GlobalStyles = createGlobalStyle`
 	h1,
 	.type-h1 {
 		font-size: ${pxToRem(105)};
-		line-height: ${pxToRem(105)};
+		line-height: ${pxToRem(95)};
 		font-family: var(--font-graphik-bold);
 		letter-spacing: -${pxToRem(2.1)};
 		text-transform: uppercase;
@@ -142,7 +142,7 @@ export const GlobalStyles = createGlobalStyle`
 	h3,
 	.type-h3 {
 		font-size: ${pxToRem(60)};
-		line-height: ${pxToRem(78)};
+		line-height: ${pxToRem(74)};
 		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
@@ -250,7 +250,7 @@ export const GlobalStyles = createGlobalStyle`
 	button,
 	div {
 		font-size: ${pxToRem(16)};
-		line-height: ${pxToRem(16)};
+		line-height: ${pxToRem(17)};
 		font-family: var(--font-graphik-regular);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}
@@ -272,15 +272,27 @@ export const GlobalStyles = createGlobalStyle`
 		h3,
 		h4,
 		h5,
-		h6,
-		p {
+		h6 {
 			margin-bottom: ${pxToRem(20)};
-			line-height: normal;
 		}
 
 		p {
 			line-height: ${pxToRem(26)};
-			margin-bottom: ${pxToRem(15)};
+
+			&:not(:last-child) {
+				margin-bottom: ${pxToRem(15)};
+			}
+		}
+
+		a {
+			color: var(--colour-black);
+			text-decoration: underline;
+
+			transition: all 300ms var(--transition-ease);
+
+			&:hover {
+				opacity: 0.3;
+			}
 		}
 	}
 

@@ -38,6 +38,9 @@ const App = (props: Props) => {
 
 	const handleExitComplete = (): void => {
 		window.scrollTo(0, 0);
+		setTimeout(() => {
+			setAppCursorRefresh(appCursorRefresh + 1);
+		}, 300);
 	};
 
 	use1vh();
@@ -66,7 +69,7 @@ const App = (props: Props) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setAppCursorRefresh(appCursorRefresh + 1);
-		}, 300);
+		}, 1000);
 
 		return () => {
 			clearTimeout(timer);

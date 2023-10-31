@@ -7,6 +7,7 @@ import Link from 'next/link';
 import LogoTextSvg from '../../svgs/LogoTextSvg';
 import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRouter } from 'next/router';
 
 const siteOptions = require('../../../json/siteSettings.json');
 
@@ -119,6 +120,7 @@ const Footer = () => {
 	const [documentHeight, setDocumentHeight] = useState(0);
 
 	const ref = useRef<HTMLDivElement>(null);
+	const router = useRouter();
 
 	const { scrollY } = useScroll();
 
@@ -134,7 +136,7 @@ const Footer = () => {
 		['translateY(100px)', 'translateY(0px)']
 	);
 
-	useEffect(() => {
+	const setData = () => {
 		if (!ref?.current) return;
 
 		const footerHeight = ref.current.clientHeight;
@@ -144,11 +146,21 @@ const Footer = () => {
 		setWindowHeight(window.innerHeight);
 
 		var body = document.body,
-    	html = document.documentElement;
+		html = document.documentElement;
 
 		var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
 
 		setDocumentHeight(height);
+	}
+
+	useEffect(() => {
+		setTimeout(() => {
+			setData();
+		}, 1000);
+	}, [router]);
+
+	useEffect(() => {
+		setData();
 	}, []);
 
 	return (
