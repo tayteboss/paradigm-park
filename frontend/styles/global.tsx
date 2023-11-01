@@ -393,6 +393,17 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.embla {
+		overflow: hidden;
+	}
+	.embla__container {
+		display: flex;
+	}
+	.embla__slide {
+		flex: 0 0 100%;
+		min-width: 0;
+	}
+
 	.performance {
 		-webkit-transform: translateZ(0);
 		backface-visibility: hidden;

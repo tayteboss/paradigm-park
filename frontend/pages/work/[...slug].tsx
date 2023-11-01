@@ -78,6 +78,9 @@ export async function getStaticProps({ params }: any) {
 				"rightColImage": rightColImage.asset->url,
 				"image": image.asset->url,
 				"modal": modal->,
+				"imageGallery": imageGallery[] {
+					asset->
+				}
 			}
 		}
 	`;
