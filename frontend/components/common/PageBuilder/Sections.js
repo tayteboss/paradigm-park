@@ -22,7 +22,7 @@ const availableSections = {
 	caseStudyTicker: CaseStudyTicker,
 };
 
-const Sections = ({ sections }) => {
+const Sections = ({ sections, setWorkModalContent }) => {
 
 	console.log('sections', sections);
 
@@ -33,7 +33,7 @@ const Sections = ({ sections }) => {
 					return <div key={Math.random() * 10000}>No section found for {section._type}</div>
 				} else {
 					const Component = availableSections[section._type];
-					return <Component key={section._key} {...section} />
+					return <Component setWorkModalContent={setWorkModalContent} key={section._key} {...section} />
 				}
 			})}
 		</>

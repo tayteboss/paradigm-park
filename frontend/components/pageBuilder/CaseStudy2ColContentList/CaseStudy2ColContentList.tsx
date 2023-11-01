@@ -26,6 +26,7 @@ const ContentWrapper = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-start;
+	min-height: ${pxToRem(240)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		grid-column: 1 / -1;

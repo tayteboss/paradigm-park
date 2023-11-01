@@ -294,6 +294,13 @@ export const GlobalStyles = createGlobalStyle`
 				opacity: 0.3;
 			}
 		}
+
+		.unknown__pt__mark__super {
+			font-size: ${pxToRem(11)};
+			vertical-align: super;
+			position: relative;
+			top: 1px;
+		}
 	}
 
 	.full-height-block {
@@ -352,6 +359,27 @@ export const GlobalStyles = createGlobalStyle`
 			img {
 				transform: scale(1) !important;
 			}
+		}
+	}
+
+	.primary-link {
+		padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
+		display: inline-block;
+		font-size: ${pxToRem(16)};
+		line-height: ${pxToRem(11.5)};
+		background: var(--colour-yellow);
+		color: var(--colour-black);
+		border-radius: 100px;
+		border: 1px solid var(--colour-black);
+		border-color: var(--colour-yellow);
+		white-space: nowrap;
+
+		transition: all 300ms var(--transition-ease);
+
+		&:hover {
+			background: var(--colour-black);
+			color: var(--colour-white);
+			border-color: var(--colour-black);
 		}
 	}
 

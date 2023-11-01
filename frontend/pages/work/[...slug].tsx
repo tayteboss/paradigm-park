@@ -9,6 +9,7 @@ import PageBuilder from '../../components/common/PageBuilder';
 type Props = {
 	data: CaseStudyType;
 	pageTransitionVariants: TransitionsType;
+	setWorkModalContent: any;
 };
 
 const PageWrapper = styled(motion.div)``;
@@ -16,10 +17,9 @@ const PageWrapper = styled(motion.div)``;
 const Page = (props: Props) => {
 	const {
 		data,
-		pageTransitionVariants
+		pageTransitionVariants,
+		setWorkModalContent
 	} = props;
-
-	console.log('data', data);
 
 	return (
 		<PageWrapper
@@ -39,7 +39,10 @@ const Page = (props: Props) => {
 				projectColor={data?.projectColor}
 				title={data?.title}
 			/>
-			<PageBuilder sections={data?.pageBuilder} />
+			<PageBuilder
+				sections={data?.pageBuilder}
+				setWorkModalContent={setWorkModalContent}
+			/>
 		</PageWrapper>
 	);
 };
@@ -74,6 +77,7 @@ export async function getStaticProps({ params }: any) {
 				"leftColImage": leftColImage.asset->url,
 				"rightColImage": rightColImage.asset->url,
 				"image": image.asset->url,
+				"modal": modal->,
 			}
 		}
 	`;

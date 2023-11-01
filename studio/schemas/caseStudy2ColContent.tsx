@@ -1,5 +1,8 @@
 import { BlockContentIcon } from '@sanity/icons';
 
+const SuperIcon = () => <div>x<sup>2</sup></div>;
+const SuperDecorator = (props) => <sup className="superscript">{props.children}</sup>;
+
 export default {
 	title: 'Two Column (Content)',
 	name: 'caseStudy2ColContent',
@@ -34,7 +37,7 @@ export default {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
 							{title: 'Emphasis', value: 'em'},
-							{ title: 'Superscript', value: 'superscript' },
+							{title: "Super", value: 'super', icon: SuperIcon, component: SuperDecorator},
 						],
 					}
 				},
@@ -61,7 +64,7 @@ export default {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
 							{title: 'Emphasis', value: 'em'},
-							{ title: 'Superscript', value: 'superscript' },
+							{title: "Super", value: 'super', icon: SuperIcon, component: SuperDecorator},
 						],
 					}
 				},
@@ -88,7 +91,7 @@ export default {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
 							{title: 'Emphasis', value: 'em'},
-							{ title: 'Superscript', value: 'superscript' },
+							{title: "Super", value: 'super', icon: SuperIcon, component: SuperDecorator},
 						],
 					}
 				},
@@ -115,7 +118,7 @@ export default {
 						decorators: [
 							{title: 'Strong', value: 'strong'},
 							{title: 'Emphasis', value: 'em'},
-							{ title: 'Superscript', value: 'superscript' },
+							{title: "Super", value: 'super', icon: SuperIcon, component: SuperDecorator},
 						],
 					}
 				},

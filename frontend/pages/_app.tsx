@@ -12,6 +12,7 @@ import { FrameItemType, Transitions } from '../shared/types/types';
 import useHeaderHeight from '../hooks/useHeaderHeight';
 import ContentModal from '../components/blocks/ContentModal';
 import Cursor from '../components/elements/Cursor';
+import WorkContentModal from '../components/blocks/WorkContentModal';
 
 const pageTransitionVariants: Transitions = {
 	hidden: { opacity: 0, transition: { duration: 0.5 } },
@@ -31,6 +32,7 @@ const App = (props: Props) => {
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
 	const [content, setContent] = useState<FrameItemType | false>(false);
+	const [workModalContent, setWorkModalContent] = useState<FrameItemType | false>(false);
 	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
 
 	const router= useRouter();
@@ -90,12 +92,17 @@ const App = (props: Props) => {
 							key={router.asPath}
 							pageTransitionVariants={pageTransitionVariants}
 							setContent={setContent}
+							setWorkModalContent={setWorkModalContent}
 						/>
 					</AnimatePresence>
 				</Layout>
 				<ContentModal
 					content={content}
 					setContent={setContent}
+				/>
+				<WorkContentModal
+					workModalContent={workModalContent}
+					setWorkModalContent={setWorkModalContent}
 				/>
 				<Cursor
 					cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)}

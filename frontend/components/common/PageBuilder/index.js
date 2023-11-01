@@ -9,11 +9,16 @@ const PageBuilderWrapper = styled.div`
 	border-radius: var(--block-border-radius);
 `;
 
-const PageBuilder = ({ sections = [] }) => {
+const PageBuilder = ({ sections = [], setWorkModalContent }) => {
 	return (
 		<LayoutWrapper>
 			<PageBuilderWrapper>
-				{sections && <Sections sections={sections} /> }
+				{sections && (
+					<Sections
+						sections={sections}
+						setWorkModalContent={setWorkModalContent}
+					/>
+				)}
 			</PageBuilderWrapper>
 		</LayoutWrapper>
 	)
