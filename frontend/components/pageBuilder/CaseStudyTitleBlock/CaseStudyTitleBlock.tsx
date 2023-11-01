@@ -25,7 +25,7 @@ const CaseStudyTitleBlockWrapper = styled.section`
 
 const Inner = styled.div<StyledProps>`
 	background: ${(props) => props.$bg};
-	min-height: calc(100vh - 60px);
+	min-height: ${pxToRem(500)};
 	padding: ${pxToRem(90)} ${pxToRem(60)};
 	display: flex;
 	flex-direction: column;
