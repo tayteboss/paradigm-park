@@ -21,6 +21,16 @@ const CaseStudy2ColContentWrapper = styled.section`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(60)} 0;
+
+		.layout-grid {
+			row-gap: ${pxToRem(60)};
+		}
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		.layout-grid {
+			row-gap: ${pxToRem(50)};
+		}
 	}
 `;
 
@@ -31,24 +41,20 @@ const ContentWrapper = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	min-height: ${pxToRem(240)};
+	row-gap: ${pxToRem(90)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		grid-column: 1 / -1;
-		margin-bottom: ${pxToRem(60)};
+		min-height: unset;
+		row-gap: ${pxToRem(60)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		margin-bottom: ${pxToRem(50)};
+		row-gap: ${pxToRem(50)};
 	}
 `;
 
-const TopWrapper = styled.div`
-	margin-bottom: ${pxToRem(90)};
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		margin-bottom: ${pxToRem(30)};
-	}
-`;
+const TopWrapper = styled.div``;
 
 const BottomContent = styled.div``;
 
@@ -82,7 +88,7 @@ const CaseStudy2ColContent = (props: Props) => {
 	return (
 		<CaseStudy2ColContentWrapper>
 			<LayoutGrid>
-				<ContentWrapper className="content">
+				<ContentWrapper className="content content--mobile-centered">
 					{leftColTopContent && (
 						<TopWrapper>
 							<PortableText value={leftColTopContent} />
@@ -94,7 +100,7 @@ const CaseStudy2ColContent = (props: Props) => {
 						</BottomContent>
 					)}
 				</ContentWrapper>
-				<ContentWrapper className="content">
+				<ContentWrapper className="content content--mobile-centered">
 					{rightColTopContent && (
 						<TopWrapper>
 							<PortableText value={rightColTopContent} />

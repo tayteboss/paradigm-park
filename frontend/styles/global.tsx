@@ -301,6 +301,16 @@ export const GlobalStyles = createGlobalStyle`
 			position: relative;
 			top: 1px;
 		}
+
+		&--mobile-centered {
+			@media ${theme.mediaBreakpoints.tabletPortrait} {
+				h1,
+				h2,
+				h3 {
+					text-align: center;
+				}
+			}
+		}
 	}
 
 	.full-height-block {

@@ -77,7 +77,7 @@ const CaseStudy2ColContentList = (props: Props) => {
 			}`}
 		>
 			<LayoutGrid>
-				<ContentWrapper className="content">
+				<ContentWrapper className="content content--mobile-centered">
 					{leftColTopContent && (
 						<TopWrapper>
 							<PortableText value={leftColTopContent} />
