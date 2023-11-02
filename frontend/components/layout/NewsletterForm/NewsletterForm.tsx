@@ -108,7 +108,7 @@ const Form = styled.form<StyledProps>`
 		border-color: ${(props) => props.$isSuccess ? 'transparent' : props.$isFocused ? 'var(--colour-yellow)' : 'rgba(0, 0, 0, 0.3)'};
 		pointer-events: ${(props) => props.$isSuccess ? 'none' : 'auto'};
 
-		transition: all var(--transition-speed-default) var(--transition-ease);
+		transition: all 300ms var(--transition-ease);
 
 		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(15)};

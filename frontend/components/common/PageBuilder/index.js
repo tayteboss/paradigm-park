@@ -6,7 +6,8 @@ const PageBuilderWrapper = styled.div`
 	position: relative;
 	z-index: 2;
 	background: var(--colour-white);
-	border-radius: var(--block-border-radius);
+	border-top-right-radius: var(--block-border-radius);
+	border-top-left-radius: var(--block-border-radius);
 `;
 
 const PageBuilder = ({ sections = [], setWorkModalContent }) => {

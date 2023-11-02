@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import useEmblaCarousel from 'embla-carousel-react';
-import { useEffect } from 'react';
 import pxToRem from '../../../utils/pxToRem';
 import Image from 'next/image';
 import ArrowIconSvg from '../../svgs/ArrowIconSvg';

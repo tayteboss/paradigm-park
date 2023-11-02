@@ -23,9 +23,6 @@ const availableSections = {
 };
 
 const Sections = ({ sections, setWorkModalContent }) => {
-
-	console.log('sections', sections);
-
 	return (
 		<>
 			{sections && sections.map((section) => {

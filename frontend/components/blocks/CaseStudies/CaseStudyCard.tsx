@@ -193,6 +193,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 		<CaseStudyCardWrapper
 			key={index}
 			ref={ref}
+			className="case-study-card"
 		>
 			<ThumbnailWrapper>
 				{thumbnailImageUrl && (
@@ -203,6 +204,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 					>
 						<ImageInner
 							style={{ transform }}
+							className="case-study-card__image-inner"
 						>
 							<Image
 								src={thumbnailImageUrl}

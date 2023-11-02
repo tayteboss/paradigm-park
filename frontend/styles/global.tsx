@@ -356,7 +356,7 @@ export const GlobalStyles = createGlobalStyle`
 		transition: all var(--transition-speed-default) var(--transition-ease);
 
 		img  {
-			transform: scale(1.1) !important;
+			transform: scale(1.05) !important;
 
 			transition: all 5000ms ease;
 		}
@@ -372,7 +372,7 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
-	.primary-link {
+	.primary-link-style {
 		padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
 		display: inline-block;
 		font-size: ${pxToRem(16)};

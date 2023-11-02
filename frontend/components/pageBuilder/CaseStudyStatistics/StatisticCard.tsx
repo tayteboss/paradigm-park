@@ -5,15 +5,19 @@ import { motion } from 'framer-motion';
 
 type StyledProps = {
 	$inView: boolean;
+	$useFour?: boolean;
+	$useTwo?: boolean;
 }
 
 type Props = {
 	title: string;
 	value: string;
+	useFour?: boolean;
+	useTwo?: boolean;
 };
 
 const StatisticCardWrapper = styled(motion.div)<StyledProps>`
-	grid-column: span 4;
+	grid-column: ${(props) => props.$useTwo ? 'span 6' : props.$useFour ? 'span 3' : 'span 4'};
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -116,7 +120,9 @@ const childVariants = {
 const StatisticCard = (props: Props) => {
 	const {
 		title,
-		value
+		value,
+		useFour,
+		useTwo
 	} = props;
 
 	const { ref, inView } = useInView({
@@ -129,6 +135,8 @@ const StatisticCard = (props: Props) => {
 		<StatisticCardWrapper
 			ref={ref}
 			$inView={inView}
+			$useFour={useFour}
+			$useTwo={useTwo}
 			variants={childVariants}
 		>
 			{title && (

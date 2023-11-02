@@ -55,6 +55,8 @@ const CaseStudyStatistics = (props: Props) => {
 	} = props;
 
 	const hasStatistic = statistic && statistic.length > 0;
+	const hasFourStatistic = statistic && statistic.length === 4;
+	const hasTwoStatistic = statistic && statistic.length === 2;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -74,6 +76,8 @@ const CaseStudyStatistics = (props: Props) => {
 					<StatisticCard
 						title={item?.key}
 						value={item?.value}
+						useFour={hasFourStatistic}
+						useTwo={hasTwoStatistic}
 						key={i}
 					/>
 				))}

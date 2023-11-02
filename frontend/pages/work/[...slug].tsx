@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { NextSeo } from 'next-seo';
 import CaseStudyHero from '../../components/blocks/CaseStudyHero';
 import PageBuilder from '../../components/common/PageBuilder';
+import RelatedCaseStudy from '../../components/blocks/RelatedCaseStudy';
 
 type Props = {
 	data: CaseStudyType;
@@ -43,6 +44,7 @@ const Page = (props: Props) => {
 				sections={data?.pageBuilder}
 				setWorkModalContent={setWorkModalContent}
 			/>
+			<RelatedCaseStudy data={data?.relatedCaseStudy} />
 		</PageWrapper>
 	);
 };
@@ -80,7 +82,15 @@ export async function getStaticProps({ params }: any) {
 				"modal": modal->,
 				"imageGallery": imageGallery[] {
 					asset->
-				}
+				},
+				"tickerInternalLink": tickerInternalLink->slug
+			},
+			relatedCaseStudy-> {
+				...,
+				"desktopHeroMask": desktopHeroMask.asset->url,
+				"heroImage": heroImage.asset->url,
+				"mobileHeroMask": mobileHeroMask.asset->url,
+				"thumbnailImage": thumbnailImage.asset->url,
 			}
 		}
 	`;

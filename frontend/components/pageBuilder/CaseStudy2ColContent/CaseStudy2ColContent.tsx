@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import LayoutGrid from '../../common/LayoutGrid';
 import pxToRem from '../../../utils/pxToRem';
 import { PortableText } from '@portabletext/react';
+import { useInView } from 'react-intersection-observer';
 
 type StyledProps = {
 	$hasSup?: boolean;
@@ -85,8 +86,19 @@ const CaseStudy2ColContent = (props: Props) => {
 		setWorkModalContent
 	} = props;
 
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-50px'
+	});
+
 	return (
-		<CaseStudy2ColContentWrapper>
+		<CaseStudy2ColContentWrapper
+			ref={ref}
+			className={`view-element-fade-in ${
+				inView ? 'view-element-fade-in--in-view' : ''
+			}`}
+		>
 			<LayoutGrid>
 				<ContentWrapper className="content content--mobile-centered">
 					{leftColTopContent && (
@@ -113,7 +125,7 @@ const CaseStudy2ColContent = (props: Props) => {
 					)}
 					{modal && (
 						<ModalTrigger
-							className="primary-link"
+							className="primary-link-style"
 							onClick={() => setWorkModalContent(modal)}
 						>
 							<TriggerInner $hasSup={modal?.buttonSuperscriptNumber}>

@@ -21,8 +21,8 @@ export default {
 				{type: 'statisticItem'}
 			],
 			// validate only allow 2 or 3 items
-			validation: Rule => Rule.max(3).min(2),
-			description: 'Please add 2 or 3 statistics.'
+			validation: Rule => Rule.max(4).min(2),
+			description: 'Please add 2, 3 or 4 statistics.'
 		}
 	]
 }
