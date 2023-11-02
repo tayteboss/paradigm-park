@@ -41,6 +41,7 @@ const Outside = styled.div<StyledProps>`
 
 const Inner = styled.div`
 	height: calc(100vh - var(--header-h) - 30px);
+	height: calc(100dvh - var(--header-h) - 30px);
 	overflow: auto;
 	-ms-overflow-style: none;
 	scrollbar-width: none;

@@ -6,6 +6,7 @@ import { NextSeo } from 'next-seo';
 import CaseStudyHero from '../../components/blocks/CaseStudyHero';
 import PageBuilder from '../../components/common/PageBuilder';
 import RelatedCaseStudy from '../../components/blocks/RelatedCaseStudy';
+import { useEffect } from 'react';
 
 type Props = {
 	data: CaseStudyType;
@@ -21,6 +22,10 @@ const Page = (props: Props) => {
 		pageTransitionVariants,
 		setWorkModalContent
 	} = props;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<PageWrapper

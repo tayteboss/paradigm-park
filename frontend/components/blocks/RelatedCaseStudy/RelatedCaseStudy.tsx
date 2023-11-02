@@ -28,6 +28,10 @@ const RelatedCaseStudyWrapper = styled.section`
 	background: var(--colour-white);
 	padding: ${pxToRem(30)} 0 ${pxToRem(60)};
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(30)} 0;
+	}
+
 	.case-study-card {
 		position: relative;
 		margin-bottom: 0;
@@ -47,6 +51,10 @@ const Inner = styled.div<StyledProps>`
 	background: ${(props) => props.$bg};
 	border-radius: var(--block-border-radius);
 	padding: ${pxToRem(20)} ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(20)} ${pxToRem(15)};
+	}
 `;
 
 const RelatedCaseStudy = (props: Props) => {

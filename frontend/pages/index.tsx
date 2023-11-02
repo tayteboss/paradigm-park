@@ -8,6 +8,7 @@ import HomeHero from '../components/blocks/HomeHero';
 import HomeTitleBlocks from '../components/blocks/HomeTitleBlocks';
 import CaseStudies from '../components/blocks/CaseStudies';
 import HomeExploreBlocks from '../components/blocks/HomeExploreBlocks';
+import { useEffect } from 'react';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -21,6 +22,10 @@ const Page = (props: Props) => {
 		data,
 		pageTransitionVariants
 	} = props;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<PageWrapper

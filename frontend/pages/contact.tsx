@@ -8,6 +8,7 @@ import LayoutWrapper from '../components/common/LayoutWrapper';
 import EmailCard from '../components/elements/EmailCard';
 import pxToRem from '../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
+import { useEffect } from 'react';
 
 type StyledProps = {
 	$bg?: string;
@@ -110,6 +111,10 @@ const Page = (props: Props) => {
 		cta,
 		heroColor
 	} = data;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,

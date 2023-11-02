@@ -6,6 +6,7 @@ import { motion, useAnimation, useInView, useScroll, useSpring, useTransform } f
 import { useEffect, useRef, useState } from 'react';
 import throttle from 'lodash.throttle';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 type StyledProps = {
 	$isSticky?: boolean;
@@ -13,12 +14,14 @@ type StyledProps = {
 
 const CaseStudyCardWrapper = styled(motion.div)<StyledProps>`
 	height: 100vh;
+	height: 100dvh;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	padding-bottom: ${pxToRem(46)};
 	margin-bottom: 100vh;
+	margin-bottom: 100dvh;
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -34,7 +37,7 @@ const ThumbnailWrapper = styled.div`
 	position: relative;
 `;
 
-const ImageWrapper = styled(motion.div)`
+const ImageWrapper = styled(motion.a)`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -63,6 +66,7 @@ const Title = styled(motion.h1)`
 	white-space: wrap;
 	width: 100%;
 	text-align: center;
+	pointer-events: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		font-size: ${pxToRem(45)};
@@ -210,20 +214,22 @@ const CaseStudyCard = (props: CaseStudyType) => {
 		>
 			<ThumbnailWrapper>
 				{thumbnailImageUrl && (
-					<ImageWrapper
-						initial={fadeOut}
-						animate={controls}
-						transition={{ duration: 0.7 }}
-					>
-						<ImageInner
-							style={{ transform }}
-							className="case-study-card__image-inner"
+					<Link href={`/work/${slug?.current}`} passHref scroll={false}>
+						<ImageWrapper
+							initial={fadeOut}
+							animate={controls}
+							transition={{ duration: 0.7 }}
 						>
-							<Image
-								src={thumbnailImageUrl}
-							/>
-						</ImageInner>
-					</ImageWrapper>
+							<ImageInner
+								style={{ transform }}
+								className="case-study-card__image-inner"
+							>
+								<Image
+									src={thumbnailImageUrl}
+								/>
+							</ImageInner>
+						</ImageWrapper>
+					</Link>
 				)}
 				{title && (
 					<Title

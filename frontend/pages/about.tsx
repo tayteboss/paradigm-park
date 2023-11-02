@@ -5,6 +5,7 @@ import { aboutPageQueryString, siteSettingsQueryString } from '../queries';
 import { AboutPageType, TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
 import FramesScroller from '../components/blocks/FramesScroller';
+import { useEffect } from 'react';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-white);
@@ -22,6 +23,10 @@ const Page = (props: Props) => {
 		pageTransitionVariants,
 		setContent
 	} = props;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<>

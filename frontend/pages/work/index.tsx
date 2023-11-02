@@ -7,6 +7,7 @@ import { NextSeo } from 'next-seo';
 import WorkHeroBlock from '../../components/blocks/WorkHeroBlock';
 import CaseStudies from '../../components/blocks/CaseStudies';
 import WorkInProgress from '../../components/blocks/WorkInProgress';
+import { useEffect } from 'react';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-white);
@@ -22,6 +23,10 @@ const Page = (props: Props) => {
 		data,
 		pageTransitionVariants
 	} = props;
+
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
 
 	return (
 		<PageWrapper

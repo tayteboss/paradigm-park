@@ -71,7 +71,7 @@ const CaseStudyTicker = (props: Props) => {
 	return (
 		<CaseStudyTickerWrapper>
 			{hasLink ? (
-				<Link href={handleLink()} passHref>
+				<Link href={handleLink()} passHref scroll={false}>
 					<LinkTag
 						className={hasLink ? 'frame-link' : ''}
 						data-title={tickerLinkTitle ? tickerLinkTitle : ''}
