@@ -54,15 +54,6 @@ const RelatedCaseStudy = (props: Props) => {
 		data
 	} = props;
 
-	const {
-		excerpt,
-		title,
-		tags,
-		thumbnailImage,
-		slug,
-		projectColor
-	} = data;
-
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,
@@ -75,17 +66,17 @@ const RelatedCaseStudy = (props: Props) => {
 		>
 			<LayoutWrapper>
 				<Inner
-					$bg={projectColor ? projectColor?.hex : 'var(--colour-white)'}
+					$bg={data?.projectColor ? data.projectColor?.hex : 'var(--colour-white)'}
 					className={`view-element-fade-in ${
 						inView ? 'view-element-fade-in--in-view' : ''
 					}`}
 				>
 					<CaseStudyCard
-						excerpt={excerpt}
-						title={title}
-						tags={tags}
-						thumbnailImageUrl={thumbnailImage}
-						slug={slug}
+						excerpt={data?.excerpt}
+						title={data?.title}
+						tags={data?.tags}
+						thumbnailImageUrl={data?.thumbnailImage}
+						slug={data?.slug}
 						isLastBlock
 						isFirstBlock
 					/>
