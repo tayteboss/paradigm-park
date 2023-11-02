@@ -115,8 +115,8 @@ const CaseStudyHero = (props: Props) => {
 
 	const maskTransform = useTransform(
 		scrollY,
-		[0, windowHeight * 2],
-		['scale(1)', 'scale(4)']
+		[0, windowHeight * 3],
+		['scale(1)', 'scale(5)']
 	);
 
 	const imageTransform = useTransform(

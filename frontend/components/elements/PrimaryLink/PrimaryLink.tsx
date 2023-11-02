@@ -10,6 +10,7 @@ type Props = {
 	title: string;
 	url?: string;
 	isOutline?: boolean;
+	target?: string;
 };
 
 const LinkTag = styled.a<StyledProps>`
@@ -37,12 +38,17 @@ const PrimaryLink = (props: Props) => {
 	const {
 		title,
 		url = '/',
-		isOutline = false
+		isOutline = false,
+		target = '_self'
 	} = props;
 
 	return (
 		<Link href={url} passHref scroll={false}>
-			<LinkTag className="primary-link" $isOutline={isOutline}>
+			<LinkTag
+				className="primary-link"
+				$isOutline={isOutline}
+				target={target}
+			>
 				{title && title}
 			</LinkTag>
 		</Link>

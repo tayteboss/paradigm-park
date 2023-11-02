@@ -123,7 +123,7 @@ export const GlobalStyles = createGlobalStyle`
 	h2,
 	.type-h2 {
 		font-size: ${pxToRem(82)};
-		line-height: ${pxToRem(98)};
+		line-height: ${pxToRem(96)};
 		font-family: var(--font-reslindale);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait}

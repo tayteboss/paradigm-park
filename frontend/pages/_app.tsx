@@ -8,13 +8,13 @@ import Layout from '../components/layout';
 import { theme } from '../styles/theme';
 import { GlobalStyles } from '../styles/global';
 import use1vh from '../hooks/use1vh';
-import { FrameItemType, Transitions } from '../shared/types/types';
+import { FrameItemType, TransitionsType } from '../shared/types/types';
 import useHeaderHeight from '../hooks/useHeaderHeight';
 import ContentModal from '../components/blocks/ContentModal';
 import Cursor from '../components/elements/Cursor';
 import WorkContentModal from '../components/blocks/WorkContentModal';
 
-const pageTransitionVariants: Transitions = {
+const pageTransitionVariants: TransitionsType = {
 	hidden: { opacity: 0, transition: { duration: 0.5 } },
 	visible: { opacity: 1, transition: { duration: 0.5 } },
 };

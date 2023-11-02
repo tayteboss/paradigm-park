@@ -178,18 +178,22 @@ const Footer = () => {
 					<BottomContainer>
 						<LinksWrapper>
 							{(address && addressUrl) && (
-								<Link href={addressUrl}>
+								<Link href={addressUrl} passHref>
 									<LinkTag
-										className="type-h4"
+										className="type-h4 frame-link"
 										target='_blank'
+										data-title="See on map"
 									>
 										{address}
 									</LinkTag>
 								</Link>
 							)}
 							{generalEmail && (
-								<Link href={`mailto:${generalEmail}`}>
-									<LinkTag className="type-h4">
+								<Link href={`mailto:${generalEmail}`} passHref>
+									<LinkTag
+										className="type-h4 frame-link"
+										data-title="Email us"
+									>
 										{generalEmail}
 									</LinkTag>
 								</Link>

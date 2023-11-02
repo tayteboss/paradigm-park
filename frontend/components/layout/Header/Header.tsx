@@ -42,7 +42,7 @@ const wrapperVariants = {
 			ease: 'easeInOut',
 			when: 'afterChildren',
 			staggerChildren: 0.1,
-			delay: 0.3
+			delay: 0.75
 		}
 	},
 	visible: {
@@ -51,7 +51,7 @@ const wrapperVariants = {
 			duration: 0.5,
 			ease: 'easeInOut',
 			when: 'beforeChildren',
-			staggerChildren: 0.1
+			staggerChildren: 0.1,
 		}
 	}
 };

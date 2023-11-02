@@ -5,8 +5,13 @@ import pxToRem from '../../../utils/pxToRem';
 import { motion, useAnimation, useInView, useScroll, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import throttle from 'lodash.throttle';
+import { useRouter } from 'next/router';
 
-const CaseStudyCardWrapper = styled(motion.div)`
+type StyledProps = {
+	$isSticky?: boolean;
+};
+
+const CaseStudyCardWrapper = styled(motion.div)<StyledProps>`
 	height: 100vh;
 	position: relative;
 	display: flex;
@@ -17,6 +22,7 @@ const CaseStudyCardWrapper = styled(motion.div)`
 	position: sticky;
 	top: 0;
 	left: 0;
+	pointer-events: ${(props) => props.$isSticky ? 'all' : 'none'};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding-bottom: ${pxToRem(30)};
@@ -54,7 +60,9 @@ const Title = styled(motion.h1)`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 3;
-	white-space: nowrap;
+	white-space: wrap;
+	width: 100%;
+	text-align: center;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		font-size: ${pxToRem(45)};
@@ -112,6 +120,8 @@ const CaseStudyCard = (props: CaseStudyType) => {
 		isFirstBlock
 	} = props;
 
+	const router = useRouter();
+
 	const [isSticky, setIsSticky] = useState(false);
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [distanceToTop, setDistanceToTop] = useState(0);
@@ -145,39 +155,41 @@ const CaseStudyCard = (props: CaseStudyType) => {
 	};
 
 	useEffect(() => {
-		if (!ref.current) return;
-
-		const windowHeight = window.innerHeight;
-		const distanceToTop = ref.current.offsetTop;
-
-		setDistanceToTop(distanceToTop);
-		setWindowHeight(windowHeight);
-
-		const handleScroll = () => {
+		const timer = setTimeout(() => {
 			if (!ref.current) return;
 
-			if (window.scrollY >= distanceToTop + (windowHeight * 1.8)) {
-				if (isLastBlock) return;
-				setIsSticky(false); return;
-			}
-
-			if (window.scrollY >= ref.current.offsetTop) {
-				setIsSticky(true);
-			} else {
-				if (isFirstBlock) {
-					setIsSticky(true); return;
+			const windowHeight = window.innerHeight;
+			const distanceToTop = ref.current.offsetTop;
+	
+			setDistanceToTop(distanceToTop);
+			setWindowHeight(windowHeight);
+	
+			const handleScroll = () => {
+				if (!ref.current) return;
+	
+				if (window.scrollY >= distanceToTop + (windowHeight * 1.5)) {
+					if (isLastBlock) return;
+					setIsSticky(false); return;
 				}
-				setIsSticky(false);
-			}
-		};
-
-		const throttledHandleScroll = throttle(handleScroll, 100);
-		window.addEventListener('scroll', throttledHandleScroll);
+	
+				if (window.scrollY >= ref.current.offsetTop) {
+					setIsSticky(true);
+				} else {
+					if (isFirstBlock) {
+						setIsSticky(true); return;
+					}
+					setIsSticky(false);
+				}
+			};
+	
+			const throttledHandleScroll = throttle(handleScroll, 50);
+			window.addEventListener('scroll', throttledHandleScroll);
+		}, 1000);
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			clearTimeout(timer);
 		};
-	}, [ref]);
+	}, [ref, router]);
 
 	useEffect(() => {
 		if (inView && isSticky) {
@@ -194,6 +206,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 			key={index}
 			ref={ref}
 			className="case-study-card"
+			$isSticky={isSticky}
 		>
 			<ThumbnailWrapper>
 				{thumbnailImageUrl && (
