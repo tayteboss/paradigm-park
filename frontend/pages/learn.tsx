@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
 import { learnPageQueryString, siteSettingsQueryString } from '../queries';
-import { AboutPageType, LearnPageType, TransitionsType } from '../shared/types/types';
+import { LearnPageType, TransitionsType } from '../shared/types/types';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import CaseStudyTicker from '../components/pageBuilder/CaseStudyTicker';
+import Issues from '../components/blocks/Issues';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-white);
@@ -27,6 +28,8 @@ const Page = (props: Props) => {
 		window.scrollTo(0, 0);
 	}, []);
 
+	console.log('data', data);
+
 	return (
 		<>
 			<PageWrapper
@@ -45,6 +48,7 @@ const Page = (props: Props) => {
 					tickerButtonExternalLink={data?.tickerButtonExternalLink}
 					tickerInternalLink={data?.tickerInternalLink}
 				/>
+				<Issues data={data?.issueArticles} />
 			</PageWrapper>
 		</>
 	);

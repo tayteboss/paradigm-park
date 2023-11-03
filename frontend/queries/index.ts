@@ -53,6 +53,10 @@ export const contactPageQueryString = `
 export const learnPageQueryString = `
 	*[_type == 'learnPage'][0] {
 		...,
+		issueArticles[]-> {
+			...,
+			"heroImage": heroImage.asset->url,
+		},
 	}
 `;
 

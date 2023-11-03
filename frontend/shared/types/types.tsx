@@ -109,6 +109,26 @@ export type AboutPageType = {
 	heroTitle: string;
 }
 
+export type IssueType = {
+	ctaLinkTitle: string;
+	excerpt: string;
+	external: string;
+	heroImage: string;
+	inProgress: boolean;
+	insideTheIssueBlockColour: ColorType;
+	insideTheIssueContent: [];
+	insideTheIssueHeading: string;
+	introductionContent: [];
+	introductionHeading: string;
+	introductionSubHeading: string;
+	projectColor: ColorType;
+	slug: SlugType;
+	title: string;
+	isFirstBlock?: boolean;
+	isLastBlock?: boolean;
+	index?: number;
+}
+
 export type LearnPageType = {
 	seoDescription: string;
 	seoTitle: string;
@@ -117,6 +137,7 @@ export type LearnPageType = {
 	tickerButtonExternalLink: string;
 	tickerInternalLink: SlugType;
 	tickerLinkTitle: string;
+	issueArticles: IssueType[];
 }
 
 export type ContactPageType = {

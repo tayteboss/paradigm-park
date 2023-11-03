@@ -15,7 +15,6 @@ type StyledProps = {
 const CaseStudyCardWrapper = styled(motion.div)<StyledProps>`
 	height: 100vh;
 	height: 100dvh;
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;

@@ -61,5 +61,16 @@ export default {
 			description: 'Optional. Please use either Internal or External link if link is required.',
 			hidden: ({ parent, value }) => !value && !!parent?.external,
 		},
+		{
+			title: 'Issue Articles',
+			name: 'issueArticles',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'issue' }]
+				}
+			]
+		},
 	]
 }
