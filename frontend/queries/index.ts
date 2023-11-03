@@ -50,6 +50,12 @@ export const contactPageQueryString = `
 	}
 `;
 
+export const learnPageQueryString = `
+	*[_type == 'learnPage'][0] {
+		...,
+	}
+`;
+
 export const workPageQueryString = `
 	*[_type == 'workPage'][0] {
 		...,

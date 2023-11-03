@@ -109,6 +109,16 @@ export type AboutPageType = {
 	heroTitle: string;
 }
 
+export type LearnPageType = {
+	seoDescription: string;
+	seoTitle: string;
+	slug: SlugType;
+	tickerContent: string;
+	tickerButtonExternalLink: string;
+	tickerInternalLink: SlugType;
+	tickerLinkTitle: string;
+}
+
 export type ContactPageType = {
 	seoDescription: string;
 	seoTitle: string;
