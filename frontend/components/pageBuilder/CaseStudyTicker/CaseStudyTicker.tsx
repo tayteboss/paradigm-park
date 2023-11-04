@@ -24,11 +24,19 @@ const CaseStudyTickerWrapper = styled.section`
 		width: calc(100vw + 15px);
 	}
 
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: ${pxToRem(30)} 0;
+	}
+
 	.rfm-child {
 		margin-right: ${pxToRem(30)};
 		font-size: ${pxToRem(82)};
 		line-height: normal;
 		font-family: var(--font-reslindale);
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			font-size: ${pxToRem(45)};
+		}
 	}
 `;
 

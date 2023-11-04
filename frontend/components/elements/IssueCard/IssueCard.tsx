@@ -34,7 +34,11 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 		top: 15px;
 		height: calc(100vh - 30px);
 		height: calc(100dvh - 30px);
-		padding: 0 ${pxToRem(16)};
+		padding: ${pxToRem(115)} ${pxToRem(30)};
+	}
+	
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: ${pxToRem(115)} ${pxToRem(15)};
 	}
 `;
 
@@ -59,6 +63,14 @@ const ImageWrapper = styled(motion.div)`
 	width: 30%;
 	overflow: hidden;
 	z-index: 1;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		width: 50%;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		width: 75%;
+	}
 `;
 
 const ImageInner = styled(motion.div)`
@@ -80,6 +92,13 @@ const ContentWrapper = styled(motion.div)`
 	align-items: flex-end;
 	width: 100%;
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		row-gap: ${pxToRem(15)};
+	}
+
 	.primary-link {
 		margin-bottom: ${pxToRem(10)};
 	}
@@ -87,6 +106,11 @@ const ContentWrapper = styled(motion.div)`
 
 const Excerpt = styled.h4`
 	padding-right: ${pxToRem(60)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		text-align: center;
+		padding-right: 0;
+	}
 `;
 
 const PrimaryLinkWrapper = styled.div``;
@@ -148,11 +172,11 @@ const IssueCard = (props: IssueType) => {
 	};
 
 	const imageInitial = {
-		scale: 0.92,
+		scale: 1,
 	};
 
 	const imageAnimate = {
-		scale: 1,
+		scale: 1.1,
 	};
 
 	const scrollDirection = useScrollDirection();
@@ -204,7 +228,7 @@ const IssueCard = (props: IssueType) => {
 	
 			const throttledHandleScroll = throttle(handleScroll, 50);
 			window.addEventListener('scroll', throttledHandleScroll);
-		}, 1000);
+		}, 250);
 
 		return () => {
 			clearTimeout(timer);
