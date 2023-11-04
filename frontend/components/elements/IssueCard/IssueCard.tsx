@@ -299,7 +299,7 @@ const IssueCard = (props: IssueType) => {
 				)}
 				<PrimaryLinkWrapper>
 					<PrimaryLink
-						url={`/issues/${slug?.current}`}
+						url={`/learn/${slug?.current}`}
 						title={inProgress ? 'In Progress' : 'View Issue'}
 						isOutline={inProgress}
 					/>

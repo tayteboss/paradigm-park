@@ -121,6 +121,19 @@ export default {
 			title: 'Inside the Issue Block Colour',
 			name: 'insideTheIssueBlockColour',
 			type: 'color',
+		},
+		{
+			title: 'Related Issue',
+			name: 'relatedIssue',
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'issue' }]
+				}
+			],
+			validation: Rule => Rule.max(3).min(2),
+			description: 'Please add 2 or 3 related articles'
 		}
 	],
 }
