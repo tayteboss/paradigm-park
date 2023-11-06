@@ -121,6 +121,7 @@ export type IssueType = {
 	introductionContent: [];
 	introductionHeading: string;
 	introductionSubHeading: string;
+	imageGallery: any;
 	projectColor: ColorType;
 	slug: SlugType;
 	title: string;

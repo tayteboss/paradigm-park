@@ -34,12 +34,12 @@ const Inner = styled.div<StyledProps>`
 	position: relative;
 	height: calc(100vh - var(--header-h) - 30px);
 	background: ${(props) => props.$bg};
+	overflow: hidden;
+	border-radius: var(--block-border-radius);
 `;
 
 const ImageWrapper = styled.div`
 	position: relative;
-	overflow: hidden;
-	border-radius: var(--block-border-radius);
 	height: 100%;
 	width: 100%;
 	overflow: hidden;
@@ -154,9 +154,7 @@ const IssueHero = (props: Props) => {
 	}, [distanceToTop]);
 
 	return (
-		<IssueHeroWrapper
-			ref={wrapperRef}
-		>
+		<IssueHeroWrapper ref={wrapperRef}>
 			<LayoutWrapper>
 				<Inner
 					ref={ref}

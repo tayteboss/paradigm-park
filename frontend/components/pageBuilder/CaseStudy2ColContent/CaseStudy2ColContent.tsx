@@ -42,6 +42,7 @@ const ContentWrapper = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	min-height: ${pxToRem(240)};
+	height: 100%;
 	row-gap: ${pxToRem(90)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {

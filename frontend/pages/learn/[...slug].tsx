@@ -50,8 +50,14 @@ const Page = (props: Props) => {
 				issueNumber={data?.issueNumber}
 				projectColor={data?.projectColor}
 			/>
-			<IssueIntroduction />
-			<IssueImageGallery />
+			<IssueIntroduction
+				introductionHeading={data?.introductionHeading}
+				introductionSubHeading={data?.introductionSubHeading}
+				introductionContent={data?.introductionContent}
+				ctaLinkTitle={data?.ctaLinkTitle}
+				externalLink={data?.external}
+			/>
+			<IssueImageGallery data={data?.imageGallery} />
 			<InsideTheIssue />
 			<RelatedIssues />
 		</PageWrapper>
@@ -80,6 +86,12 @@ export async function getStaticProps({ params }: any) {
 		*[_type == 'issue' && slug.current == "${params.slug[0]}"][0] {
 			...,
 			'heroImage': heroImage.asset->url,
+			'imageGallery': imageGallery[] {
+				_key,
+				imageType,
+				'singleImageUrl': singleImage.asset->url,
+				'twoImagesUrls': twoImages[].asset->url,
+			},
 		}
 	`;
 
