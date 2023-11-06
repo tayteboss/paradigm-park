@@ -150,32 +150,26 @@ const IssueCard = (props: IssueType) => {
 	);
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
+		if (!ref.current) return;
+
+		const windowHeight = window.innerHeight;
+		const distanceToTop = ref.current.offsetTop;
+
+		setDistanceToTop(distanceToTop);
+		setWindowHeight(windowHeight);
+
+		const handleScroll = () => {
 			if (!ref.current) return;
 
-			const windowHeight = window.innerHeight;
-			const distanceToTop = ref.current.offsetTop;
-	
-			setDistanceToTop(distanceToTop);
-			setWindowHeight(windowHeight);
-	
-			const handleScroll = () => {
-				if (!ref.current) return;
-
-				if (ref.current.getBoundingClientRect().top <= 30) {
-					setIsSticky(true);
-				} else {
-					setIsSticky(false);
-				}
-			};
-	
-			const throttledHandleScroll = throttle(handleScroll, 50);
-			window.addEventListener('scroll', throttledHandleScroll);
-		}, 100);
-
-		return () => {
-			clearTimeout(timer);
+			if (ref.current.getBoundingClientRect().top <= 30) {
+				setIsSticky(true);
+			} else {
+				setIsSticky(false);
+			}
 		};
+
+		const throttledHandleScroll = throttle(handleScroll, 50);
+		window.addEventListener('scroll', throttledHandleScroll);
 	}, [ref, router]);
 
 	return (
