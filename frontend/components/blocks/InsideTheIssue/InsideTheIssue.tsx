@@ -20,6 +20,10 @@ type Props = {
 
 const InsideTheIssueWrapper = styled.section`
 	margin-bottom: ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: 0;
+	}
 `;
 
 const Inner = styled.div<StyledProps>`

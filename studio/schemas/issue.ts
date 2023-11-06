@@ -139,6 +139,6 @@ export default {
 			],
 			validation: Rule => Rule.max(3).min(2),
 			description: 'Please add 2 or 3 related articles'
-		}
+		},
 	],
 }

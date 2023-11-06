@@ -14,6 +14,9 @@ type Props = {
 	data: IssueType;
 	pageTransitionVariants: TransitionsType;
 	setWorkModalContent: any;
+	relatedIssueHeading: {
+		relatedIssueHeading: string;
+	};
 };
 
 const PageWrapper = styled(motion.div)``;
@@ -22,14 +25,12 @@ const Page = (props: Props) => {
 	const {
 		data,
 		pageTransitionVariants,
+		relatedIssueHeading
 	} = props;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
-
-	console.log('data', data);
-	
 
 	return (
 		<PageWrapper
@@ -65,7 +66,10 @@ const Page = (props: Props) => {
 				ctaLinkTitle={data?.ctaLinkTitle}
 				externalLink={data?.external}
 			/>
-			<RelatedIssues />
+			<RelatedIssues
+				title={relatedIssueHeading?.relatedIssueHeading}
+				data={data?.relatedIssue}
+			/>
 		</PageWrapper>
 	);
 };
@@ -98,14 +102,26 @@ export async function getStaticProps({ params }: any) {
 				'singleImageUrl': singleImage.asset->url,
 				'twoImagesUrls': twoImages[].asset->url,
 			},
+			'relatedIssue': relatedIssue[]-> {
+				...,
+				"heroImage": heroImage.asset->url,
+			}
+		}
+	`;
+
+	const relatedIssueHeadingQuery = `
+		*[_type == 'learnPage'][0] {
+			relatedIssueHeading
 		}
 	`;
 
 	const data = await client.fetch(issueQuery);
+	const relatedIssueHeading = await client.fetch(relatedIssueHeadingQuery);
 
 	return {
 		props: {
 			data,
+			relatedIssueHeading
 		},
 	};
 }

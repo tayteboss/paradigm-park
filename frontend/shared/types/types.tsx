@@ -129,6 +129,7 @@ export type IssueType = {
 	isLastBlock?: boolean;
 	index?: number;
 	issueNumber: string;
+	relatedIssue: IssueType[];
 }
 
 export type LearnPageType = {
@@ -140,6 +141,7 @@ export type LearnPageType = {
 	tickerInternalLink: SlugType;
 	tickerLinkTitle: string;
 	issueArticles: IssueType[];
+	relatedIssueHeading: string;
 }
 
 export type ContactPageType = {

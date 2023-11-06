@@ -45,7 +45,7 @@ const ImageWrapper = styled.div`
 	overflow: hidden;
 
 	&.view-element-fade-in {
-		transition-delay: 300ms;
+		transition-delay: 50ms;
 		transition-duration: 700ms;
 	}
 `;
@@ -84,7 +84,7 @@ const SolidBlock = styled.div<StyledProps>`
 	}
 
 	&.view-element-fade-in {
-		transition-delay: 1000ms;
+		transition-delay: 500ms;
 	}
 `;
 

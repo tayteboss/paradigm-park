@@ -72,5 +72,11 @@ export default {
 				}
 			]
 		},
+		{
+			title: 'Related Issue Heading',
+			name: 'relatedIssueHeading',
+			type: 'string',
+			description: 'This heading is displayed at the bottom of each article above the related cards.'
+		}
 	]
 }
