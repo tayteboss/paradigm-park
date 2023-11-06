@@ -47,7 +47,9 @@ const TitleBlock = (props: TitleBlockType) => {
 	const {
 		internal,
 		linkTitle,
-		title
+		title,
+		isFirstBlock,
+		isLastBlock
 	} = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
@@ -60,7 +62,7 @@ const TitleBlock = (props: TitleBlockType) => {
 	const opacity = useTransform(
 		scrollY,
 		[distanceToTop, distanceToTop + ((windowHeight - 60) / 2), distanceToTop + ((windowHeight - 60) * 1.5)],
-		['0', '1', '0']
+		[isFirstBlock ? 1 : 0, 1, isLastBlock ? 1 : 0]
 	);
 
 	const transform = useTransform(

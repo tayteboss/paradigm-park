@@ -49,6 +49,7 @@ const Issues = (props: Props) => {
 							slug={item.slug}
 							isFirstBlock={i === 0}
 							isLastBlock={i === data.length - 1}
+							issueNumber={item.issueNumber}
 							index={i}
 						/>
 					))}

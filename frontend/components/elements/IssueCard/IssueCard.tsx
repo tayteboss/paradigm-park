@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import { IssueType } from '../../../shared/types/types';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
 import throttle from 'lodash.throttle';
 import pxToRem from '../../../utils/pxToRem';
 import Image from 'next/image';
 import PrimaryLink from '../PrimaryLink';
-import useScrollDirection from '../../../hooks/useScrollDirection';
 
 type StyledProps = {
 	$isSticky?: boolean;
@@ -42,7 +41,7 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	}
 `;
 
-const IssueIndexContainer = styled(motion.div)``;
+const IssueIndexContainer = styled.div``;
 
 const IssueNumber = styled.p``;
 
@@ -78,7 +77,7 @@ const ImageInner = styled(motion.div)`
 	width: 100%;
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled.h1`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -86,7 +85,7 @@ const Title = styled(motion.h1)`
 	z-index: 3;
 `;
 
-const ContentWrapper = styled(motion.div)`
+const ContentWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
@@ -125,7 +124,8 @@ const IssueCard = (props: IssueType) => {
 		slug,
 		isFirstBlock,
 		isLastBlock,
-		index
+		index,
+		issueNumber
 	} = props;
 
 	const router = useRouter();
@@ -135,19 +135,7 @@ const IssueCard = (props: IssueType) => {
 	const [distanceToTop, setDistanceToTop] = useState(0);
 
 	const { scrollY } = useScroll();
-	const controls = useAnimation();
-	const imageControls = useAnimation();
 	const ref = useRef<HTMLDivElement>(null);
-	const inView = useInView(ref);
-
-	const calcIndex = () => {
-		if (!index) return;
-		if (index < 10) {
-			return `0${index}`;
-		}
-
-		return index;
-	}
 
 	const transform = useTransform(
 		scrollY,
@@ -155,23 +143,11 @@ const IssueCard = (props: IssueType) => {
 		['scale(1)', 'scale(1.1)']
 	);
 
-	const fadeIn = {
-		opacity: 1,
-	};
-
-	const fadeOut = {
-		opacity: 0,
-	};
-
-	const imageInitial = {
-		scale: 1,
-	};
-
-	const imageAnimate = {
-		scale: 1.1,
-	};
-
-	const scrollDirection = useScrollDirection();
+	const opacity = useTransform(
+		scrollY,
+		[distanceToTop, distanceToTop + 500, distanceToTop + windowHeight, distanceToTop + (windowHeight * 3)],
+		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
+	);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -186,56 +162,21 @@ const IssueCard = (props: IssueType) => {
 			const handleScroll = () => {
 				if (!ref.current) return;
 
-				const scrollPosition = window.scrollY;
-	
-				if ((window.scrollY + 31) >= distanceToTop + (windowHeight * 1.5)) {
-					if (isLastBlock) return;
-					// setIsSticky(false); return;
-				}
-
-				if (scrollPosition >= distanceToTop) {
-					// scrolling down
-					if (((window.scrollY * 2) + 31) >= ref.current.offsetTop) {
-						setIsSticky(true);
-					} else {
-						if (isFirstBlock) {
-							setIsSticky(true); return;
-						}
-						setIsSticky(false);
-					}
+				if (ref.current.getBoundingClientRect().top <= 30) {
+					setIsSticky(true);
 				} else {
-					//scrolling up
-					console.log('scrolling up');
-					
-					if (((window.scrollY) + 31) >= ref.current.offsetTop) {
-						setIsSticky(true);
-					} else {
-						if (isFirstBlock) {
-							setIsSticky(true); return;
-						}
-						setIsSticky(false);
-					}
+					setIsSticky(false);
 				}
 			};
 	
 			const throttledHandleScroll = throttle(handleScroll, 50);
 			window.addEventListener('scroll', throttledHandleScroll);
-		}, 250);
+		}, 100);
 
 		return () => {
 			clearTimeout(timer);
 		};
-	}, [ref, router, scrollDirection]);
-
-	useEffect(() => {
-		if (inView && isSticky) {
-			controls.start(fadeIn);
-			imageControls.start(imageAnimate);
-		} else {
-			controls.start(fadeOut);
-			imageControls.start(imageInitial);
-		}
-	}, [controls, inView, isSticky]);
+	}, [ref, router]);
 
 	return (
 		<IssueCardWrapper
@@ -244,24 +185,14 @@ const IssueCard = (props: IssueType) => {
 			className="case-study-card"
 			$isSticky={isSticky}
 			$bg={projectColor ? projectColor.hex : 'var(--colour-white)'}
-			initial={fadeOut}
-			animate={controls}
-			transition={{ duration: 0.7 }}
+			style={{ opacity }}
 		>
-			<IssueIndexContainer
-				initial={fadeOut}
-				animate={controls}
-				transition={{ duration: 0.7, delay: 0.1 }}
-			>
-				<IssueNumber>Issue {calcIndex()}</IssueNumber>
+			<IssueIndexContainer>
+				<IssueNumber>Issue {issueNumber ? issueNumber : ''}</IssueNumber>
 			</IssueIndexContainer>
 			<TitleWrapper>
 				{heroImage && (
-					<ImageWrapper
-						initial={fadeOut}
-						animate={controls}
-						transition={{ duration: 0.7 }}
-					>
+					<ImageWrapper>
 						<ImageInner style={{ transform }}>
 							<Image
 								src={heroImage}
@@ -272,20 +203,12 @@ const IssueCard = (props: IssueType) => {
 					</ImageWrapper>
 				)}
 				{title && (
-					<Title
-						initial={fadeOut}
-						animate={controls}
-						transition={{ duration: 0.7, delay: 0.2 }}
-					>
+					<Title>
 						{title}
 					</Title>
 				)}
 			</TitleWrapper>
-			<ContentWrapper
-				initial={fadeOut}
-				animate={controls}
-				transition={{ duration: 0.7, delay: 0.3 }}
-			>
+			<ContentWrapper>
 				{excerpt && (
 					<Excerpt>{excerpt}</Excerpt>
 				)}

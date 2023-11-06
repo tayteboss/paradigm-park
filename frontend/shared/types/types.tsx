@@ -65,7 +65,9 @@ export type TitleBlockType = {
 		slug: {
 			current: string;
 		}
-	}
+	};
+	isFirstBlock?: boolean;
+	isLastBlock?: boolean;
 }
 
 export type HomePageType = {

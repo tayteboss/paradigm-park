@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { CaseStudyType } from '../../../shared/types/types';
 import PrimaryLink from '../../elements/PrimaryLink';
 import pxToRem from '../../../utils/pxToRem';
-import { motion, useAnimation, useInView, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import throttle from 'lodash.throttle';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import throttle from 'lodash.throttle';
 
 type StyledProps = {
 	$isSticky?: boolean;
@@ -36,7 +36,7 @@ const ThumbnailWrapper = styled.div`
 	position: relative;
 `;
 
-const ImageWrapper = styled(motion.a)`
+const ImageWrapper = styled.a`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -56,7 +56,7 @@ const Image = styled.img`
 	}
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled.h1`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -72,7 +72,7 @@ const Title = styled(motion.h1)`
 	}
 `;
 
-const InformationBar = styled(motion.div)`
+const InformationBar = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-end;
@@ -130,79 +130,42 @@ const CaseStudyCard = (props: CaseStudyType) => {
 	const [distanceToTop, setDistanceToTop] = useState(0);
 
 	const { scrollY } = useScroll();
-	const controls = useAnimation();
-	const imageControls = useAnimation();
 	const ref = useRef<HTMLDivElement>(null);
-	const inView = useInView(ref);
 
-	const transform = useTransform(
+	const imageTransform = useTransform(
 		scrollY,
 		[distanceToTop, distanceToTop + (windowHeight * 3)],
 		['scale(0.95)', 'scale(1.05)']
 	);
 
-	const fadeIn = {
-		opacity: 1,
-	};
-
-	const fadeOut = {
-		opacity: 0,
-	};
-
-	const imageInitial = {
-		scale: 0.92,
-	};
-
-	const imageAnimate = {
-		scale: 1,
-	};
+	const opacity = useTransform(
+		scrollY,
+		[distanceToTop, distanceToTop + 500, distanceToTop + windowHeight, distanceToTop + (windowHeight * 2)],
+		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
+	);
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
+		if (!ref.current) return;
+
+		const windowHeight = window.innerHeight;
+		const distanceToTop = ref.current.offsetTop;
+
+		setDistanceToTop(distanceToTop);
+		setWindowHeight(windowHeight);
+
+		const handleScroll = () => {
 			if (!ref.current) return;
 
-			const windowHeight = window.innerHeight;
-			const distanceToTop = ref.current.offsetTop;
-	
-			setDistanceToTop(distanceToTop);
-			setWindowHeight(windowHeight);
-	
-			const handleScroll = () => {
-				if (!ref.current) return;
-	
-				if (window.scrollY >= distanceToTop + (windowHeight * 1.5)) {
-					if (isLastBlock) return;
-					setIsSticky(false); return;
-				}
-	
-				if (window.scrollY >= ref.current.offsetTop) {
-					setIsSticky(true);
-				} else {
-					if (isFirstBlock) {
-						setIsSticky(true); return;
-					}
-					setIsSticky(false);
-				}
-			};
-	
-			const throttledHandleScroll = throttle(handleScroll, 50);
-			window.addEventListener('scroll', throttledHandleScroll);
-		}, 1000);
-
-		return () => {
-			clearTimeout(timer);
+			if (ref.current.getBoundingClientRect().top <= 30) {
+				setIsSticky(true);
+			} else {
+				setIsSticky(false);
+			}
 		};
-	}, [ref, router]);
 
-	useEffect(() => {
-		if (inView && isSticky) {
-			controls.start(fadeIn);
-			imageControls.start(imageAnimate);
-		} else {
-			controls.start(fadeOut);
-			imageControls.start(imageInitial);
-		}
-	}, [controls, inView, isSticky]);
+		const throttledHandleScroll = throttle(handleScroll, 50);
+		window.addEventListener('scroll', throttledHandleScroll);
+	}, [ref, router]);
 
 	return (
 		<CaseStudyCardWrapper
@@ -210,17 +173,14 @@ const CaseStudyCard = (props: CaseStudyType) => {
 			ref={ref}
 			className="case-study-card"
 			$isSticky={isSticky}
+			style={{ opacity }}
 		>
 			<ThumbnailWrapper>
 				{thumbnailImageUrl && (
 					<Link href={`/work/${slug?.current}`} passHref scroll={false}>
-						<ImageWrapper
-							initial={fadeOut}
-							animate={controls}
-							transition={{ duration: 0.7 }}
-						>
+						<ImageWrapper>
 							<ImageInner
-								style={{ transform }}
+								style={{ transform: imageTransform }}
 								className="case-study-card__image-inner"
 							>
 								<Image
@@ -231,20 +191,12 @@ const CaseStudyCard = (props: CaseStudyType) => {
 					</Link>
 				)}
 				{title && (
-					<Title
-						initial={fadeOut}
-						animate={controls}
-						transition={{ duration: 0.7, delay: 0.1 }}
-					>
+					<Title>
 						{title}
 					</Title>
 				)}
 				</ThumbnailWrapper>
-			<InformationBar
-				initial={fadeOut}
-				animate={controls}
-				transition={{ duration: 0.5, delay: 0.2 }}
-			>
+			<InformationBar>
 				<LHS>
 					<TagsWrapper>
 						{tags && tags.map((tag, i) => (

@@ -42,6 +42,8 @@ const HomeTitleBlocks = (props: Props) => {
 							linkTitle={item?.linkTitle}
 							title={item?.title}
 							key={i}
+							isFirstBlock={i === 0}
+							isLastBlock={i === data.titleBlock.length - 1}
 						/>
 					))}
 					<BlankBlock />
