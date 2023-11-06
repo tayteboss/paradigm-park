@@ -127,6 +127,7 @@ export type IssueType = {
 	isFirstBlock?: boolean;
 	isLastBlock?: boolean;
 	index?: number;
+	issueNumber: string;
 }
 
 export type LearnPageType = {

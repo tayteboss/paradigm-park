@@ -43,6 +43,11 @@ export default {
 			type: 'boolean',
 		},
 		{
+			title: 'Issue Number',
+			name: 'issueNumber',
+			type: 'string',
+		},
+		{
 			title: 'CTA Link Title',
 			name: 'ctaLinkTitle',
 			type: 'string',

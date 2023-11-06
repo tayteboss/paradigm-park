@@ -24,25 +24,12 @@ const Page = (props: Props) => {
 		pageTransitionVariants,
 	} = props;
 
-	const {
-		title,
-		ctaLinkTitle,
-		excerpt,
-		external,
-		heroImage,
-		inProgress,
-		insideTheIssueBlockColour,
-		insideTheIssueContent,
-		insideTheIssueHeading,
-		introductionContent,
-		introductionHeading,
-		introductionSubHeading,
-		projectColor,
-	} = data;
-
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
+
+	console.log('data', data);
+	
 
 	return (
 		<PageWrapper
@@ -55,7 +42,14 @@ const Page = (props: Props) => {
 				title={`Paradigm Park | ${data?.title}`}
 				description={data?.excerpt || ""}
 			/>
-			<IssueHero />
+			<IssueHero
+				title={data?.title}
+				heroImage={data?.heroImage}
+				ctaLinkTitle={data?.ctaLinkTitle}
+				externalLink={data?.external}
+				issueNumber={data?.issueNumber}
+				projectColor={data?.projectColor}
+			/>
 			<IssueIntroduction />
 			<IssueImageGallery />
 			<InsideTheIssue />
@@ -85,6 +79,7 @@ export async function getStaticProps({ params }: any) {
 	const issueQuery = `
 		*[_type == 'issue' && slug.current == "${params.slug[0]}"][0] {
 			...,
+			'heroImage': heroImage.asset->url,
 		}
 	`;
 

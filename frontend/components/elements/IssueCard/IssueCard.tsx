@@ -118,17 +118,9 @@ const PrimaryLinkWrapper = styled.div``;
 const IssueCard = (props: IssueType) => {
 	const {
 		title,
-		ctaLinkTitle,
 		excerpt,
-		external,
 		heroImage,
 		inProgress,
-		insideTheIssueBlockColour,
-		insideTheIssueContent,
-		insideTheIssueHeading,
-		introductionContent,
-		introductionHeading,
-		introductionSubHeading,
 		projectColor,
 		slug,
 		isFirstBlock,

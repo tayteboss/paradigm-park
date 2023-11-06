@@ -42,17 +42,9 @@ const Issues = (props: Props) => {
 						<IssueCard
 							key={i}
 							title={item.title}
-							ctaLinkTitle={item.ctaLinkTitle}
 							excerpt={item.excerpt}
-							external={item.external}
 							heroImage={item.heroImage}
 							inProgress={item.inProgress}
-							insideTheIssueBlockColour={item.insideTheIssueBlockColour}
-							insideTheIssueContent={item.insideTheIssueContent}
-							insideTheIssueHeading={item.insideTheIssueHeading}
-							introductionContent={item.introductionContent}
-							introductionHeading={item.introductionHeading}
-							introductionSubHeading={item.introductionSubHeading}
 							projectColor={item.projectColor}
 							slug={item.slug}
 							isFirstBlock={i === 0}
