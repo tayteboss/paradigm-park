@@ -58,7 +58,13 @@ const Page = (props: Props) => {
 				externalLink={data?.external}
 			/>
 			<IssueImageGallery data={data?.imageGallery} />
-			<InsideTheIssue />
+			<InsideTheIssue
+				bgColour={data?.insideTheIssueBlockColour}
+				heading={data?.insideTheIssueHeading}
+				content={data?.insideTheIssueContent}
+				ctaLinkTitle={data?.ctaLinkTitle}
+				externalLink={data?.external}
+			/>
 			<RelatedIssues />
 		</PageWrapper>
 	);
