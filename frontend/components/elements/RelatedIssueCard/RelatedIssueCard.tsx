@@ -163,7 +163,7 @@ const RelatedIssueCard = (props: Props) => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
-		<Link href={`/learn/${slug?.current}`} passHref>
+		<Link href={`/learn/${slug?.current}`} passHref scroll={false}>
 			<RelatedIssueCardWrapper
 				onMouseOver={() => setIsHovered(true)}
 				onMouseOut={() => setIsHovered(false)}

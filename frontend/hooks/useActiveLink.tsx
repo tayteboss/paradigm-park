@@ -8,7 +8,7 @@ const useActiveLink = (): string => {
 	useEffect(() => {
 		if (router.pathname === '/') {
 			setActiveLink('Home');
-		} else if (router.pathname === '/learn') {
+		} else if (router.pathname.includes('/learn')) {
 			setActiveLink('Learn');
 		} else if (router.pathname === '/about') {
 			setActiveLink('About');

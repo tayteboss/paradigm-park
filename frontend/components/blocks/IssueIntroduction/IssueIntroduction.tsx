@@ -120,6 +120,7 @@ const IssueIntroduction = (props: Props) => {
 								<PrimaryLink
 									title={ctaTitle}
 									url={externalLink}
+									target="_blank"
 								/>
 							</DesktopPrimaryLinkWrapper>
 						)}
