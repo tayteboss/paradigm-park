@@ -90,8 +90,7 @@ const InsideTheIssue = (props: Props) => {
 					}`}
 				>
 					{heading && (
-						<Heading>
-							{heading}</Heading>
+						<Heading>{heading}</Heading>
 					)}
 					{content && (
 						<ContentWrapper>
