@@ -5,7 +5,7 @@ import KeyValueCard from './KeyValueCard';
 import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
 
-interface Props {
+type Props = {
 	leftColBottomContent: [];
 	leftColTopContent: [];
 	rightColumnList: [];
@@ -18,6 +18,10 @@ const CaseStudy2ColContentListWrapper = styled.section`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(60)} 0;
 	}
+
+	.layout-grid {
+		row-gap: ${pxToRem(60)};
+	}
 `;
 
 const ContentWrapper = styled.div`
@@ -27,24 +31,20 @@ const ContentWrapper = styled.div`
 	justify-content: space-between;
 	align-items: flex-start;
 	min-height: ${pxToRem(240)};
+	row-gap: ${pxToRem(90)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		grid-column: 1 / -1;
-		margin-bottom: ${pxToRem(60)};
+		min-height: unset;
+		row-gap: ${pxToRem(60)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		margin-bottom: ${pxToRem(50)};
+		row-gap: ${pxToRem(30)};
 	}
 `;
 
-const TopWrapper = styled.div`
-	margin-bottom: ${pxToRem(90)};
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		margin-bottom: ${pxToRem(30)};
-	}
-`;
+const TopWrapper = styled.div``;
 
 const BottomContent = styled.div``;
 
@@ -77,14 +77,14 @@ const CaseStudy2ColContentList = (props: Props) => {
 			}`}
 		>
 			<LayoutGrid>
-				<ContentWrapper className="content content--mobile-centered">
+				<ContentWrapper>
 					{leftColTopContent && (
-						<TopWrapper>
+						<TopWrapper className="content content--mobile-centered">
 							<PortableText value={leftColTopContent} />
 						</TopWrapper>
 					)}
 					{leftColBottomContent && (
-						<BottomContent>
+						<BottomContent className="content">
 							<PortableText value={leftColBottomContent} />
 						</BottomContent>
 					)}

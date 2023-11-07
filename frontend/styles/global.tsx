@@ -304,10 +304,12 @@ export const GlobalStyles = createGlobalStyle`
 
 		&--mobile-centered {
 			@media ${theme.mediaBreakpoints.tabletPortrait} {
-				h1,
-				h2,
-				h3 {
-					text-align: center;
+				&:first-child {
+					h1,
+					h2,
+					h3 {
+						text-align: center;
+					}
 				}
 			}
 		}

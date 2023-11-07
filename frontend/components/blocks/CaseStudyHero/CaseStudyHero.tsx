@@ -24,7 +24,7 @@ const CaseStudyHeroWrapper = styled.section`
 	z-index: 1;
 `;
 
-const Outer = styled.div`
+const Outer = styled(motion.div)`
 	margin-bottom: 200vh;
 	display: flex;
 	flex-direction: column;
@@ -125,6 +125,12 @@ const CaseStudyHero = (props: Props) => {
 		['scale(1.2)', 'scale(1)']
 	);
 
+	const opacity = useTransform(
+		scrollY,
+		[windowHeight * 3, windowHeight * 3.5],
+		[1, 0]
+	);
+
 	const titleFade = useTransform(
 		scrollY,
 		[0, windowHeight * 1.5, windowHeight * 2.5],
@@ -138,7 +144,11 @@ const CaseStudyHero = (props: Props) => {
 	return (
 		<CaseStudyHeroWrapper>
 			<LayoutWrapper>
-				<Outer>
+				<Outer
+					style={{
+						opacity: opacity
+					}}
+				>
 					<Inner
 						$bg={projectColor ? projectColor?.hex : 'var(--colour-white)'}
 					>

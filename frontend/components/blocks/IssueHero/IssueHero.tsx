@@ -63,7 +63,8 @@ const SolidBlock = styled.div<StyledProps>`
 	transform: translate(-50%, -50%);
 	background: ${(props) => props.$bg};
 	height: 80%;
-	width: 40%;
+	width: 30%;
+	max-width: 500px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;

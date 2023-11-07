@@ -15,8 +15,8 @@ import Cursor from '../components/elements/Cursor';
 import WorkContentModal from '../components/blocks/WorkContentModal';
 
 const pageTransitionVariants: TransitionsType = {
-	hidden: { opacity: 0, transition: { duration: 0.5 } },
-	visible: { opacity: 1, transition: { duration: 0.5 } },
+	hidden: { opacity: 0, transition: { duration: 0.3 } },
+	visible: { opacity: 1, transition: { duration: 0.5, delay: 1 } },
 };
 
 type Props = {

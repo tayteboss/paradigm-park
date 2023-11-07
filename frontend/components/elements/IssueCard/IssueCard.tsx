@@ -37,7 +37,7 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	}
 	
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: ${pxToRem(115)} ${pxToRem(15)};
+		padding: ${pxToRem(60)} ${pxToRem(15)};
 	}
 `;
 
@@ -95,7 +95,7 @@ const ContentWrapper = styled.div`
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		row-gap: ${pxToRem(15)};
+		row-gap: ${pxToRem(20)};
 	}
 
 	.primary-link {
@@ -145,7 +145,7 @@ const IssueCard = (props: IssueType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + 500, distanceToTop + windowHeight, distanceToTop + (windowHeight * 3)],
+		[distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1), distanceToTop + (windowHeight * 2), distanceToTop + (windowHeight * 3)],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 

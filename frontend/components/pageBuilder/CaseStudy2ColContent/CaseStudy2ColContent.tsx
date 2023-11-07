@@ -30,7 +30,7 @@ const CaseStudy2ColContentWrapper = styled.section`
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		.layout-grid {
-			row-gap: ${pxToRem(50)};
+			row-gap: ${pxToRem(30)};
 		}
 	}
 `;
@@ -52,7 +52,7 @@ const ContentWrapper = styled.div`
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		row-gap: ${pxToRem(50)};
+		row-gap: ${pxToRem(30)};
 	}
 `;
 
@@ -101,26 +101,26 @@ const CaseStudy2ColContent = (props: Props) => {
 			}`}
 		>
 			<LayoutGrid>
-				<ContentWrapper className="content content--mobile-centered">
+				<ContentWrapper>
 					{leftColTopContent && (
-						<TopWrapper>
+						<TopWrapper className="content content--mobile-centered">
 							<PortableText value={leftColTopContent} />
 						</TopWrapper>
 					)}
 					{leftColBottomContent && (
-						<BottomContent>
+						<BottomContent className="content">
 							<PortableText value={leftColBottomContent} />
 						</BottomContent>
 					)}
 				</ContentWrapper>
-				<ContentWrapper className="content content--mobile-centered">
+				<ContentWrapper>
 					{rightColTopContent && (
-						<TopWrapper>
+						<TopWrapper className="content content--mobile-centered">
 							<PortableText value={rightColTopContent} />
 						</TopWrapper>
 					)}
 					{rightColBottomContent && (
-						<BottomContent>
+						<BottomContent className="content">
 							<PortableText value={rightColBottomContent} />
 						</BottomContent>
 					)}

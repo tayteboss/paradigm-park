@@ -12,16 +12,16 @@ const PageBuilderWrapper = styled.div`
 
 const PageBuilder = ({ sections = [], setWorkModalContent }) => {
 	return (
-		<LayoutWrapper>
-			<PageBuilderWrapper>
+		<PageBuilderWrapper>
+			<LayoutWrapper>
 				{sections && (
 					<Sections
 						sections={sections}
 						setWorkModalContent={setWorkModalContent}
 					/>
 				)}
-			</PageBuilderWrapper>
-		</LayoutWrapper>
+			</LayoutWrapper>
+		</PageBuilderWrapper>
 	)
 }
 

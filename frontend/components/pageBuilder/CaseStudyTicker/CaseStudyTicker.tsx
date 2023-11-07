@@ -21,7 +21,7 @@ const CaseStudyTickerWrapper = styled.section`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(60)} 0;
 		margin-left: ${pxToRem(-15)};
-		width: calc(100vw + 15px);
+		width: 100vw;
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {

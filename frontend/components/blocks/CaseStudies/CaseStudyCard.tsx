@@ -140,7 +140,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + 500, distanceToTop + windowHeight, distanceToTop + (windowHeight * 2)],
+		[distanceToTop, distanceToTop + windowHeight, distanceToTop + windowHeight, distanceToTop + (windowHeight * 2)],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 

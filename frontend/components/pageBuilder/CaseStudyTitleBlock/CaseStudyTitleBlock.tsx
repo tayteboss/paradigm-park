@@ -21,6 +21,10 @@ const CaseStudyTitleBlockWrapper = styled.section`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(15)} 0;
 	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: 0;
+	}
 `;
 
 const Inner = styled.div<StyledProps>`
@@ -44,6 +48,7 @@ const Inner = styled.div<StyledProps>`
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		padding: ${pxToRem(60)} ${pxToRem(15)};
+		min-height: unset;
 	}
 `;
 
