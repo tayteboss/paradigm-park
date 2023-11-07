@@ -3,6 +3,7 @@ import Marquee from "react-fast-marquee";
 import pxToRem from '../../../utils/pxToRem';
 import Link from 'next/link';
 import { SlugType } from '../../../shared/types/types';
+import { useInView } from 'react-intersection-observer';
 
 type Props = {
 	tickerContent: string;
@@ -77,8 +78,19 @@ const CaseStudyTicker = (props: Props) => {
 		return '';
 	};
 
+	const { ref, inView } = useInView({
+		triggerOnce: true,
+		threshold: 0.2,
+		rootMargin: '-50px'
+	});
+
 	return (
-		<CaseStudyTickerWrapper>
+		<CaseStudyTickerWrapper
+			ref={ref}
+			className={`view-element-fade-in ${
+				inView ? 'view-element-fade-in--in-view' : ''
+			}`}
+		>
 			{hasLink ? (
 				<Link href={handleLink()} passHref scroll={false}>
 					<LinkTag
