@@ -191,9 +191,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 					</Link>
 				)}
 				{title && (
-					<Title>
-						{title}
-					</Title>
+					<Title>{title}</Title>
 				)}
 				</ThumbnailWrapper>
 			<InformationBar>
