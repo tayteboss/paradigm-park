@@ -42,7 +42,7 @@ const App = (props: Props) => {
 		window.scrollTo(0, 0);
 		setTimeout(() => {
 			setAppCursorRefresh(appCursorRefresh + 1);
-		}, 300);
+		}, 1000);
 	};
 
 	use1vh();
