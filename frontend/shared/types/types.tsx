@@ -162,7 +162,6 @@ export type SiteSettingsType = {
 	generalEmail: string;
 	instagramUrl: string;
 	newsletterMedia: MuxVideoType;
-	newsletterTermsText: [];
 	newsletterTitle: string;
 }
 

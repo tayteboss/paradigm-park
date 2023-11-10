@@ -34,7 +34,10 @@ const EmailCard = (props: Props) => {
 	} = props;
 	
 	return (
-		<EmailCardWrapper>
+		<EmailCardWrapper
+			className="frame-link--alt"
+			data-title="Email us"
+		>
 			{title && (
 				<Title className="type-b2">
 					{title}

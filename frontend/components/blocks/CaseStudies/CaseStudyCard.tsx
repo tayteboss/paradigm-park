@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { CaseStudyType } from '../../../shared/types/types';
-import PrimaryLink from '../../elements/PrimaryLink';
 import pxToRem from '../../../utils/pxToRem';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
@@ -12,7 +11,7 @@ type StyledProps = {
 	$isSticky?: boolean;
 };
 
-const CaseStudyCardWrapper = styled(motion.div)<StyledProps>`
+const CaseStudyCardWrapper = styled(motion.a)<StyledProps>`
 	height: 100vh;
 	height: 100dvh;
 	display: flex;
@@ -36,7 +35,7 @@ const ThumbnailWrapper = styled.div`
 	position: relative;
 `;
 
-const ImageWrapper = styled.a`
+const ImageWrapper = styled.div`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -94,6 +93,8 @@ const LHS = styled.div`
 
 const RHS = styled.div``;
 
+const PseudoButton = styled.div``;
+
 const TagsWrapper = styled.div`
 	margin-bottom: ${pxToRem(20)};
 
@@ -130,7 +131,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 	const [distanceToTop, setDistanceToTop] = useState(0);
 
 	const { scrollY } = useScroll();
-	const ref = useRef<HTMLDivElement>(null);
+	const ref = useRef<HTMLAnchorElement>(null);
 
 	const imageTransform = useTransform(
 		scrollY,
@@ -168,16 +169,16 @@ const CaseStudyCard = (props: CaseStudyType) => {
 	}, [ref, router]);
 
 	return (
-		<CaseStudyCardWrapper
-			key={index}
-			ref={ref}
-			className="case-study-card"
-			$isSticky={isSticky}
-			style={{ opacity }}
-		>
-			<ThumbnailWrapper>
-				{thumbnailImageUrl && (
-					<Link href={`/work/${slug?.current}`} passHref scroll={false}>
+		<Link href={`/work/${slug?.current}`} passHref scroll={false}>
+			<CaseStudyCardWrapper
+				key={index}
+				ref={ref}
+				className="case-study-card"
+				$isSticky={isSticky}
+				style={{ opacity }}
+			>
+				<ThumbnailWrapper>
+					{thumbnailImageUrl && (
 						<ImageWrapper>
 							<ImageInner
 								style={{ transform: imageTransform }}
@@ -188,33 +189,32 @@ const CaseStudyCard = (props: CaseStudyType) => {
 								/>
 							</ImageInner>
 						</ImageWrapper>
-					</Link>
-				)}
-				{title && (
-					<Title>{title}</Title>
-				)}
-				</ThumbnailWrapper>
-			<InformationBar>
-				<LHS>
-					<TagsWrapper>
-						{tags && tags.map((tag, i) => (
-							<Tag className="type-b2" key={i}>
-								{tag}{i < tags.length - 1 && ', '}
-							</Tag>
-						))}
-					</TagsWrapper>
-					{excerpt && (
-						<Excerpt>{excerpt}</Excerpt>
 					)}
-				</LHS>
-				<RHS>
-					<PrimaryLink
-						title="Explore Project"
-						url={`/work/${slug?.current}`}
-					/>
-				</RHS>
-			</InformationBar>
-		</CaseStudyCardWrapper>
+					{title && (
+						<Title>{title}</Title>
+					)}
+					</ThumbnailWrapper>
+				<InformationBar>
+					<LHS>
+						<TagsWrapper>
+							{tags && tags.map((tag, i) => (
+								<Tag className="type-b2" key={i}>
+									{tag}{i < tags.length - 1 && ', '}
+								</Tag>
+							))}
+						</TagsWrapper>
+						{excerpt && (
+							<Excerpt>{excerpt}</Excerpt>
+						)}
+					</LHS>
+					<RHS>
+						<PseudoButton className="primary-link-style">
+							Explore Projects
+						</PseudoButton>
+					</RHS>
+				</InformationBar>
+			</CaseStudyCardWrapper>
+		</Link>
 	);
 };
 

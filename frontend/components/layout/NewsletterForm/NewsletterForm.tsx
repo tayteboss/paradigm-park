@@ -96,11 +96,12 @@ const Form = styled.form<StyledProps>`
 	.button {
 		text-align: center;
 		font-size: ${pxToRem(16)};
-		padding: ${pxToRem(10)} ${pxToRem(30)};
+		line-height: ${pxToRem(11.5)};
+		padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
 		border-radius: 100px;
 		border: 1px solid rgba(0, 0, 0, 0.3);
 		cursor: pointer;
-		display: block;
+		display: inline-block;
 		width: ${pxToRem(150)};
 		margin: ${pxToRem(30)} auto 0;
 		color: ${(props) => props.$isSuccess ? 'var(--colour-white)' : props.$isFocused ? 'var(--colour-black)' : 'rgba(0, 0, 0, 0.3)'};
@@ -112,7 +113,6 @@ const Form = styled.form<StyledProps>`
 
 		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(15)};
-			padding: ${pxToRem(9)} ${pxToRem(30)};
 			color: ${(props) => props.$isSuccess ? 'var(--colour-white)' : props.$isFocused ? 'var(--colour-black)' : 'var(--colour-black)'};
 			background: ${(props) => props.$isSuccess ? 'rgba(0, 0, 0, 0.3)' : props.$isFocused ? 'var(--colour-yellow)' : 'var(--colour-white)'};
 			border-color: ${(props) => props.$isSuccess ? 'transparent' : props.$isFocused ? 'var(--colour-yellow)' : 'transparent'};
@@ -135,7 +135,6 @@ const FormFooter = styled.div`
 
 const NewsletterForm = () => {
 	const {
-		newsletterTermsTextRaw,
 		newsletterTitle,
 		newsletterMedia
 	} = siteOptions;
@@ -216,11 +215,6 @@ const NewsletterForm = () => {
 							value={result === 'Success' ? 'Subscribed' : result === 'Sending...' ? 'Sending' : 'Subscribe'}
 						/>
 					</Form>
-					{newsletterTermsTextRaw && (
-						<FormFooter className="content">
-							<PortableText value={newsletterTermsTextRaw} />
-						</FormFooter>
-					)}
 				</FormWrapper>
 			</Inner>
 		</NewsletterFormWrapper>

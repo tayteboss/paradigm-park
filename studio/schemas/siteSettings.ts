@@ -34,23 +34,6 @@ export default {
 			type: "string"
 		},
 		{
-			title: "Newsletter Terms Text",
-			name: "newsletterTermsText",
-			type: "array",
-			of: [
-				{
-					type: "block",
-					styles: [
-						{title: 'Normal', value: 'normal'},
-					],
-					lists: [],
-					marks: {
-						decorators: [],
-					}
-				}
-			]
-		},
-		{
 			title: 'Newsletter Media',
 			name: 'newsletterMedia',
 			type: "mux.video",

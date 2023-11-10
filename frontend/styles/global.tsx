@@ -91,7 +91,6 @@ export const GlobalStyles = createGlobalStyle`
 	a {
 		text-decoration: none;
 		color: var(--colour-black);
-		transition: all var(--transition-speed-default) var(--transition-ease);
 	}
 
 	button {

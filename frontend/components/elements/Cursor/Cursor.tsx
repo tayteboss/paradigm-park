@@ -6,6 +6,10 @@ import { useRouter } from 'next/router';
 import pxToRem from '../../../utils/pxToRem';
 import ArrowIconSvg from '../../svgs/ArrowIconSvg';
 
+type StyledProps = {
+	$isAltLink?: boolean;
+}
+
 type Props = {
 	cursorRefresh: () => void;
 }
@@ -18,7 +22,7 @@ const CursorWrapper = styled.div`
 	pointer-events: none;
 `;
 
-const Inner = styled(motion.div)`
+const Inner = styled(motion.div)<StyledProps>`
 	position: fixed;
 	display: flex;
 	flex-flow: row;
@@ -29,8 +33,8 @@ const Inner = styled(motion.div)`
 	padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
 	font-size: ${pxToRem(18)};
 	line-height: ${pxToRem(11.5)};
-	background: var(--colour-yellow);
-	color: var(--colour-black);
+	background: ${(props) => props.$isAltLink ? 'var(--colour-black)' : 'var(--colour-yellow)'};
+	color: ${(props) => props.$isAltLink ? 'var(--colour-yellow)' : 'var(--colour-black)'};
 	border-radius: 100px;
 	white-space: nowrap;
 	text-transform: capitalize;
@@ -39,6 +43,7 @@ const Inner = styled(motion.div)`
 
 const Cursor = ({ cursorRefresh }: Props) => {
 	const [isHoveringLink, setIsHoveringLink] = useState(false);
+	const [isHoveringAltLink, setIsHoveringAltLink] = useState(false);
 	const [isOnDevice, setIsOnDevice] = useState(false);
 	const [randomIndex, setRandomIndex] = useState(1);
 	const [title, setTitle] = useState("");
@@ -65,6 +70,7 @@ const Cursor = ({ cursorRefresh }: Props) => {
 
 	useEffect(() => {
 		const frameLinks = document.querySelectorAll('.frame-link');
+		const frameLinksAlt = document.querySelectorAll('.frame-link--alt');
 
 		frameLinks.forEach((link) => {
 			link.addEventListener('mouseenter', () => {
@@ -78,6 +84,24 @@ const Cursor = ({ cursorRefresh }: Props) => {
 			});
 			link.addEventListener('click', () => {
 				setIsHoveringLink(false);
+			});
+		});
+
+		frameLinksAlt.forEach((link) => {
+			link.addEventListener('mouseenter', () => {
+				setIsHoveringLink(true);
+				setIsHoveringAltLink(true);
+				const dataTitle = link.getAttribute('data-title');
+				setTitle(dataTitle);
+			});
+			link.addEventListener('mouseleave', () => {
+				setIsHoveringLink(false);
+				setIsHoveringAltLink(false);
+				setRandomIndex(Math.floor(Math.random() * 3) + 1);
+			});
+			link.addEventListener('click', () => {
+				setIsHoveringLink(false);
+				setIsHoveringAltLink(false);
 			});
 		});
 
@@ -113,6 +137,7 @@ const Cursor = ({ cursorRefresh }: Props) => {
 			{!isOnDevice && (
 				<CursorWrapper>
 					<Inner
+						$isAltLink={isHoveringAltLink}
 						variants={variantsWrapper}
 						initial="hidden"
 						animate={isHoveringLink ? 'visible' : 'hidden'}
@@ -125,7 +150,9 @@ const Cursor = ({ cursorRefresh }: Props) => {
 						}}
 					>
 						{title}
-						<ArrowIconSvg />
+						<ArrowIconSvg
+							colour={isHoveringAltLink ? 'var(--colour-yellow)' : 'var(--colour-black)'}
+						/>
 					</Inner>
 				</CursorWrapper>
 			)}

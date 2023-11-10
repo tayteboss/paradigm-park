@@ -41,7 +41,6 @@ const getSiteData = async () => {
 				address,
 				addressUrl,
 				newsletterTitle,
-				newsletterTermsTextRaw,
         newsletterMedia {
           asset {
             playbackId

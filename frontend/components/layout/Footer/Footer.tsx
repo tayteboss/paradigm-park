@@ -124,12 +124,6 @@ const Footer = () => {
 
 	const { scrollY } = useScroll();
 
-	const opacity = useTransform(
-		scrollY,
-		[documentHeight - (windowHeight * 2), documentHeight - windowHeight],
-		['0', '1']
-	);
-
 	const transform = useTransform(
 		scrollY,
 		[documentHeight - (windowHeight * 2), documentHeight - windowHeight],
@@ -165,7 +159,7 @@ const Footer = () => {
 
 	return (
 		<FooterWrapper
-			style={{ opacity, transform }}
+			style={{ transform }}
 		>
 			<LayoutWrapper>
 				<Inner ref={ref}>
