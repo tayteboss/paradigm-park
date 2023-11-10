@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Sections from './Sections';
 import LayoutWrapper from '../LayoutWrapper';
+import pxToRem from '../../../utils/pxToRem';
 
 const PageBuilderWrapper = styled.div`
 	position: relative;
@@ -8,6 +9,7 @@ const PageBuilderWrapper = styled.div`
 	background: var(--colour-white);
 	border-top-right-radius: var(--block-border-radius);
 	border-top-left-radius: var(--block-border-radius);
+	overflow: hidden;
 `;
 
 const PageBuilder = ({ sections = [], setWorkModalContent }) => {

@@ -15,14 +15,13 @@ type Props = {
 const CaseStudyTickerWrapper = styled.section`
 	padding: ${pxToRem(30)} 0;
 	margin-left: ${pxToRem(-30)};
-	width: calc(100vw + 30px);
+	width: 100vw;
 	position: relative;
 	overflow: hidden;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(60)} 0;
 		margin-left: ${pxToRem(-15)};
-		width: 100vw;
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
@@ -50,7 +49,7 @@ const MobileLinkButton = styled.div`
 		display: block !important;
 		position: absolute;
 		top: 50%;
-		left: 50%;
+		left: calc(50% - 7px);
 		transform: translate(-50%, -50%);
 		z-index: 2;
 	}
@@ -87,7 +86,7 @@ const CaseStudyTicker = (props: Props) => {
 	return (
 		<CaseStudyTickerWrapper
 			ref={ref}
-			className={`view-element-fade-in ${
+			className={`case-study-ticker view-element-fade-in ${
 				inView ? 'view-element-fade-in--in-view' : ''
 			}`}
 		>
@@ -103,7 +102,9 @@ const CaseStudyTicker = (props: Props) => {
 								{tickerContent}
 							</Marquee>
 						)}
-						<MobileLinkButton className="primary-link-style">
+						<MobileLinkButton
+							className="primary-link-style case-study-ticker__button"
+						>
 							{tickerLinkTitle ? tickerLinkTitle : ''}
 						</MobileLinkButton>
 					</LinkTag>

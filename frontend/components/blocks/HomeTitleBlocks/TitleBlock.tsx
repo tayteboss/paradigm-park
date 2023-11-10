@@ -15,7 +15,7 @@ const TitleBlockWrapper = styled.div`
 	position: sticky;
 	top: 30px;
 	border-radius: var(--block-border-radius);
-	margin-bottom: 100vh;
+	margin-bottom: 50vh;
 
 	&:first-child {
 		background: var(--colour-cream);
@@ -61,13 +61,13 @@ const TitleBlock = (props: TitleBlockType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + ((windowHeight - 60) / 2), distanceToTop + ((windowHeight - 60) * 1.5)],
+		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1)],
 		[isFirstBlock ? 1 : 0, 1, isLastBlock ? 1 : 0]
 	);
 
 	const transform = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + ((windowHeight - 60) / 2), distanceToTop + ((windowHeight - 60) * 1.5)],
+		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1)],
 		['translateY(10px)', 'translateY(0px)', 'translateY(-10px)']
 	);
 

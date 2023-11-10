@@ -17,14 +17,9 @@ const Inner = styled.div``;
 const BlankBlock = styled.div`
 	position: sticky;
 	top: 30px;
-	height: calc(200vh - 60px);
-	height: calc(200dvh - 60px);
+	height: calc(100vh);
+	height: calc(100dvh);
 	pointer-events: none;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		height: calc(200vh - 30px);
-		height: calc(200dvh - 30px);
-	}
 `;
 
 const Issues = (props: Props) => {

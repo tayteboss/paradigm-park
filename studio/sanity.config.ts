@@ -7,7 +7,6 @@ import { muxInput } from 'sanity-plugin-mux-input';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy';
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
 import { EarthGlobeIcon, DocumentIcon, CaseIcon, BulbOutlineIcon } from '@sanity/icons';
-import path from 'path';
 
 export default defineConfig({
   name: 'default',

@@ -10,6 +10,14 @@ import Issues from '../../components/blocks/Issues';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-white);
+
+	.case-study-ticker {
+		margin-left: 0;
+
+		&__button {
+			left: 50%;
+		}
+	}
 `;
 
 type Props = {

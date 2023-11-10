@@ -19,8 +19,8 @@ const CaseStudyCardWrapper = styled(motion.div)<StyledProps>`
 	flex-direction: column;
 	justify-content: flex-end;
 	padding-bottom: ${pxToRem(46)};
-	margin-bottom: 100vh;
-	margin-bottom: 100dvh;
+	margin-bottom: 50vh;
+	margin-bottom: 50dvh;
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -140,7 +140,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + windowHeight, distanceToTop + windowHeight, distanceToTop + (windowHeight * 2)],
+		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 0.5), distanceToTop + windowHeight],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 

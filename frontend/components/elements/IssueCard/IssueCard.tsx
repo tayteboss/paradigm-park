@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { IssueType } from '../../../shared/types/types';
 import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import throttle from 'lodash.throttle';
 import pxToRem from '../../../utils/pxToRem';
 import Image from 'next/image';
@@ -16,8 +16,6 @@ type StyledProps = {
 const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	height: calc(100vh - 60px);
 	height: calc(100dvh - 60px);
-	margin-bottom: 100vh;
-	margin-bottom: 100dvh;
 	position: sticky;
 	top: 30px;
 	border-radius: var(--block-border-radius);
@@ -28,6 +26,10 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	align-items: center;
 	pointer-events: ${(props) => props.$isSticky ? 'all' : 'none'};
 	background: ${(props) => props.$bg};
+
+	&:nth-last-child(2) {
+		margin-bottom: 100vh;
+	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 15px;
@@ -145,7 +147,7 @@ const IssueCard = (props: IssueType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1), distanceToTop + (windowHeight * 2), distanceToTop + (windowHeight * 3)],
+		[(distanceToTop + 60), (distanceToTop + 60) + (windowHeight * 0.5), (distanceToTop + 60) + (windowHeight * 1.5), (distanceToTop + 60) + (windowHeight * 2)],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 
