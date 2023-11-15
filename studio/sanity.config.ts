@@ -91,9 +91,6 @@ export default defineConfig({
               .filter('_type == "issue"')
             ),
           S.divider(),
-          orderableDocumentListDeskItem({type: 'caseStudy', S, context}),
-          orderableDocumentListDeskItem({type: 'issue', S, context}),
-          S.divider(),
         ])
       },
     }),

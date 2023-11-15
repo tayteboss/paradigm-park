@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { PortableText } from '@portabletext/react';
 import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
+import addEmailToSegment from '../../../pages/api/flodeskApi';
 
 type StyledProps = {
 	$isFocused?: boolean;
@@ -145,26 +146,13 @@ const NewsletterForm = () => {
 	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setResult('Sending...');
-
-		const formData = new FormData(event.currentTarget);
-
-		setTimeout(() => {
-			setResult('Success');
-		}, 1000);
-
-		// formData.append("access_key", "18a72dbb-7a88-44d0-9b4b-2d73dabe15f6");
-
-		// const res = await fetch("https://api.web3forms.com/submit", {
-		// 	method: "POST",
-		// 	body: formData
-		// }).then((res) => res.json());
-
-		// if (res.success) {
-		// 	setResult("Success");
-		// } else {
-		// 	setResult(res.message);
-		// }
-	};
+	
+		// Access the email value from the form input
+		const emailInput = event.currentTarget.querySelector('.email-input');
+		const email = emailInput ? (emailInput as HTMLInputElement).value : '';
+	
+		await addEmailToSegment(email);
+	  };
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
