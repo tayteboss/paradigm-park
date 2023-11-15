@@ -4,7 +4,7 @@ import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
 
 const FrameWrapper = styled.div`
-	height: calc(100vh - var(--header-h) - 30px);
+	height: 100vh;
 	padding: 0 8vw;
 	display: flex;
 	flex-direction: row;
@@ -13,10 +13,6 @@ const FrameWrapper = styled.div`
 	width: 100%;
 	position: relative;
 	z-index: 5;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		height: calc(70vh - var(--header-h) - 30px);
-	}
 `;
 
 const ImageWrapper = styled.button`

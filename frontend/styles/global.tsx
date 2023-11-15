@@ -101,7 +101,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h1 {
 		font-size: ${pxToRem(105)};
 		line-height: ${pxToRem(95)};
-		font-family: var(--font-graphik-bold);
+		font-family: var(--font-graphik-black);
 		letter-spacing: -${pxToRem(2.1)};
 		text-transform: uppercase;
 
@@ -180,7 +180,7 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h5 {
 		font-size: ${pxToRem(20)};
 		line-height: ${pxToRem(32.6)};
-		font-family: var(--font-graphik-bold);
+		font-family: var(--font-graphik-black);
 		text-transform: uppercase;
 		letter-spacing: ${pxToRem(0.1)};
 

@@ -3,10 +3,7 @@ import { FrameItemType } from '../../../shared/types/types';
 import LayoutWrapper from '../../common/LayoutWrapper';
 import pxToRem from '../../../utils/pxToRem';
 import Frame from './Frame';
-
-type StyledProps = {
-	$bg: string;
-};
+import Image from 'next/image';
 
 type Props = {
 	frames: FrameItemType[];
@@ -16,19 +13,7 @@ type Props = {
 };
 
 const FramesScrollerWrapper = styled.section`
-	padding-bottom: ${pxToRem(30)};
-	background: var(--colour-white);
-`;
-
-const Outside = styled.div<StyledProps>`
-	background-color: var(--colour-cream);
-	background-image: url(${(props) => props.$bg});
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	border-radius: var(--block-border-radius);
-	overflow: hidden;
-	position: relative;
+	padding-bottom: ${pxToRem(60)};
 
 	.frame:nth-child(even) {
 		flex-direction: row-reverse;
@@ -40,19 +25,35 @@ const Outside = styled.div<StyledProps>`
 `;
 
 const Inner = styled.div`
-	height: calc(100vh - var(--header-h) - 30px);
-	height: calc(100dvh - var(--header-h) - 30px);
-	overflow: auto;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-	position: sticky;
-	top: ${pxToRem(30)};
-	padding-top: 50vh;
-	z-index: 5;
+	padding-top: 40vh;
 
-	&::-webkit-scrollbar {
-		display: none;
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding-top: 30vh;
 	}
+`;
+
+const ImageWrapper = styled.div`
+	position: absolute;
+	top: 30px;
+	left: 0;
+	width: 100%;
+	height: calc(440vh + 30px);
+	padding: 0 ${pxToRem(30)};
+	
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: calc(430vh + 30px);
+		padding: 0 ${pxToRem(15)};
+	}
+`;
+
+const ImageInner = styled.div`
+	position: sticky;
+	top: 30px;
+	left: 0;
+	height: calc(100vh - 60px);
+	width: 100%;
+	border-radius: var(--block-border-radius);
+	overflow: hidden;
 `;
 
 const Title = styled.h2`
@@ -74,6 +75,26 @@ const Title = styled.h2`
 	}
 `;
 
+const TopHideBlock = styled.div`
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 30px;
+	width: 100%;
+	background: var(--colour-white);
+	z-index: 10;
+`;
+
+const BottomHideBlock = styled.div`
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 30px;
+	width: 100%;
+	background: var(--colour-white);
+	z-index: 10;
+`;
+
 const FramesScroller = (props: Props) => {
 	const {
 		frames,
@@ -87,24 +108,34 @@ const FramesScroller = (props: Props) => {
 	return (
 		<FramesScrollerWrapper>
 			<LayoutWrapper>
-				<Outside $bg={image ? image : ''}>
-					{title && (
-						<Title>{title}</Title>
-					)}
-					<Inner className="frame-scroller">
-						{hasFrames && frames.map((item, i) => (
-							<Frame
-								key={i}
-								title={item.title}
-								subTitle={item.subTitle}
-								image={item.image}
-								contentBlock={item.contentBlock}
-								setContent={setContent}
-								index={i}
+				<Inner className="frame-scroller">
+					{hasFrames && frames.map((item, i) => (
+						<Frame
+							key={i}
+							title={item.title}
+							subTitle={item.subTitle}
+							image={item.image}
+							contentBlock={item.contentBlock}
+							setContent={setContent}
+							index={i}
+						/>
+					))}
+					<TopHideBlock />
+					<BottomHideBlock />
+					{/* <BlankBlock /> */}
+					<ImageWrapper>
+						<ImageInner>
+							{title && (
+								<Title>{title}</Title>
+							)}
+							<Image
+								src={image}
+								objectFit="cover"
+								layout="fill"
 							/>
-						))}
-					</Inner>
-				</Outside>
+						</ImageInner>
+					</ImageWrapper>
+				</Inner>
 			</LayoutWrapper>
 		</FramesScrollerWrapper>
 	);
