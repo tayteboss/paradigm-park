@@ -154,11 +154,14 @@ const IssueCard = (props: IssueType) => {
 	useEffect(() => {
 		if (!ref.current) return;
 
-		const windowHeight = window.innerHeight;
-		const distanceToTop = ref.current.offsetTop;
+		const timer = setTimeout(() => {
+			if (!ref.current) return;
+			const windowHeight = window.innerHeight;
+			const distanceToTop = ref.current.offsetTop;
 
-		setDistanceToTop(distanceToTop);
-		setWindowHeight(windowHeight);
+			setDistanceToTop(distanceToTop);
+			setWindowHeight(windowHeight);
+		}, 1000);
 
 		const handleScroll = () => {
 			if (!ref.current) return;
@@ -172,6 +175,11 @@ const IssueCard = (props: IssueType) => {
 
 		const throttledHandleScroll = throttle(handleScroll, 50);
 		window.addEventListener('scroll', throttledHandleScroll);
+
+		return () => {
+			clearTimeout(timer);
+			window.removeEventListener('scroll', throttledHandleScroll);
+		};
 	}, [ref, router]);
 
 	return (

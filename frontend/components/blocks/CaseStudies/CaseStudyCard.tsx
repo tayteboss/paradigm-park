@@ -141,18 +141,19 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 0.5), distanceToTop + windowHeight],
+		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1.5)],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 
 	useEffect(() => {
-		if (!ref.current) return;
+		const timer = setTimeout(() => {
+			if (!ref.current) return;
+			const windowHeight = window.innerHeight;
+			const distanceToTop = ref.current.offsetTop;
 
-		const windowHeight = window.innerHeight;
-		const distanceToTop = ref.current.offsetTop;
-
-		setDistanceToTop(distanceToTop);
-		setWindowHeight(windowHeight);
+			setDistanceToTop(distanceToTop);
+			setWindowHeight(windowHeight);
+		}, 1000);
 
 		const handleScroll = () => {
 			if (!ref.current) return;
@@ -166,6 +167,11 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 		const throttledHandleScroll = throttle(handleScroll, 50);
 		window.addEventListener('scroll', throttledHandleScroll);
+
+		return () => {
+			clearTimeout(timer);
+			window.removeEventListener('scroll', throttledHandleScroll);
+		};
 	}, [ref, router]);
 
 	return (
