@@ -18,6 +18,7 @@ const NewsletterFormWrapper = styled.section<StyledProps>`
 	position: relative;
 	z-index: 2;
 	background: var(--colour-white);
+	padding-top: ${pxToRem(30)};
 
 	.mux-player-wrapper {
 		transform: ${(props) => props.$inView ? 'scale(1)' : 'scale(1.05)'};

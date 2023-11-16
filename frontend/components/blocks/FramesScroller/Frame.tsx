@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { FrameItemType } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
-import { useInView } from 'react-intersection-observer';
 
 const FrameWrapper = styled.div`
 	height: 100vh;
@@ -13,6 +12,10 @@ const FrameWrapper = styled.div`
 	width: 100%;
 	position: relative;
 	z-index: 5;
+
+	/* @media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: 60vh;
+	} */
 `;
 
 const ImageWrapper = styled.button`
@@ -84,20 +87,12 @@ const Frame = (props: FrameItemType) => {
 		});
 	};
 
-	const { ref, inView } = useInView({
-		triggerOnce: true,
-		threshold: 0.2,
-		rootMargin: '-100px'
-	});
-
 	return (
-		<FrameWrapper className="frame" ref={ref}>
+		<FrameWrapper className="frame">
 			<ImageWrapper
 				onClick={() => handleClick()}
 				data-title={title}
-				className={`frame-link view-element-bottom-top ${
-					inView ? 'view-element-bottom-top--in-view' : ''
-				}`}
+				className="frame-link"
 			>
 				<Image src={image} />
 			</ImageWrapper>

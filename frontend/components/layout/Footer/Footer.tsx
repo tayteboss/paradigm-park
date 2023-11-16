@@ -17,6 +17,7 @@ const FooterWrapper = styled(motion.footer)`
 	left: 0;
 	width: 100%;
 	z-index: 1;
+	background: var(--colour-white);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		opacity: 1 !important;

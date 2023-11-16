@@ -4,6 +4,8 @@ import LayoutWrapper from '../../common/LayoutWrapper';
 import pxToRem from '../../../utils/pxToRem';
 import Frame from './Frame';
 import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 
 type Props = {
 	frames: FrameItemType[];
@@ -13,7 +15,11 @@ type Props = {
 };
 
 const FramesScrollerWrapper = styled.section`
+	margin-bottom: 100vh;
 	padding-bottom: ${pxToRem(60)};
+	position: relative;
+	z-index: 1;
+	background: var(--colour-white);
 
 	.frame:nth-child(even) {
 		flex-direction: row-reverse;
@@ -32,41 +38,48 @@ const Inner = styled.div`
 	}
 `;
 
-const ImageWrapper = styled.div`
-	position: absolute;
+const ImageWrapper = styled(motion.div)`
+	position: fixed;
 	top: 30px;
 	left: 0;
+	height: calc(100vh - 60px);
 	width: 100%;
-	height: calc(440vh + 30px);
+	z-index: 1;
 	padding: 0 ${pxToRem(30)};
-	
+	background: var(--colour-white);
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		height: calc(430vh + 30px);
 		padding: 0 ${pxToRem(15)};
 	}
 `;
 
 const ImageInner = styled.div`
-	position: sticky;
-	top: 30px;
-	left: 0;
-	height: calc(100vh - 60px);
+	height: 100%;
 	width: 100%;
+	position: relative;
 	border-radius: var(--block-border-radius);
 	overflow: hidden;
 `;
 
-const Title = styled.h2`
+const TitleWrapper = styled.div`
 	position: absolute;
+	z-index: 5;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	font-size: ${pxToRem(82)};
-	line-height: ${pxToRem(86)};
-	z-index: 3;
-	text-align: center;
 	max-width: ${pxToRem(950)};
 	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
+const Title = styled(motion.h2)`
+	font-size: ${pxToRem(82)};
+	line-height: ${pxToRem(86)};
+	text-align: center;
+	max-width: ${pxToRem(950)};
+	width: 100%;
 	pointer-events: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
@@ -85,7 +98,7 @@ const TopHideBlock = styled.div`
 	z-index: 10;
 `;
 
-const BottomHideBlock = styled.div`
+const BottomHideBlock = styled(motion.div)`
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -104,6 +117,40 @@ const FramesScroller = (props: Props) => {
 	} = props;
 
 	const hasFrames = frames && frames.length > 0;
+	const numberOfFrames = frames.length;
+
+	const [windowHeight, setWindowHeight] = useState(0);
+	const [distanceToTop, setDistanceToTop] = useState(0);
+
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
+	const { scrollY } = useScroll();
+
+	const titleOpacity = useTransform(
+		scrollY,
+		[0, windowHeight * (numberOfFrames + 0.5), windowHeight * (numberOfFrames + 1)],
+		[1, 1, 0]
+	);
+
+	const titleTransform = useTransform(
+		scrollY,
+		[0, windowHeight * (numberOfFrames + 0.5), windowHeight * (numberOfFrames + 1)],
+		['translateY(0)', 'translateY(0)', 'translateY(-20px)']
+	);
+
+	const imageOpacity = useTransform(
+		scrollY,
+		[0, windowHeight * ((numberOfFrames + 1)), windowHeight * ((numberOfFrames + 1) + 0.5)],
+		[1, 1, 0]
+	);
+
+	useEffect(() => {
+		if (wrapperRef?.current) {
+			setDistanceToTop(window.pageYOffset + wrapperRef.current.getBoundingClientRect().top);
+		}
+
+		setWindowHeight(window.innerHeight);
+	}, [distanceToTop]);
 
 	return (
 		<FramesScrollerWrapper>
@@ -121,12 +168,17 @@ const FramesScroller = (props: Props) => {
 						/>
 					))}
 					<TopHideBlock />
-					<BottomHideBlock />
-					{/* <BlankBlock /> */}
-					<ImageWrapper>
+					<BottomHideBlock style={{ opacity: imageOpacity }} />
+					<ImageWrapper style={{ opacity: imageOpacity }}>
 						<ImageInner>
 							{title && (
-								<Title>{title}</Title>
+								<TitleWrapper>
+									<Title
+										style={{ opacity: titleOpacity, transform: titleTransform }}
+									>
+										{title}
+									</Title>
+								</TitleWrapper>
 							)}
 							<Image
 								src={image}
