@@ -13,13 +13,11 @@ type StyledProps = {
 
 const CaseStudyCardWrapper = styled(motion.a)<StyledProps>`
 	height: 100vh;
-	height: 100dvh;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 	padding-bottom: ${pxToRem(46)};
 	margin-bottom: 50vh;
-	margin-bottom: 50dvh;
 	position: sticky;
 	top: 0;
 	left: 0;

@@ -6,16 +6,15 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import throttle from 'lodash.throttle';
 import pxToRem from '../../../utils/pxToRem';
 import Image from 'next/image';
-import PrimaryLink from '../PrimaryLink';
 
 type StyledProps = {
 	$isSticky?: boolean;
 	$bg?: string;
+	$inProgress?: boolean;
 };
 
 const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	height: calc(100vh - 60px);
-	height: calc(100dvh - 60px);
 	position: sticky;
 	top: 30px;
 	border-radius: var(--block-border-radius);
@@ -26,6 +25,7 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	align-items: center;
 	pointer-events: ${(props) => props.$isSticky ? 'all' : 'none'};
 	background: ${(props) => props.$bg};
+	cursor: ${(props) => props.$inProgress ? 'normal' : 'pointer'};
 
 	&:nth-last-child(2) {
 		margin-bottom: 100vh;
@@ -34,7 +34,7 @@ const IssueCardWrapper = styled(motion.div)<StyledProps>`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 15px;
 		height: calc(100vh - 30px);
-		height: calc(100dvh - 30px);
+	
 		padding: ${pxToRem(115)} ${pxToRem(30)};
 	}
 	
@@ -114,7 +114,17 @@ const Excerpt = styled.h4`
 	}
 `;
 
-const PrimaryLinkWrapper = styled.div``;
+const PseudoButton = styled.div``;
+
+const ComingSoon = styled.p`
+	padding: ${pxToRem(9)} ${pxToRem(30)} ${pxToRem(10)};
+	display: inline-block;
+	font-size: ${pxToRem(16)};
+	line-height: ${pxToRem(11.5)};
+	background: transparent;
+	color: var(--colour-black);
+	white-space: nowrap;
+`;
 
 const IssueCard = (props: IssueType) => {
 	const {
@@ -147,7 +157,7 @@ const IssueCard = (props: IssueType) => {
 
 	const opacity = useTransform(
 		scrollY,
-		[(distanceToTop + 60), (distanceToTop + 60) + (windowHeight * 0.5), (distanceToTop + 60) + (windowHeight * 1.5), (distanceToTop + 60) + (windowHeight * 2)],
+		[(distanceToTop + 60), (distanceToTop + 60) + (windowHeight * 0.5), (distanceToTop + 60) + (windowHeight * 1.5), (distanceToTop + 60) + (windowHeight * 1.7)],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 
@@ -182,6 +192,11 @@ const IssueCard = (props: IssueType) => {
 		};
 	}, [ref, router]);
 
+	const handleLinkClick = () => {
+		if (inProgress) return;
+		router.push(`/learn/${slug?.current}`);
+	};
+
 	return (
 		<IssueCardWrapper
 			key={index}
@@ -190,6 +205,8 @@ const IssueCard = (props: IssueType) => {
 			$isSticky={isSticky}
 			$bg={projectColor ? projectColor.hex : 'var(--colour-white)'}
 			style={{ opacity }}
+			$inProgress={inProgress}
+			onClick={(e) => handleLinkClick()}
 		>
 			<IssueIndexContainer>
 				<IssueNumber>Issue {issueNumber ? issueNumber : ''}</IssueNumber>
@@ -216,13 +233,13 @@ const IssueCard = (props: IssueType) => {
 				{excerpt && (
 					<Excerpt>{excerpt}</Excerpt>
 				)}
-				<PrimaryLinkWrapper>
-					<PrimaryLink
-						url={`/learn/${slug?.current}`}
-						title={inProgress ? 'In Progress' : 'View Issue'}
-						isOutline={inProgress}
-					/>
-				</PrimaryLinkWrapper>
+				{!inProgress ? (
+					<PseudoButton className="primary-link-style">
+						Explore Projects
+					</PseudoButton>
+				) : (
+					<ComingSoon>Coming Soon</ComingSoon>
+				)}
 			</ContentWrapper>
 		</IssueCardWrapper>
 	);

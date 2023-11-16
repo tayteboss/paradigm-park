@@ -316,11 +316,9 @@ export const GlobalStyles = createGlobalStyle`
 
 	.full-height-block {
 		height: calc(100vh - 60px);
-		height: calc(100dvh - 60px);
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			height: calc(100vh - 30px);
-			height: calc(100dvh - 30px);
 		}
 	}
 

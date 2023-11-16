@@ -9,7 +9,6 @@ type Props = {
 
 const IssuesWrapper = styled.section`
 	margin-bottom: calc(-100vh + 60px);
-	margin-bottom: calc(-100dvh + 60px);
 `;
 
 const Inner = styled.div``;
@@ -18,7 +17,6 @@ const BlankBlock = styled.div`
 	position: sticky;
 	top: 30px;
 	height: calc(100vh);
-	height: calc(100dvh);
 	pointer-events: none;
 `;
 

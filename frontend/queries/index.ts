@@ -57,6 +57,7 @@ export const learnPageQueryString = `
 			...,
 			"heroImage": heroImage.asset->url,
 		},
+		"tickerInternalLink": tickerInternalLink->,
 	}
 `;
 

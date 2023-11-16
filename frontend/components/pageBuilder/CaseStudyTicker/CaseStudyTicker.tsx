@@ -4,12 +4,13 @@ import pxToRem from '../../../utils/pxToRem';
 import Link from 'next/link';
 import { SlugType } from '../../../shared/types/types';
 import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react';
 
 type Props = {
 	tickerContent: string;
 	tickerLinkTitle: string;
 	tickerButtonExternalLink: string;
-	tickerInternalLink: SlugType;
+	tickerInternalLink: any;
 }
 
 const CaseStudyTickerWrapper = styled.section`
@@ -63,19 +64,19 @@ const CaseStudyTicker = (props: Props) => {
 		tickerInternalLink
 	} = props;
 
+	const [link, setLink] = useState('/');
+
 	const hasLink = (tickerButtonExternalLink || tickerInternalLink) && tickerLinkTitle;
 
-	const handleLink = (): string => {
+	useEffect(() => {
 		if (tickerButtonExternalLink) {
-			return tickerButtonExternalLink;
+			setLink(tickerButtonExternalLink)
 		}
 
 		if (tickerInternalLink) {
-			return `/${tickerInternalLink?.current}`
+			setLink(`/${tickerInternalLink?.slug?.current}`);
 		}
-
-		return '';
-	};
+	}, [tickerButtonExternalLink, tickerInternalLink]);
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -91,22 +92,22 @@ const CaseStudyTicker = (props: Props) => {
 			}`}
 		>
 			{hasLink ? (
-				<Link href={handleLink()} passHref scroll={false}>
+				<Link href={link} passHref scroll={false}>
 					<LinkTag
 						className={hasLink ? 'frame-link' : ''}
 						data-title={tickerLinkTitle ? tickerLinkTitle : ''}
 						target={tickerButtonExternalLink ? '_blank' : '_self'}
 					>
 						{tickerContent && (
-							<Marquee autoFill>
+							<Marquee autoFill speed={100}>
 								{tickerContent}
 							</Marquee>
 						)}
-						<MobileLinkButton
+						{/* <MobileLinkButton
 							className="primary-link-style case-study-ticker__button"
 						>
 							{tickerLinkTitle ? tickerLinkTitle : ''}
-						</MobileLinkButton>
+						</MobileLinkButton> */}
 					</LinkTag>
 				</Link>
 			) : (

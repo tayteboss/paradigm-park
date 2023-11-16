@@ -26,7 +26,6 @@ const ContentModalWrapper = styled(motion.div)<StyledProps>`
 
 const Inner = styled(motion.div)`
 	height: 100vh;
-	height: 100dvh;
 	width: ${pxToRem(620)};
 	padding: ${pxToRem(60)} ${pxToRem(60)} ${pxToRem(100)};
 	overflow-y: auto;
