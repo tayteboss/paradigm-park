@@ -187,13 +187,7 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${theme.mediaBreakpoints.tabletPortrait}
 		{
 			font-size: ${pxToRem(20)};
-			line-height: ${pxToRem(57)};
-		}
-
-		@media ${theme.mediaBreakpoints.mobile}
-		{
-			font-size: ${pxToRem(20)};
-		line-height: ${pxToRem(57)};
+			line-height: normal;
 		}
 	}
 
@@ -273,6 +267,13 @@ export const GlobalStyles = createGlobalStyle`
 		h5,
 		h6 {
 			margin-bottom: ${pxToRem(20)};
+		}
+
+		h5,
+		h6 {
+			@media ${theme.mediaBreakpoints.tabletPortrait} {
+				margin-bottom: ${pxToRem(10)};
+			}
 		}
 
 		p {
