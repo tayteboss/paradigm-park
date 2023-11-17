@@ -71,6 +71,7 @@ export const workPageQueryString = `
 		inProgressCaseStudies[]-> {
 			...,
 			"thumbnailImageUrl": thumbnailImage.asset->url,
+			"workInProgressExternalLink": workInProgressExternalLink
 		},
 	}
 `;

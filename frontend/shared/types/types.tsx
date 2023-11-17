@@ -52,6 +52,7 @@ export type CaseStudyType = {
 	index?: number;
 	isLastBlock?: boolean;
 	isFirstBlock?: boolean;
+	workInProgressExternalLink?: string;
 }
 
 export type SlugType = {

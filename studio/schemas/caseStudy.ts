@@ -88,6 +88,12 @@ export default {
 			name: 'relatedCaseStudy',
 			type: 'reference',
 			to: [{type: 'caseStudy'}]
+		},
+		{
+			title: 'Work In Progress External Link',
+			name: 'workInProgressExternalLink',
+			type: 'url',
+			description: 'This link is shown on the Work In Progress section on the Work Page'
 		}
 	]
 }

@@ -152,7 +152,8 @@ const InProgressWorkCard = (props: CaseStudyType) => {
 		tags,
 		thumbnailImageUrl,
 		slug,
-		projectColor
+		projectColor,
+		workInProgressExternalLink
 	} = props;
 
 	const [isHovered, setIsHovered] = useState(false);
@@ -227,11 +228,12 @@ const InProgressWorkCard = (props: CaseStudyType) => {
 					</ContentWrapper>
 				)}
 			</AnimatePresence>
-			{slug && (
+			{workInProgressExternalLink && (
 				<PrimaryLinkWrapper>
 					<PrimaryLink
 						title="Learn More"
-						url={`/work/${slug?.current}`}
+						url={workInProgressExternalLink}
+						target="_blank"
 					/>
 				</PrimaryLinkWrapper>
 			)}
