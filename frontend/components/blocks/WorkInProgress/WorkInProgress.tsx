@@ -46,8 +46,6 @@ const WorkInProgress = (props: Props) => {
 		rootMargin: '-50px'
 	});
 
-	console.log('data', data);
-
 	return (
 		<WorkInProgressWrapper ref={ref}>
 			<LayoutWrapper>
