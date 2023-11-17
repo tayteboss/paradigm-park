@@ -20,6 +20,23 @@ const EmblaSlide = styled.div`
 	position: relative;
 	height: calc(100vh - 60px);
 	overflow: hidden;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding-top: 100%;
+		height: unset;
+	}
+`;
+
+const ImageInner = styled.div`
+	height: 100%;
+	width: 100%;
+	position: relative;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+	}
 `;
 
 const NavigationWrapper = styled.div`
@@ -127,11 +144,13 @@ const CaseStudyImageGallery = (props: any) => {
 									key={i}
 									className="embla__slide"
 								>
-									<Image
-										src={item?.asset.url}
-										layout="fill"
-										objectFit="cover"
-									/>
+									<ImageInner>
+										<Image
+											src={item?.asset.url}
+											layout="fill"
+											objectFit="cover"
+										/>
+									</ImageInner>
 								</EmblaSlide>
 							))}
 						</EmblaContainer>
