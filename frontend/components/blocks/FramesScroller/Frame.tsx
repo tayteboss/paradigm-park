@@ -12,10 +12,6 @@ const FrameWrapper = styled.div`
 	width: 100%;
 	position: relative;
 	z-index: 5;
-
-	/* @media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		height: 60vh;
-	} */
 `;
 
 const ImageWrapper = styled.button`

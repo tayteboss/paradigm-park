@@ -24,12 +24,12 @@ async function addEmailToSegment(email: string) {
 		const data = await response.json();
 
 		if (response.ok) {
-			console.log('Email added to segment successfully:', data);
+			return 'success';
 		} else {
-			console.error('Failed to add email to segment:', data);
+			return 'failed';
 		}
 	} catch (error) {
-		console.error('Error adding email to segment:', error);
+		return 'failed';
 	}
 }
 

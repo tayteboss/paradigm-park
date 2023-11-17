@@ -147,13 +147,18 @@ const NewsletterForm = () => {
 	const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setResult('Sending...');
-	
-		// Access the email value from the form input
+
 		const emailInput = event.currentTarget.querySelector('.email-input');
 		const email = emailInput ? (emailInput as HTMLInputElement).value : '';
 	
-		await addEmailToSegment(email);
-	  };
+		const res = await addEmailToSegment(email);
+
+		if (res === 'success') {
+			setResult('Success');
+		} else {
+			setResult('Error');
+		}
+	};
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,

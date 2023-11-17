@@ -29,7 +29,6 @@ const LinkTag = styled.a`
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		flex: 1;
-		text-align: center;
 	}
 `;
 
@@ -102,7 +101,6 @@ const HeaderBar = (props: Props) => {
 
 	return (
 		<HeaderBarWrapper>
-			<HiddenElement />
 			<Link href="/" passHref scroll={false}>
 				<LinkTag>
 					<LogoIconSvg />
