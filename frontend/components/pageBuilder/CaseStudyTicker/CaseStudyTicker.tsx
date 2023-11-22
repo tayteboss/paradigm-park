@@ -99,7 +99,7 @@ const CaseStudyTicker = (props: Props) => {
 						target={tickerButtonExternalLink ? '_blank' : '_self'}
 					>
 						{tickerContent && (
-							<Marquee autoFill speed={100}>
+							<Marquee autoFill speed={130}>
 								{tickerContent}
 							</Marquee>
 						)}
@@ -112,7 +112,7 @@ const CaseStudyTicker = (props: Props) => {
 				</Link>
 			) : (
 				tickerContent && (
-					<Marquee autoFill>
+					<Marquee autoFill speed={130}>
 						{tickerContent}
 					</Marquee>
 				)
