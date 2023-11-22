@@ -36,6 +36,7 @@ const RelatedCaseStudyWrapper = styled.section`
 		position: relative;
 		margin-bottom: 0;
 		padding: 0;
+		height: calc(100vh - 120px);
 
 		&__image-inner {
 			transform: scale(1.2) !important;
