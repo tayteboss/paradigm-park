@@ -12,6 +12,7 @@ const FrameWrapper = styled.div`
 	width: 100%;
 	position: relative;
 	z-index: 5;
+	pointer-events: all;
 `;
 
 const ImageWrapper = styled.button`

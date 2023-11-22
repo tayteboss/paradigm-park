@@ -20,6 +20,7 @@ const FramesScrollerWrapper = styled.section`
 	position: relative;
 	z-index: 1;
 	background: var(--colour-white);
+	pointer-events: none;
 
 	.frame:nth-child(even) {
 		flex-direction: row-reverse;
