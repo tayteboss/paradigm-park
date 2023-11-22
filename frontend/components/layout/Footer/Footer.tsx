@@ -115,11 +115,8 @@ const Footer = () => {
 		addressUrl,
 		generalEmail,
 		generalEmailButtonTitle,
-        addressUrlButtonTitle,
+		addressUrlButtonTitle,
 	} = siteOptions;
-
-	console.log('siteOptions', siteOptions);
-	
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [footerHeight, setFooterHeight] = useState(500);

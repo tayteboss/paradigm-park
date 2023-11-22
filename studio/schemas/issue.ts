@@ -48,6 +48,12 @@ export default {
 			type: 'string',
 		},
 		{
+			title: 'Issue Prefix',
+			name: 'issuePrefix',
+			type: 'string',
+			description: 'e.g. Issue or Collection'
+		},
+		{
 			title: 'CTA Link Title',
 			name: 'ctaLinkTitle',
 			type: 'string',

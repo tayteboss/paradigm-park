@@ -124,7 +124,8 @@ const IssueHero = (props: Props) => {
 		ctaLinkTitle,
 		externalLink,
 		issueNumber,
-		projectColor
+		projectColor,
+		issuePrefix
 	} = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
@@ -186,7 +187,7 @@ const IssueHero = (props: Props) => {
 							inView ? 'view-element-fade-in--in-view' : ''
 						}`}
 					>
-						<Issue>Issue {issueNumber || ''}</Issue>
+						<Issue>{issuePrefix ? issuePrefix : 'Issue'} {issueNumber || ''}</Issue>
 						{ctaLinkTitle && externalLink && (
 							<PrimaryLinkWrapper>
 								<PrimaryLink

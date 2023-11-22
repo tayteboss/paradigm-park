@@ -27,6 +27,8 @@ const Issues = (props: Props) => {
 
 	const hasData = data && data.length > 0;
 
+	console.log('data', data);
+
 	return (
 		<IssuesWrapper>
 			<LayoutWrapper>
@@ -43,6 +45,7 @@ const Issues = (props: Props) => {
 							isFirstBlock={i === 0}
 							isLastBlock={i === data.length - 1}
 							issueNumber={item.issueNumber}
+							issuePrefix={item.issuePrefix}
 							index={i}
 						/>
 					))}

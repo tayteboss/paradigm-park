@@ -132,6 +132,7 @@ export type IssueType = {
 	isLastBlock?: boolean;
 	index?: number;
 	issueNumber: string;
+	issuePrefix: string;
 	relatedIssue: IssueType[];
 }
 

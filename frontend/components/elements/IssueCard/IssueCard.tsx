@@ -137,7 +137,8 @@ const IssueCard = (props: IssueType) => {
 		isFirstBlock,
 		isLastBlock,
 		index,
-		issueNumber
+		issueNumber,
+		issuePrefix
 	} = props;
 
 	const router = useRouter();
@@ -209,7 +210,7 @@ const IssueCard = (props: IssueType) => {
 			onClick={(e) => handleLinkClick()}
 		>
 			<IssueIndexContainer>
-				<IssueNumber>Issue {issueNumber ? issueNumber : ''}</IssueNumber>
+				<IssueNumber>{issuePrefix ? issuePrefix : 'Issue'} {issueNumber ? issueNumber : ''}</IssueNumber>
 			</IssueIndexContainer>
 			<TitleWrapper>
 				{heroImage && (

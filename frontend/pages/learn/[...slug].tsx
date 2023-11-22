@@ -49,6 +49,7 @@ const Page = (props: Props) => {
 				ctaLinkTitle={data?.ctaLinkTitle}
 				externalLink={data?.external}
 				issueNumber={data?.issueNumber}
+				issuePrefix={data?.issuePrefix}
 				projectColor={data?.projectColor}
 			/>
 			<IssueIntroduction
