@@ -213,7 +213,7 @@ const CaseStudyCard = (props: CaseStudyType) => {
 					</LHS>
 					<RHS>
 						<PseudoButton className="primary-link-style">
-							Explore Projects
+							Explore Project
 						</PseudoButton>
 					</RHS>
 				</InformationBar>

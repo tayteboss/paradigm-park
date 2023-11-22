@@ -235,7 +235,7 @@ const IssueCard = (props: IssueType) => {
 				)}
 				{!inProgress ? (
 					<PseudoButton className="primary-link-style">
-						Explore Projects
+						Explore Project
 					</PseudoButton>
 				) : (
 					<ComingSoon>Coming Soon</ComingSoon>
