@@ -14,8 +14,18 @@ export default {
 			type: "string"
 		},
 		{
+			title: "New Business and General Email Button Title",
+			name: "generalEmailButtonTitle",
+			type: "string"
+		},
+		{
 			title: "Collaborations and Writing Submissions Email",
 			name: "collaborationsEmail",
+			type: "string"
+		},
+		{
+			title: "Collaborations and Writing Submissions Email Button Title",
+			name: "collaborationsEmailButtonTitle",
 			type: "string"
 		},
 		{
@@ -27,6 +37,11 @@ export default {
 			title: "Address URL",
 			name: "addressUrl",
 			type: "url"
+		},
+		{
+			title: "Address Button Title",
+			name: "addressUrlButtonTitle",
+			type: "string"
 		},
 		{
 			title: "Newsletter Title",

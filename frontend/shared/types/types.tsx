@@ -164,6 +164,8 @@ export type SiteSettingsType = {
 	instagramUrl: string;
 	newsletterMedia: MuxVideoType;
 	newsletterTitle: string;
+	generalEmailButtonTitle: string;
+	collaborationsEmailButtonTitle: string;
 }
 
 export type WorkPageType = {

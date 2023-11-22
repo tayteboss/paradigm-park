@@ -4,6 +4,7 @@ import pxToRem from '../../../utils/pxToRem';
 type Props = {
 	title: string;
 	email: string;
+	buttonTitle: string;
 };
 
 const EmailCardWrapper = styled.div`
@@ -30,13 +31,14 @@ const LinkTag = styled.a`
 const EmailCard = (props: Props) => {
 	const {
 		title,
-		email
+		email,
+		buttonTitle
 	} = props;
 	
 	return (
 		<EmailCardWrapper
 			className="frame-link--alt"
-			data-title="Email us"
+			data-title={buttonTitle}
 		>
 			{title && (
 				<Title className="type-b2">

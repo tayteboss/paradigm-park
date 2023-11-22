@@ -113,8 +113,13 @@ const Footer = () => {
 	const {
 		address,
 		addressUrl,
-		generalEmail
+		generalEmail,
+		generalEmailButtonTitle,
+        addressUrlButtonTitle,
 	} = siteOptions;
+
+	console.log('siteOptions', siteOptions);
+	
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [footerHeight, setFooterHeight] = useState(500);
@@ -177,7 +182,7 @@ const Footer = () => {
 									<LinkTag
 										className="type-h4 frame-link"
 										target='_blank'
-										data-title="See on map"
+										data-title={addressUrlButtonTitle ? addressUrlButtonTitle : 'See on map'}
 									>
 										{address}
 									</LinkTag>
@@ -187,7 +192,7 @@ const Footer = () => {
 								<Link href={`mailto:${generalEmail}`} passHref>
 									<LinkTag
 										className="type-h4 frame-link"
-										data-title="Email us"
+										data-title={generalEmailButtonTitle ? generalEmailButtonTitle : 'Email Us'}
 									>
 										{generalEmail}
 									</LinkTag>

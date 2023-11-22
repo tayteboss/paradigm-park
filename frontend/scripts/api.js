@@ -41,6 +41,9 @@ const getSiteData = async () => {
 				address,
 				addressUrl,
 				newsletterTitle,
+        generalEmailButtonTitle,
+        collaborationsEmailButtonTitle,
+        addressUrlButtonTitle,
         newsletterMedia {
           asset {
             playbackId

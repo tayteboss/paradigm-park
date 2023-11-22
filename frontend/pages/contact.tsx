@@ -163,11 +163,13 @@ const Page = (props: Props) => {
 					>
 						<EmailCard
 							title="New Business and General Enquiries"
+							buttonTitle={siteSettings?.generalEmailButtonTitle}
 							email={siteSettings?.generalEmail}
 						/>
 						<Pipe $inView={inView} />
 						<EmailCard
 							title="Collaborations and Writing Submissions"
+							buttonTitle={siteSettings?.collaborationsEmailButtonTitle}
 							email={siteSettings?.collaborationsEmail}
 						/>
 					</EmailWrapper>
