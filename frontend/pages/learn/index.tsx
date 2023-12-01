@@ -9,7 +9,7 @@ import CaseStudyTicker from '../../components/pageBuilder/CaseStudyTicker';
 import Issues from '../../components/blocks/Issues';
 
 const PageWrapper = styled(motion.div)`
-	background: var(--colour-white);
+	/* background: var(--colour-white); */
 
 	.case-study-ticker {
 		margin-left: 0;

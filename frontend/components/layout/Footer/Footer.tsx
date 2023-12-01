@@ -23,6 +23,7 @@ const FooterWrapper = styled(motion.footer)`
 		opacity: 1 !important;
 		transform: unset !important;
 		position: relative;
+		z-index: 10;
 	}
 `;
 
@@ -119,7 +120,6 @@ const Footer = () => {
 	} = siteOptions;
 
 	const [windowHeight, setWindowHeight] = useState(0);
-	const [footerHeight, setFooterHeight] = useState(500);
 	const [documentHeight, setDocumentHeight] = useState(0);
 
 	const ref = useRef<HTMLDivElement>(null);
@@ -139,7 +139,6 @@ const Footer = () => {
 		const footerHeight = ref.current.clientHeight;
 		document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
 
-		setFooterHeight(footerHeight);
 		setWindowHeight(window.innerHeight);
 
 		var body = document.body,
