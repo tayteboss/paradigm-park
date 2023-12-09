@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 type StyledProps = {
 	$hasSup?: boolean;
-}
+};
 
 type Props = {
 	leftColTopContent?: [];
@@ -15,7 +15,7 @@ type Props = {
 	rightColBottomContent?: [];
 	rightColTopContent?: [];
 	setWorkModalContent: any;
-}
+};
 
 const CaseStudy2ColContentWrapper = styled.section`
 	padding: ${pxToRem(30)} 0;
@@ -52,7 +52,7 @@ const ContentWrapper = styled.div`
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		row-gap: ${pxToRem(30)};
+		row-gap: ${pxToRem(25)};
 	}
 `;
 
@@ -66,7 +66,7 @@ const ModalTrigger = styled.button`
 
 const TriggerInner = styled.div<StyledProps>`
 	position: relative;
-	padding-left: ${(props) => props.$hasSup ? pxToRem(3) : 0};
+	padding-left: ${(props) => (props.$hasSup ? pxToRem(3) : 0)};
 `;
 
 const Sup = styled.div`
@@ -129,11 +129,11 @@ const CaseStudy2ColContent = (props: Props) => {
 							className="primary-link-style"
 							onClick={() => setWorkModalContent(modal)}
 						>
-							<TriggerInner $hasSup={modal?.buttonSuperscriptNumber}>
+							<TriggerInner
+								$hasSup={modal?.buttonSuperscriptNumber}
+							>
 								{modal?.buttonSuperscriptNumber && (
-									<Sup>
-										{modal?.buttonSuperscriptNumber}
-									</Sup>
+									<Sup>{modal?.buttonSuperscriptNumber}</Sup>
 								)}
 								{modal?.buttonTitle}
 							</TriggerInner>

@@ -21,7 +21,7 @@ const NewsletterFormWrapper = styled.section<StyledProps>`
 	padding-top: ${pxToRem(30)};
 
 	.mux-player-wrapper {
-		transform: ${(props) => props.$inView ? 'scale(1)' : 'scale(1.05)'};
+		transform: ${(props) => (props.$inView ? 'scale(1)' : 'scale(1.05)')};
 
 		transition: all 5000ms var(--transition-ease);
 	}
@@ -106,18 +106,48 @@ const Form = styled.form<StyledProps>`
 		display: inline-block;
 		width: ${pxToRem(150)};
 		margin: ${pxToRem(30)} auto 0;
-		color: ${(props) => props.$isSuccess ? 'var(--colour-white)' : props.$isFocused ? 'var(--colour-black)' : 'rgba(0, 0, 0, 0.3)'};
-		background: ${(props) => props.$isSuccess ? 'rgba(0, 0, 0, 0.3)' : props.$isFocused ? 'var(--colour-yellow)' : 'transparent'};
-		border-color: ${(props) => props.$isSuccess ? 'transparent' : props.$isFocused ? 'var(--colour-yellow)' : 'rgba(0, 0, 0, 0.3)'};
-		pointer-events: ${(props) => props.$isSuccess ? 'none' : 'auto'};
+		color: ${(props) =>
+			props.$isSuccess
+				? 'var(--colour-white)'
+				: props.$isFocused
+				? 'var(--colour-black)'
+				: 'rgba(0, 0, 0, 0.3)'};
+		background: ${(props) =>
+			props.$isSuccess
+				? 'rgba(0, 0, 0, 0.3)'
+				: props.$isFocused
+				? 'var(--colour-yellow)'
+				: 'transparent'};
+		border-color: ${(props) =>
+			props.$isSuccess
+				? 'transparent'
+				: props.$isFocused
+				? 'var(--colour-yellow)'
+				: 'rgba(0, 0, 0, 0.3)'};
+		pointer-events: ${(props) => (props.$isSuccess ? 'none' : 'auto')};
 
 		transition: all 300ms var(--transition-ease);
 
 		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(15)};
-			color: ${(props) => props.$isSuccess ? 'var(--colour-white)' : props.$isFocused ? 'var(--colour-black)' : 'var(--colour-black)'};
-			background: ${(props) => props.$isSuccess ? 'rgba(0, 0, 0, 0.3)' : props.$isFocused ? 'var(--colour-yellow)' : 'var(--colour-white)'};
-			border-color: ${(props) => props.$isSuccess ? 'transparent' : props.$isFocused ? 'var(--colour-yellow)' : 'transparent'};
+			color: ${(props) =>
+				props.$isSuccess
+					? 'var(--colour-white)'
+					: props.$isFocused
+					? 'var(--colour-black)'
+					: 'var(--colour-black)'};
+			background: ${(props) =>
+				props.$isSuccess
+					? 'rgba(0, 0, 0, 0.3)'
+					: props.$isFocused
+					? 'var(--colour-yellow)'
+					: 'var(--colour-white)'};
+			border-color: ${(props) =>
+				props.$isSuccess
+					? 'transparent'
+					: props.$isFocused
+					? 'var(--colour-yellow)'
+					: 'transparent'};
 		}
 	}
 `;
@@ -136,10 +166,7 @@ const FormFooter = styled.div`
 `;
 
 const NewsletterForm = () => {
-	const {
-		newsletterTitle,
-		newsletterMedia
-	} = siteOptions;
+	const { newsletterTitle, newsletterMedia } = siteOptions;
 
 	const [result, setResult] = useState('');
 	const [isFocused, setIsFocused] = useState(false);
@@ -150,8 +177,10 @@ const NewsletterForm = () => {
 
 		const emailInput = event.currentTarget.querySelector('.email-input');
 		const email = emailInput ? (emailInput as HTMLInputElement).value : '';
-	
+
 		const res = await addEmailToSegment(email);
+
+		console.log('res', res);
 
 		if (res === 'success') {
 			setResult('Success');
@@ -167,10 +196,7 @@ const NewsletterForm = () => {
 	});
 
 	return (
-		<NewsletterFormWrapper
-			$inView={inView}
-			className="performance"
-		>
+		<NewsletterFormWrapper $inView={inView} className="performance">
 			<NewsletterPlayer newsletterMedia={newsletterMedia} />
 			<Inner
 				className={`view-element-fade-in ${
@@ -178,13 +204,9 @@ const NewsletterForm = () => {
 				}`}
 			>
 				{newsletterTitle && (
-					<Title className="type-h3">
-						{newsletterTitle}
-					</Title>
+					<Title className="type-h3">{newsletterTitle}</Title>
 				)}
-				<FormWrapper
-					ref={ref}
-				>
+				<FormWrapper ref={ref}>
 					<Form
 						onSubmit={onSubmit}
 						$isFocused={isFocused}
@@ -206,7 +228,13 @@ const NewsletterForm = () => {
 						<input
 							className="button"
 							type="submit"
-							value={result === 'Success' ? 'Subscribed' : result === 'Sending...' ? 'Sending' : 'Subscribe'}
+							value={
+								result === 'Success'
+									? 'Subscribed'
+									: result === 'Sending...'
+									? 'Sending'
+									: 'Subscribe'
+							}
 						/>
 					</Form>
 				</FormWrapper>

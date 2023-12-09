@@ -10,13 +10,17 @@ type Props = {
 	content?: [];
 	image?: any;
 	topTitle?: string;
-}
+};
 
 const CaseStudy2ColImageContentWrapper = styled.section`
 	padding: ${pxToRem(30)} 0;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(60)} 0;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: ${pxToRem(30)} 0;
 	}
 
 	.layout-grid {
@@ -73,12 +77,7 @@ const PortableTextWrapper = styled.div`
 `;
 
 const CaseStudy2ColImageContent = (props: Props) => {
-	const {
-		centerTitle,
-		content,
-		image,
-		topTitle
-	} = props;
+	const { centerTitle, content, image, topTitle } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -95,11 +94,7 @@ const CaseStudy2ColImageContent = (props: Props) => {
 							inView ? 'view-element-image-scale-up--in-view' : ''
 						}`}
 					>
-						<Image
-							src={image}
-							layout="fill"
-							objectFit="cover"
-						/>
+						<Image src={image} layout="fill" objectFit="cover" />
 					</ImageWrapper>
 				)}
 				<ContentWrapper
@@ -107,12 +102,8 @@ const CaseStudy2ColImageContent = (props: Props) => {
 						inView ? 'view-element-fade-in--in-view' : ''
 					}`}
 				>
-					{topTitle && (
-						<Title>{topTitle}</Title>
-					)}
-					{centerTitle && (
-						<CenterTitle>{centerTitle}</CenterTitle>
-					)}
+					{topTitle && <Title>{topTitle}</Title>}
+					{centerTitle && <CenterTitle>{centerTitle}</CenterTitle>}
 					{content && (
 						<PortableTextWrapper className="content">
 							<PortableText value={content} />

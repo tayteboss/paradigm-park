@@ -5,6 +5,7 @@ import pxToRem from '../../../utils/pxToRem';
 import { useEffect, useRef } from 'react';
 import { useClickOutside } from '../../../hooks/useClickOutside';
 import { PortableText } from '@portabletext/react';
+import PrimaryLink from '../../elements/PrimaryLink';
 
 type StyledProps = {
 	$isRHS?: boolean;
@@ -18,8 +19,8 @@ type Props = {
 const ContentModalWrapper = styled(motion.div)<StyledProps>`
 	position: fixed;
 	top: 0;
-	right: ${(props: any) => props.$isRHS ? 0 : 'auto'};
-	left: ${(props: any) => props.$isRHS ? 'auto' : 0};
+	right: ${(props: any) => (props.$isRHS ? 0 : 'auto')};
+	left: ${(props: any) => (props.$isRHS ? 'auto' : 0)};
 	z-index: 1000;
 	background: var(--colour-cream);
 `;
@@ -27,16 +28,16 @@ const ContentModalWrapper = styled(motion.div)<StyledProps>`
 const Inner = styled(motion.div)`
 	height: 100vh;
 	width: ${pxToRem(620)};
-	padding: ${pxToRem(60)} ${pxToRem(60)} ${pxToRem(100)};
+	padding: ${pxToRem(60)} ${pxToRem(60)} ${pxToRem(250)};
 	overflow-y: auto;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		width: 100%;
-		padding: ${pxToRem(30)} ${pxToRem(30)} ${pxToRem(100)};
+		padding: ${pxToRem(30)} ${pxToRem(30)} ${pxToRem(250)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: ${pxToRem(30)} ${pxToRem(15)} ${pxToRem(100)};
+		padding: ${pxToRem(30)} ${pxToRem(15)} ${pxToRem(250)};
 	}
 `;
 
@@ -63,14 +64,34 @@ const SubTitle = styled.h3`
 
 const ContentWrapper = styled.div``;
 
-const CloseWrapper = styled(motion.div)`
-	position: fixed;
-	z-index: 2;
-	bottom: 0;
-	left: 0;
-	height: ${pxToRem(128)};
+const PrimaryLinkWrapper = styled.div`
+	margin-top: ${pxToRem(50)};
 	width: 100%;
-	background: linear-gradient(180deg, rgba(242, 244, 222, 0.00) -82.68%, #F2F4DE 89.76%);
+	text-align: center;
+`;
+
+const CloseOuterWrapper = styled(motion.div)`
+	position: fixed;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	height: 100dvh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	z-index: 2;
+`;
+
+const CloseWrapper = styled(motion.div)`
+	pointer-events: all;
+	height: ${pxToRem(100)};
+	width: 100%;
+	background: linear-gradient(
+		180deg,
+		rgba(242, 244, 222, 0) -82.68%,
+		#f2f4de 89.76%
+	);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -81,7 +102,10 @@ const CloseTrigger = styled.button`
 	text-align: center;
 	text-decoration: underline;
 	position: relative;
-	top: ${pxToRem(25)};
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
 `;
 
 const DotPointsContentBlock = styled.div`
@@ -117,18 +141,12 @@ const DotPoint = styled.li`
 `;
 
 const ContentModal = (props: Props) => {
-	const {
-		content,
-		setContent
-	} = props;
+	const { content, setContent } = props;
 
-	const hasContentBlocks = content && content.contentBlock && content.contentBlock.length > 0;
+	const hasContentBlocks =
+		content && content.contentBlock && content.contentBlock.length > 0;
 
-	const {
-		title,
-		subTitle,
-		contentBlock,
-	} = content;
+	const { title, subTitle, contentBlock } = content;
 
 	const ref = useRef<HTMLDivElement>(null!);
 
@@ -150,7 +168,7 @@ const ContentModal = (props: Props) => {
 			transition: {
 				duration: 0.5,
 				ease: 'easeInOut',
-				when: 'beforeChildren',
+				when: 'beforeChildren'
 			}
 		}
 	};
@@ -174,7 +192,9 @@ const ContentModal = (props: Props) => {
 
 	useEffect(() => {
 		const body = document.body as HTMLElement;
-		const framerScroller = document.querySelector('.frame-scroller') as HTMLElement;
+		const framerScroller = document.querySelector(
+			'.frame-scroller'
+		) as HTMLElement;
 
 		if (!framerScroller) return;
 
@@ -187,70 +207,111 @@ const ContentModal = (props: Props) => {
 		}
 	}, [content]);
 
+	console.log('content', content);
+
 	return (
 		<AnimatePresence mode="wait">
 			{content && (
 				<ContentModalWrapper
 					variants={wrapperVariants}
-					initial='hidden'
-					animate='visible'
-					exit='hidden'
+					initial="hidden"
+					animate="visible"
+					exit="hidden"
 					ref={ref}
 					$isRHS={content.isRHS}
 				>
 					<Inner variants={childVariants}>
-						{title && (
-							<Title className="type-h5">
-								{title}
-							</Title>
-						)}
+						{title && <Title className="type-h5">{title}</Title>}
 						{subTitle && (
-							<SubTitle className="type-h4">
-								{subTitle}
-							</SubTitle>
+							<SubTitle className="type-h4">{subTitle}</SubTitle>
 						)}
-						{hasContentBlocks && contentBlock.map((item: any, i: number) => {
-							const usePortableText = item?.content;
+						{hasContentBlocks &&
+							contentBlock.map((item: any, i: number) => {
+								const usePortableText = item?.content;
+								const internalSlug: string =
+									item?.internal?.slug?.current;
+								const linkTitle: string = item?.linkTitle;
 
-							return (
-								<>
-									{usePortableText ? (
-										<ContentWrapper className="content">
-											{item?.content && (
-												<PortableText value={item?.content} />
-											)}
-										</ContentWrapper>
-									) : (
-										<DotPointsContentBlock>
-											{item?.string && (
-												<DotPointTitle>{item.string}</DotPointTitle>
-											)}
-											{item?.description && (
-												<DotPointDescription className="type-b2">
-													{item.description}
-												</DotPointDescription>
-											)}
-											<DotPointsWrapper>
-												{item?.dotPoints.length > 0 && item?.dotPoints.map((item: any, i: number) => (
-													<DotPoint
-														className="type-b2"
-														key={i}
-													>
-														{item}
-													</DotPoint>
-												))}
-											</DotPointsWrapper>
-										</DotPointsContentBlock>
-									)}
-								</>
-							)
-						})}
+								console.log('internalSlug', internalSlug);
+								console.log('linkTitle', linkTitle);
+
+								return (
+									<>
+										{usePortableText ? (
+											<>
+												<ContentWrapper className="content">
+													{item?.content && (
+														<PortableText
+															value={
+																item?.content
+															}
+														/>
+													)}
+												</ContentWrapper>
+												{internalSlug && linkTitle && (
+													<>
+														<PrimaryLinkWrapper>
+															<PrimaryLink
+																url={`/${internalSlug}`}
+																title={
+																	linkTitle
+																}
+															/>
+														</PrimaryLinkWrapper>
+													</>
+												)}
+											</>
+										) : (
+											<>
+												<DotPointsContentBlock>
+													{item?.string && (
+														<DotPointTitle>
+															{item.string}
+														</DotPointTitle>
+													)}
+													{item?.description && (
+														<DotPointDescription className="type-b2">
+															{item.description}
+														</DotPointDescription>
+													)}
+													<DotPointsWrapper>
+														{item?.dotPoints
+															.length > 0 &&
+															item?.dotPoints.map(
+																(
+																	item: any,
+																	i: number
+																) => (
+																	<DotPoint
+																		className="type-b2"
+																		key={i}
+																	>
+																		{item}
+																	</DotPoint>
+																)
+															)}
+													</DotPointsWrapper>
+												</DotPointsContentBlock>
+												{(internalSlug && linkTitle) ||
+													(linkTitle && (
+														<PrimaryLink
+															url={`/${internalSlug}`}
+															title={linkTitle}
+														/>
+													))}
+											</>
+										)}
+									</>
+								);
+							})}
 					</Inner>
-					<CloseWrapper variants={childVariants}>
-						<CloseTrigger onClick={() => setContent(false)}>
-							Close
-						</CloseTrigger>
-					</CloseWrapper>
+					<CloseOuterWrapper variants={childVariants}>
+						<CloseWrapper>
+							<CloseTrigger onClick={() => setContent(false)}>
+								Close
+							</CloseTrigger>
+						</CloseWrapper>
+					</CloseOuterWrapper>
 				</ContentModalWrapper>
 			)}
 		</AnimatePresence>
@@ -258,4 +319,3 @@ const ContentModal = (props: Props) => {
 };
 
 export default ContentModal;
-

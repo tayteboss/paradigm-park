@@ -36,8 +36,13 @@ export const aboutPageQueryString = `
 			...,
 			"contentBlock": contentBlock[]-> {
 				...,
-				frameItemContent-> {...},
-				frameItemDotPoints-> {...}
+				frameItemContent-> {
+					...,
+				},
+				frameItemDotPoints-> {
+					...,
+				},
+				internal->
 			},
 			"image": image.asset->url,
 		},

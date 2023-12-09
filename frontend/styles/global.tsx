@@ -267,6 +267,9 @@ export const GlobalStyles = createGlobalStyle`
 		h5,
 		h6 {
 			margin-bottom: ${pxToRem(20)};
+			&:first-child {
+				margin-bottom: ${pxToRem(0)};
+			}
 		}
 
 		h5,
@@ -340,7 +343,11 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 		transform: translateY(15px);
 
-		transition: opacity ${theme.transitionSpeed.slow} cubic-bezier(0.65, 0, 0.35, 1), transform ${theme.transitionSpeed.slow} cubic-bezier(0.65, 0, 0.35, 1);
+		transition: opacity ${
+			theme.transitionSpeed.slow
+		} cubic-bezier(0.65, 0, 0.35, 1), transform ${
+	theme.transitionSpeed.slow
+} cubic-bezier(0.65, 0, 0.35, 1);
 
 		&--in-view
 		{
