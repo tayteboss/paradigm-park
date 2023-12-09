@@ -207,8 +207,6 @@ const ContentModal = (props: Props) => {
 		}
 	}, [content]);
 
-	console.log('content', content);
-
 	return (
 		<AnimatePresence mode="wait">
 			{content && (
@@ -231,9 +229,6 @@ const ContentModal = (props: Props) => {
 								const internalSlug: string =
 									item?.internal?.slug?.current;
 								const linkTitle: string = item?.linkTitle;
-
-								console.log('internalSlug', internalSlug);
-								console.log('linkTitle', linkTitle);
 
 								return (
 									<>

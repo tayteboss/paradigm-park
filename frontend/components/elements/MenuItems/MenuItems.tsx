@@ -51,9 +51,7 @@ const wrapperVariants = {
 };
 
 const MenuItems = (props: Props) => {
-	const {
-		menuIsActive
-	} = props;
+	const { menuIsActive } = props;
 
 	const [itemIsHovered, setItemIsHovered] = useState(false);
 
@@ -61,16 +59,16 @@ const MenuItems = (props: Props) => {
 
 	useEffect(() => {
 		setItemIsHovered(false);
-	}, [router])
+	}, [router]);
 
 	return (
 		<AnimatePresence>
 			{menuIsActive && (
 				<MenuItemsWrapper
 					variants={wrapperVariants}
-					initial='hidden'
-					animate='visible'
-					exit='hidden'
+					initial="hidden"
+					animate="visible"
+					exit="hidden"
 				>
 					<MenuLinkItem
 						link="/about"
@@ -84,12 +82,12 @@ const MenuItems = (props: Props) => {
 						setItemIsHovered={setItemIsHovered}
 						itemIsHovered={itemIsHovered}
 					/>
-					<MenuLinkItem
+					{/* <MenuLinkItem
 						link="/learn"
 						title="Learn"
 						setItemIsHovered={setItemIsHovered}
 						itemIsHovered={itemIsHovered}
-					/>
+					/> */}
 					<MenuLinkItem
 						link="/contact"
 						title="Contact"

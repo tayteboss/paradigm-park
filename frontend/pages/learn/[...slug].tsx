@@ -9,6 +9,7 @@ import InsideTheIssue from '../../components/blocks/InsideTheIssue';
 import IssueImageGallery from '../../components/blocks/IssueImageGallery';
 import IssueIntroduction from '../../components/blocks/IssueIntroduction';
 import IssueHero from '../../components/blocks/IssueHero';
+import { useRouter } from 'next/router';
 
 type Props = {
 	data: IssueType;
@@ -22,26 +23,27 @@ type Props = {
 const PageWrapper = styled(motion.div)``;
 
 const Page = (props: Props) => {
-	const {
-		data,
-		pageTransitionVariants,
-		relatedIssueHeading
-	} = props;
+	const { data, pageTransitionVariants, relatedIssueHeading } = props;
+
+	const router = useRouter();
 
 	useEffect(() => {
+		router.push('/404');
 		window.scrollTo(0, 0);
 	}, []);
+
+	return <></>;
 
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 		>
 			<NextSeo
 				title={`Paradigm Park | ${data?.title}`}
-				description={data?.excerpt || ""}
+				description={data?.excerpt || ''}
 			/>
 			<IssueHero
 				title={data?.title}
@@ -90,7 +92,7 @@ export async function getStaticPaths() {
 		}),
 		fallback: true
 	};
-};
+}
 
 export async function getStaticProps({ params }: any) {
 	const issueQuery = `
@@ -123,7 +125,7 @@ export async function getStaticProps({ params }: any) {
 		props: {
 			data,
 			relatedIssueHeading
-		},
+		}
 	};
 }
 

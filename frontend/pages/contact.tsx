@@ -2,7 +2,11 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
 import { contactPageQueryString, siteSettingsQueryString } from '../queries';
-import { ContactPageType, SiteSettingsType, TransitionsType } from '../shared/types/types';
+import {
+	ContactPageType,
+	SiteSettingsType,
+	TransitionsType
+} from '../shared/types/types';
 import { motion } from 'framer-motion';
 import LayoutWrapper from '../components/common/LayoutWrapper';
 import EmailCard from '../components/elements/EmailCard';
@@ -13,7 +17,7 @@ import { useEffect } from 'react';
 type StyledProps = {
 	$bg?: string;
 	$inView?: boolean;
-}
+};
 
 type Props = {
 	data: ContactPageType;
@@ -27,7 +31,7 @@ const PageWrapper = styled(motion.div)`
 `;
 
 const Inner = styled.div<StyledProps>`
-	background: ${props => props.$bg};
+	background: ${(props) => props.$bg};
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -85,7 +89,7 @@ const Pipe = styled.div<StyledProps>`
 	background: rgba(0, 0, 0, 0.3);
 	margin: 0 ${pxToRem(120)};
 	width: ${pxToRem(1)};
-	height: ${(props) => props.$inView ? '100%' : 0};
+	height: ${(props) => (props.$inView ? '100%' : 0)};
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 	transition-delay: 400ms;
@@ -100,16 +104,14 @@ const Pipe = styled.div<StyledProps>`
 `;
 
 const Page = (props: Props) => {
-	const {
-		data,
-		siteSettings,
-		pageTransitionVariants
-	} = props;
+	const { data, siteSettings, pageTransitionVariants } = props;
 
 	const {
 		title,
 		cta,
-		heroColor
+		heroColor,
+		newBusinessAndGeneralEnquiriesTitle,
+		collaborationsAndWritingSubmissionsTitle
 	} = data;
 
 	useEffect(() => {
@@ -125,13 +127,13 @@ const Page = (props: Props) => {
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 		>
 			<NextSeo
-				title={data.seoTitle || "Paradigm Park | Contact"}
-				description={data.seoDescription || ""}
+				title={data.seoTitle || 'Paradigm Park | Contact'}
+				description={data.seoDescription || ''}
 			/>
 			<LayoutWrapper>
 				<Inner
@@ -162,14 +164,18 @@ const Page = (props: Props) => {
 						}`}
 					>
 						<EmailCard
-							title="New Business and General Enquiries"
+							title={newBusinessAndGeneralEnquiriesTitle || ''}
 							buttonTitle={siteSettings?.generalEmailButtonTitle}
 							email={siteSettings?.generalEmail}
 						/>
 						<Pipe $inView={inView} />
 						<EmailCard
-							title="Collaborations and Writing Submissions"
-							buttonTitle={siteSettings?.collaborationsEmailButtonTitle}
+							title={
+								collaborationsAndWritingSubmissionsTitle || ''
+							}
+							buttonTitle={
+								siteSettings?.collaborationsEmailButtonTitle
+							}
 							email={siteSettings?.collaborationsEmail}
 						/>
 					</EmailWrapper>
@@ -187,7 +193,7 @@ export async function getStaticProps() {
 		props: {
 			siteSettings,
 			data
-		},
+		}
 	};
 }
 

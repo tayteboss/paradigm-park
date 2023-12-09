@@ -50,6 +50,16 @@ export default {
 			title: 'Hero Color',
 			name: 'heroColor',
 			type: 'color'
-		}
+		},
+		{
+			title: 'New Business and General Enquiries Title',
+			name: 'newBusinessAndGeneralEnquiriesTitle',
+			type: 'string'
+		},
+		{
+			title: 'Collaborations and Writing Submissions Title',
+			name: 'collaborationsAndWritingSubmissionsTitle',
+			type: 'string'
+		},
 	]
 }

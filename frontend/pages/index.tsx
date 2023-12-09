@@ -18,10 +18,7 @@ type Props = {
 };
 
 const Page = (props: Props) => {
-	const {
-		data,
-		pageTransitionVariants
-	} = props;
+	const { data, pageTransitionVariants } = props;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -30,18 +27,18 @@ const Page = (props: Props) => {
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 		>
 			<NextSeo
-				title={data.seoTitle || "Paradigm Park | Home"}
-				description={data.seoDescription || ""}
+				title={data.seoTitle || 'Paradigm Park | Home'}
+				description={data.seoDescription || ''}
 			/>
 			<HomeHero data={data?.heroMedia} />
 			<HomeTitleBlocks data={data?.titleBlocks} />
 			<CaseStudies data={data?.caseStudies} />
-			<HomeExploreBlocks
+			{/* <HomeExploreBlocks
 				learnBackgroundColor={data?.exploreLearnBackgroundColor}
 				learnBackgroundShape={data?.exploreLearnBackgroundShape}
 				learnTitle={data?.exploreLearnTitle}
@@ -52,7 +49,7 @@ const Page = (props: Props) => {
 				projectsButtonTitle={data?.exploreProjectsButtonTitle}
 				projectsBackgroundImage={data?.exploreProjectsBackgroundImage}
 				projectsBackgroundShape={data?.exploreProjectsBackgroundShape}
-			/>
+			/> */}
 		</PageWrapper>
 	);
 };
@@ -65,7 +62,7 @@ export async function getStaticProps() {
 		props: {
 			siteSettings,
 			data
-		},
+		}
 	};
 }
 

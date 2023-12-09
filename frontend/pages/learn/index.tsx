@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import CaseStudyTicker from '../../components/pageBuilder/CaseStudyTicker';
 import Issues from '../../components/blocks/Issues';
+import { useRouter } from 'next/router';
 
 const PageWrapper = styled(motion.div)`
 	/* background: var(--colour-white); */
@@ -27,26 +28,28 @@ type Props = {
 };
 
 const Page = (props: Props) => {
-	const {
-		data,
-		pageTransitionVariants
-	} = props;
+	const { data, pageTransitionVariants } = props;
+
+	const router = useRouter();
 
 	useEffect(() => {
+		router.push('/404');
 		window.scrollTo(0, 0);
 	}, []);
+
+	return <></>;
 
 	return (
 		<>
 			<PageWrapper
 				variants={pageTransitionVariants}
-				initial='hidden'
-				animate='visible'
-				exit='hidden'
+				initial="hidden"
+				animate="visible"
+				exit="hidden"
 			>
 				<NextSeo
-					title={data.seoTitle || "Paradigm Park | About"}
-					description={data.seoDescription || ""}
+					title={data.seoTitle || 'Paradigm Park | About'}
+					description={data.seoDescription || ''}
 				/>
 				<CaseStudyTicker
 					tickerContent={data?.tickerContent}
@@ -68,7 +71,7 @@ export async function getStaticProps() {
 		props: {
 			siteSettings,
 			data
-		},
+		}
 	};
 }
 

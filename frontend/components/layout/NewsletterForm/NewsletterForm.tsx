@@ -180,8 +180,6 @@ const NewsletterForm = () => {
 
 		const res = await addEmailToSegment(email);
 
-		console.log('res', res);
-
 		if (res === 'success') {
 			setResult('Success');
 		} else {
