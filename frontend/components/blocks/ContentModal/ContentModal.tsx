@@ -64,8 +64,15 @@ const SubTitle = styled.h3`
 
 const ContentWrapper = styled.div``;
 
-const PrimaryLinkWrapper = styled.div`
+const ContentPrimaryLinkWrapper = styled.div`
 	margin-top: ${pxToRem(50)};
+	width: 100%;
+	text-align: center;
+`;
+
+const DotPointsPrimaryLinkWrapper = styled.div`
+	margin-top: ${pxToRem(10)};
+	margin-bottom: ${pxToRem(32)};
 	width: 100%;
 	text-align: center;
 `;
@@ -245,14 +252,14 @@ const ContentModal = (props: Props) => {
 												</ContentWrapper>
 												{internalSlug && linkTitle && (
 													<>
-														<PrimaryLinkWrapper>
+														<ContentPrimaryLinkWrapper>
 															<PrimaryLink
 																url={`/${internalSlug}`}
 																title={
 																	linkTitle
 																}
 															/>
-														</PrimaryLinkWrapper>
+														</ContentPrimaryLinkWrapper>
 													</>
 												)}
 											</>
@@ -287,13 +294,18 @@ const ContentModal = (props: Props) => {
 															)}
 													</DotPointsWrapper>
 												</DotPointsContentBlock>
-												{(internalSlug && linkTitle) ||
-													(linkTitle && (
-														<PrimaryLink
-															url={`/${internalSlug}`}
-															title={linkTitle}
-														/>
-													))}
+												{internalSlug && linkTitle && (
+													<>
+														<DotPointsPrimaryLinkWrapper>
+															<PrimaryLink
+																url={`/${internalSlug}`}
+																title={
+																	linkTitle
+																}
+															/>
+														</DotPointsPrimaryLinkWrapper>
+													</>
+												)}
 											</>
 										)}
 									</>

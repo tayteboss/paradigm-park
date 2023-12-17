@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Marquee from "react-fast-marquee";
+import Marquee from 'react-fast-marquee';
 import pxToRem from '../../../utils/pxToRem';
 import Link from 'next/link';
 import { SlugType } from '../../../shared/types/types';
@@ -11,7 +11,7 @@ type Props = {
 	tickerLinkTitle: string;
 	tickerButtonExternalLink: string;
 	tickerInternalLink: any;
-}
+};
 
 const CaseStudyTickerWrapper = styled.section`
 	padding: ${pxToRem(30)} 0;
@@ -66,15 +66,16 @@ const CaseStudyTicker = (props: Props) => {
 
 	const [link, setLink] = useState('/');
 
-	const hasLink = (tickerButtonExternalLink || tickerInternalLink) && tickerLinkTitle;
+	const hasLink =
+		(tickerButtonExternalLink || tickerInternalLink) && tickerLinkTitle;
 
 	useEffect(() => {
 		if (tickerButtonExternalLink) {
-			setLink(tickerButtonExternalLink)
+			setLink(tickerButtonExternalLink);
 		}
 
 		if (tickerInternalLink) {
-			setLink(`/${tickerInternalLink?.slug?.current}`);
+			setLink(`/${tickerInternalLink?.current}`);
 		}
 	}, [tickerButtonExternalLink, tickerInternalLink]);
 
