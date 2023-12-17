@@ -76,6 +76,15 @@ const TitleBlock = (props: TitleBlockType) => {
 	);
 
 	useEffect(() => {
+		if (wrapperRef?.current) {
+			setDistanceToTop(
+				window.pageYOffset +
+					wrapperRef.current.getBoundingClientRect().top
+			);
+		}
+
+		setWindowHeight(window.innerHeight);
+
 		const timer = setTimeout(() => {
 			if (wrapperRef?.current) {
 				setDistanceToTop(
