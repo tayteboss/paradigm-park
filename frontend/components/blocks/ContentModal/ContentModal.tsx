@@ -252,7 +252,13 @@ const ContentModal = (props: Props) => {
 												</ContentWrapper>
 												{internalSlug && linkTitle && (
 													<>
-														<ContentPrimaryLinkWrapper>
+														<ContentPrimaryLinkWrapper
+															onClick={() =>
+																setContent(
+																	false
+																)
+															}
+														>
 															<PrimaryLink
 																url={`/${internalSlug}`}
 																title={
@@ -296,7 +302,13 @@ const ContentModal = (props: Props) => {
 												</DotPointsContentBlock>
 												{internalSlug && linkTitle && (
 													<>
-														<DotPointsPrimaryLinkWrapper>
+														<DotPointsPrimaryLinkWrapper
+															onClick={() =>
+																setContent(
+																	false
+																)
+															}
+														>
 															<PrimaryLink
 																url={`/${internalSlug}`}
 																title={
