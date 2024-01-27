@@ -45,6 +45,7 @@ export const aboutPageQueryString = `
 				internal->
 			},
 			"image": image.asset->url,
+			"video": video.asset->,
 		},
 	}
 `;

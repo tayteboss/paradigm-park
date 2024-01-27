@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { FrameItemType } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
+import MuxPlayer from '@mux/mux-player-react';
+
+type StyledProps = {
+	$maskType: string;
+};
 
 const FrameWrapper = styled.div`
 	height: 100vh;
@@ -15,10 +20,15 @@ const FrameWrapper = styled.div`
 	pointer-events: all;
 `;
 
-const ImageWrapper = styled.button`
+const ImageWrapper = styled.button<StyledProps>`
 	height: ${pxToRem(486)};
+	width: ${pxToRem(350)};
 	position: relative;
 	display: inline-block;
+	mask: ${(props) => `url('/icons/${props.$maskType}-mask.svg')`};
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: contain;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: ${pxToRem(350)};
@@ -31,6 +41,12 @@ const ImageWrapper = styled.button`
 
 	&.view-element-bottom-top {
 		transition: opacity 500ms ease;
+	}
+
+	mux-player {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
 	}
 `;
 
@@ -66,14 +82,8 @@ const Button = styled.div`
 `;
 
 const Frame = (props: FrameItemType) => {
-	const {
-		title,
-		subTitle,
-		image,
-		contentBlock,
-		setContent,
-		index
-	} = props;
+	const { title, subTitle, image, contentBlock, setContent, index, video } =
+		props;
 
 	const handleClick = () => {
 		setContent({
@@ -84,14 +94,43 @@ const Frame = (props: FrameItemType) => {
 		});
 	};
 
+	let maskType: string;
+
+	switch (index) {
+		case 0:
+			maskType = 'arch';
+			break;
+		case 1:
+			maskType = 'ellipse';
+			break;
+		case 2:
+			maskType = 'trapezoid';
+			break;
+		default:
+			maskType = 'rectangle';
+	}
+
 	return (
 		<FrameWrapper className="frame">
 			<ImageWrapper
 				onClick={() => handleClick()}
 				data-title={title}
 				className="frame-link"
+				$maskType={maskType}
 			>
-				<Image src={image} />
+				{video?.playbackId && (
+					<MuxPlayer
+						streamType="on-demand"
+						playbackId={video.playbackId}
+						autoPlay="muted"
+						loop={true}
+						thumbnailTime={0}
+						preload="auto"
+						muted
+						playsInline={true}
+					/>
+				)}
+				{image && <Image src={image} />}
 			</ImageWrapper>
 			{title && (
 				<ButtonWrapper

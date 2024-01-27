@@ -18,11 +18,7 @@ type Props = {
 };
 
 const Page = (props: Props) => {
-	const {
-		data,
-		pageTransitionVariants,
-		setContent
-	} = props;
+	const { data, pageTransitionVariants, setContent } = props;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -32,13 +28,13 @@ const Page = (props: Props) => {
 		<>
 			<PageWrapper
 				variants={pageTransitionVariants}
-				initial='hidden'
-				animate='visible'
-				exit='hidden'
+				initial="hidden"
+				animate="visible"
+				exit="hidden"
 			>
 				<NextSeo
-					title={data.seoTitle || "Paradigm Park | About"}
-					description={data.seoDescription || ""}
+					title={data.seoTitle || 'Paradigm Park | About'}
+					description={data.seoDescription || ''}
 				/>
 				<FramesScroller
 					frames={data?.frameItems}
@@ -59,7 +55,7 @@ export async function getStaticProps() {
 		props: {
 			siteSettings,
 			data
-		},
+		}
 	};
 }
 

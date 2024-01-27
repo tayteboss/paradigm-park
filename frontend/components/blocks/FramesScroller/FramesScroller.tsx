@@ -110,12 +110,7 @@ const BottomHideBlock = styled(motion.div)`
 `;
 
 const FramesScroller = (props: Props) => {
-	const {
-		frames,
-		title,
-		image,
-		setContent
-	} = props;
+	const { frames, title, image, setContent } = props;
 
 	const hasFrames = frames && frames.length > 0;
 	const numberOfFrames = frames.length;
@@ -129,25 +124,40 @@ const FramesScroller = (props: Props) => {
 
 	const titleOpacity = useTransform(
 		scrollY,
-		[0, windowHeight * (numberOfFrames + 0.5), windowHeight * (numberOfFrames + 1)],
+		[
+			0,
+			windowHeight * (numberOfFrames + 0.5),
+			windowHeight * (numberOfFrames + 1)
+		],
 		[1, 1, 0]
 	);
 
 	const titleTransform = useTransform(
 		scrollY,
-		[0, windowHeight * (numberOfFrames + 0.5), windowHeight * (numberOfFrames + 1)],
+		[
+			0,
+			windowHeight * (numberOfFrames + 0.5),
+			windowHeight * (numberOfFrames + 1)
+		],
 		['translateY(0)', 'translateY(0)', 'translateY(-20px)']
 	);
 
 	const imageOpacity = useTransform(
 		scrollY,
-		[0, windowHeight * ((numberOfFrames + 1)), windowHeight * ((numberOfFrames + 1) + 0.5)],
+		[
+			0,
+			windowHeight * (numberOfFrames + 1),
+			windowHeight * (numberOfFrames + 1 + 0.5)
+		],
 		[1, 1, 0]
 	);
 
 	useEffect(() => {
 		if (wrapperRef?.current) {
-			setDistanceToTop(window.pageYOffset + wrapperRef.current.getBoundingClientRect().top);
+			setDistanceToTop(
+				window.pageYOffset +
+					wrapperRef.current.getBoundingClientRect().top
+			);
 		}
 
 		setWindowHeight(window.innerHeight);
@@ -157,17 +167,19 @@ const FramesScroller = (props: Props) => {
 		<FramesScrollerWrapper>
 			<LayoutWrapper>
 				<Inner className="frame-scroller">
-					{hasFrames && frames.map((item, i) => (
-						<Frame
-							key={i}
-							title={item.title}
-							subTitle={item.subTitle}
-							image={item.image}
-							contentBlock={item.contentBlock}
-							setContent={setContent}
-							index={i}
-						/>
-					))}
+					{hasFrames &&
+						frames.map((item, i) => (
+							<Frame
+								key={i}
+								title={item.title}
+								subTitle={item.subTitle}
+								image={item.image}
+								contentBlock={item.contentBlock}
+								setContent={setContent}
+								video={item.video}
+								index={i}
+							/>
+						))}
 					<TopHideBlock />
 					<BottomHideBlock style={{ opacity: imageOpacity }} />
 					<ImageWrapper style={{ opacity: imageOpacity }}>
@@ -175,7 +187,10 @@ const FramesScroller = (props: Props) => {
 							{title && (
 								<TitleWrapper>
 									<Title
-										style={{ opacity: titleOpacity, transform: titleTransform }}
+										style={{
+											opacity: titleOpacity,
+											transform: titleTransform
+										}}
 									>
 										{title}
 									</Title>

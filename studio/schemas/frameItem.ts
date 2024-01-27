@@ -17,7 +17,13 @@ export default {
 			title: 'Image',
 			name: 'image',
 			type: 'image',
-			description: 'Please use a transparent PNG',
+			description: 'Please either use an image or video',
+		},
+		{
+			title: 'Video',
+			name: 'video',
+			type: "mux.video",
+			description: "Please either use an image or video"
 		},
 		{
 			title: 'Content Block',

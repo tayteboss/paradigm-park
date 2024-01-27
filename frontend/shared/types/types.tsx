@@ -101,6 +101,9 @@ export type FrameItemType = {
 	setContent?: any;
 	index: number;
 	isRHS?: boolean;
+	video?: {
+		playbackId: string;
+	};
 };
 
 export type AboutPageType = {
