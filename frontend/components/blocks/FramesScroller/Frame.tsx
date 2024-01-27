@@ -29,6 +29,7 @@ const ImageWrapper = styled.button<StyledProps>`
 	mask-repeat: no-repeat;
 	mask-position: center;
 	mask-size: contain;
+	background: var(--colour-white);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: ${pxToRem(350)};
