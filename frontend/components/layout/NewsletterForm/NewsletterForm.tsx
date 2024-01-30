@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import NewsletterPlayer from './NewsletterPlayer';
 import { useState } from 'react';
-import { PortableText } from '@portabletext/react';
 import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
 import addEmailToSegment from '../../../pages/api/flodeskApi';
@@ -166,7 +165,7 @@ const FormFooter = styled.div`
 `;
 
 const NewsletterForm = () => {
-	const { newsletterTitle, newsletterMedia } = siteOptions;
+	const { newsletterTitle, newsletterMedia, newsletterImage } = siteOptions;
 
 	const [result, setResult] = useState('');
 	const [isFocused, setIsFocused] = useState(false);
@@ -195,7 +194,10 @@ const NewsletterForm = () => {
 
 	return (
 		<NewsletterFormWrapper $inView={inView} className="performance">
-			<NewsletterPlayer newsletterMedia={newsletterMedia} />
+			<NewsletterPlayer
+				newsletterMedia={newsletterMedia}
+				newsletterImage={newsletterImage}
+			/>
 			<Inner
 				className={`view-element-fade-in ${
 					inView ? 'view-element-fade-in--in-view' : ''

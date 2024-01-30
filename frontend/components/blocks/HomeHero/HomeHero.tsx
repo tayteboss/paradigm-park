@@ -1,14 +1,16 @@
 import MuxPlayer from '@mux/mux-player-react';
 import styled from 'styled-components';
-import { MuxVideoType } from '../../../shared/types/types';
+import { ImageType, MuxVideoType } from '../../../shared/types/types';
 import LayoutWrapper from '../../common/LayoutWrapper';
 import LogoTextSvg from '../../svgs/LogoTextSvg';
 import { motion } from 'framer-motion';
 import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
 
 type Props = {
 	data: MuxVideoType;
+	image: ImageType;
 };
 
 const HomeHeroWrapper = styled(motion.section)`
@@ -26,7 +28,8 @@ const Inner = styled(motion.div)`
 	border-radius: var(--block-border-radius);
 	height: calc(100vh - var(--header-h) - 30px);
 
-	mux-player {
+	mux-player,
+	img {
 		height: 100%;
 		width: 100%;
 	}
@@ -57,9 +60,7 @@ const LogoWrapper = styled.div`
 `;
 
 const HomeHero = (props: Props) => {
-	const {
-		data
-	} = props;
+	const { data, image } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -81,6 +82,14 @@ const HomeHero = (props: Props) => {
 							preload="auto"
 							muted
 							playsInline={true}
+						/>
+					)}
+					{image?.asset?.url && (
+						<Image
+							src={image.asset.url}
+							layout="fill"
+							objectFit="cover"
+							priority={true}
 						/>
 					)}
 				</Inner>

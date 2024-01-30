@@ -91,6 +91,7 @@ export type HomePageType = {
 	seoTitle: string;
 	slug: SlugType;
 	heroMedia: MuxVideoType;
+	heroImage: ImageType;
 };
 
 export type FrameItemType = {

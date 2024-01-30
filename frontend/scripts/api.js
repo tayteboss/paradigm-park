@@ -49,6 +49,11 @@ const getSiteData = async () => {
             playbackId
           }
         }
+        newsletterImage {
+          asset {
+            url
+          }
+        }
 			}
 		}
 	`;

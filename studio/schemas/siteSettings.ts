@@ -52,6 +52,13 @@ export default {
 			title: 'Newsletter Media',
 			name: 'newsletterMedia',
 			type: "mux.video",
+			description: 'Please only use a video or an image, not both'
+		},
+		{
+			title: 'Newsletter Image',
+			name: 'newsletterImage',
+			type: 'image',
+			description: 'Please only use a video or an image, not both'
 		},
 	]
 }

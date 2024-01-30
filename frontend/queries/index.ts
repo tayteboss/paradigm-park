@@ -10,6 +10,9 @@ export const homePageQueryString = `
 		heroMedia {
 			asset->
 		},
+		heroImage {
+			asset->
+		},
 		titleBlocks-> {
 			...,
 			titleBlock[] {
@@ -24,7 +27,6 @@ export const homePageQueryString = `
 		"exploreLearnBackgroundShape": exploreLearnBackgroundShape.asset->url,
 		"exploreProjectsBackgroundImage": exploreProjectsBackgroundImage.asset->url,
 		"exploreProjectsBackgroundShape": exploreProjectsBackgroundShape.asset->url,
-
 	}
 `;
 

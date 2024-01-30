@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import MuxPlayer from '@mux/mux-player-react';
-import { MuxVideoType } from '../../../shared/types/types';
+import { ImageType, MuxVideoType } from '../../../shared/types/types';
 import LayoutWrapper from '../../common/LayoutWrapper';
 import pxToRem from '../../../utils/pxToRem';
+import Image from 'next/image';
 
 type Props = {
 	newsletterMedia: MuxVideoType;
+	newsletterImage: ImageType;
 };
 
 const NewsletterPlayerWrapper = styled.div`
@@ -20,7 +22,8 @@ const Inner = styled.div`
 	border-radius: var(--block-border-radius);
 	overflow: hidden;
 
-	mux-player {
+	mux-player,
+	img {
 		height: 100%;
 		width: 100%;
 	}
@@ -34,9 +37,7 @@ const MuxPlayerWrapper = styled.div`
 `;
 
 const NewsletterPlayer = (props: Props) => {
-	const {
-		newsletterMedia
-	} = props;
+	const { newsletterMedia, newsletterImage } = props;
 
 	return (
 		<NewsletterPlayerWrapper>
@@ -53,6 +54,14 @@ const NewsletterPlayer = (props: Props) => {
 								preload="auto"
 								muted
 								playsInline={true}
+							/>
+						)}
+						{newsletterImage?.asset?.url && (
+							<Image
+								src={newsletterImage.asset.url}
+								layout="fill"
+								objectFit="cover"
+								priority={true}
 							/>
 						)}
 					</MuxPlayerWrapper>

@@ -40,6 +40,13 @@ export default {
 			title: 'Hero Media',
 			name: 'heroMedia',
 			type: "mux.video",
+			description: 'Please only use a video or an image, not both'
+		},
+		{
+			title: 'Hero Image',
+			name: 'heroImage',
+			type: 'image',
+			description: 'Please only use a video or an image, not both'
 		},
 		{
 			title: 'Title Blocks',
