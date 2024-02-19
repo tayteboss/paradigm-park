@@ -23,8 +23,6 @@ const Page = (props: Props) => {
 		window.scrollTo(0, 0);
 	}, []);
 
-	console.log('data', data);
-
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}

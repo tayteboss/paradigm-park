@@ -211,12 +211,16 @@ const CaseStudyHero = (props: Props) => {
 										priority
 									/>
 								) : (
-									<Image
-										src={heroImage}
-										layout="fill"
-										objectFit="cover"
-										priority
-									/>
+									<>
+										{heroImage && (
+											<Image
+												src={heroImage}
+												layout="fill"
+												objectFit="cover"
+												priority
+											/>
+										)}
+									</>
 								)}
 							</MotionInner>
 						</MobileImageWrapper>
