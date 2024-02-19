@@ -59,9 +59,7 @@ const Inner = styled.div<StyledProps>`
 `;
 
 const RelatedCaseStudy = (props: Props) => {
-	const {
-		data
-	} = props;
+	const { data } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -70,12 +68,14 @@ const RelatedCaseStudy = (props: Props) => {
 	});
 
 	return (
-		<RelatedCaseStudyWrapper
-			ref={ref}
-		>
+		<RelatedCaseStudyWrapper ref={ref}>
 			<LayoutWrapper>
 				<Inner
-					$bg={data?.projectColor ? data.projectColor?.hex : 'var(--colour-white)'}
+					$bg={
+						data?.projectColor
+							? data.projectColor?.hex
+							: 'var(--colour-white)'
+					}
 					className={`view-element-fade-in ${
 						inView ? 'view-element-fade-in--in-view' : ''
 					}`}
@@ -88,6 +88,7 @@ const RelatedCaseStudy = (props: Props) => {
 						slug={data?.slug}
 						isLastBlock
 						isFirstBlock
+						isRelatedCaseStudy
 					/>
 				</Inner>
 			</LayoutWrapper>

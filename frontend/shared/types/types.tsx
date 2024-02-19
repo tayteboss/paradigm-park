@@ -53,6 +53,7 @@ export type CaseStudyType = {
 	isLastBlock?: boolean;
 	isFirstBlock?: boolean;
 	workInProgressExternalLink?: string;
+	isRelatedCaseStudy?: boolean;
 };
 
 export type SlugType = {

@@ -21,7 +21,7 @@ const CaseStudyCardWrapper = styled(motion.a)<StyledProps>`
 	position: sticky;
 	top: 0;
 	left: 0;
-	pointer-events: ${(props) => props.$isSticky ? 'all' : 'none'};
+	pointer-events: ${(props) => (props.$isSticky ? 'all' : 'none')};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding-bottom: ${pxToRem(30)};
@@ -119,7 +119,8 @@ const CaseStudyCard = (props: CaseStudyType) => {
 		slug,
 		index,
 		isLastBlock,
-		isFirstBlock
+		isFirstBlock,
+		isRelatedCaseStudy
 	} = props;
 
 	const router = useRouter();
@@ -133,13 +134,18 @@ const CaseStudyCard = (props: CaseStudyType) => {
 
 	const imageTransform = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + (windowHeight * 3)],
+		[distanceToTop, distanceToTop + windowHeight * 3],
 		['scale(0.95)', 'scale(1.05)']
 	);
 
 	const opacity = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 0.5), distanceToTop + (windowHeight * 1.5)],
+		[
+			distanceToTop,
+			distanceToTop + windowHeight * 0.5,
+			distanceToTop + windowHeight * 0.5,
+			distanceToTop + windowHeight * 1.5
+		],
 		[isFirstBlock ? 1 : 0, 1, 1, isLastBlock ? 1 : 0]
 	);
 
@@ -162,6 +168,8 @@ const CaseStudyCard = (props: CaseStudyType) => {
 				setIsSticky(false);
 			}
 		};
+
+		if (isRelatedCaseStudy) return;
 
 		const throttledHandleScroll = throttle(handleScroll, 50);
 		window.addEventListener('scroll', throttledHandleScroll);
@@ -188,28 +196,24 @@ const CaseStudyCard = (props: CaseStudyType) => {
 								style={{ transform: imageTransform }}
 								className="case-study-card__image-inner"
 							>
-								<Image
-									src={thumbnailImageUrl}
-								/>
+								<Image src={thumbnailImageUrl} />
 							</ImageInner>
 						</ImageWrapper>
 					)}
-					{title && (
-						<Title>{title}</Title>
-					)}
-					</ThumbnailWrapper>
+					{title && <Title>{title}</Title>}
+				</ThumbnailWrapper>
 				<InformationBar>
 					<LHS>
 						<TagsWrapper>
-							{tags && tags.map((tag, i) => (
-								<Tag className="type-b2" key={i}>
-									{tag}{i < tags.length - 1 && ', '}
-								</Tag>
-							))}
+							{tags &&
+								tags.map((tag, i) => (
+									<Tag className="type-b2" key={i}>
+										{tag}
+										{i < tags.length - 1 && ', '}
+									</Tag>
+								))}
 						</TagsWrapper>
-						{excerpt && (
-							<Excerpt>{excerpt}</Excerpt>
-						)}
+						{excerpt && <Excerpt>{excerpt}</Excerpt>}
 					</LHS>
 					<RHS>
 						<PseudoButton className="primary-link-style">
