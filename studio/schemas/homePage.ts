@@ -43,6 +43,12 @@ export default {
 			description: 'Please only use a video or an image, not both'
 		},
 		{
+			title: 'Mobile Hero Media',
+			name: 'mobileHeroMedia',
+			type: "mux.video",
+			description: 'Please only use a video or an image, not both'
+		},
+		{
 			title: 'Hero Image',
 			name: 'heroImage',
 			type: 'image',

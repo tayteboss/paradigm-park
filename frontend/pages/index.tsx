@@ -7,18 +7,25 @@ import { motion } from 'framer-motion';
 import HomeHero from '../components/blocks/HomeHero';
 import HomeTitleBlocks from '../components/blocks/HomeTitleBlocks';
 import CaseStudies from '../components/blocks/CaseStudies';
-import HomeExploreBlocks from '../components/blocks/HomeExploreBlocks';
+import muxBlurHash from '@mux/blurhash';
 import { useEffect } from 'react';
 
 const PageWrapper = styled(motion.div)``;
 
 type Props = {
 	data: HomePageType;
+	heroMediaPlaceholderData: any;
+	mobileHeroMediaPlaceholderData: any;
 	pageTransitionVariants: TransitionsType;
 };
 
 const Page = (props: Props) => {
-	const { data, pageTransitionVariants } = props;
+	const {
+		data,
+		heroMediaPlaceholderData,
+		mobileHeroMediaPlaceholderData,
+		pageTransitionVariants
+	} = props;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
@@ -35,7 +42,13 @@ const Page = (props: Props) => {
 				title={data.seoTitle || 'Paradigm Park | Home'}
 				description={data.seoDescription || ''}
 			/>
-			<HomeHero data={data?.heroMedia} image={data?.heroImage} />
+			<HomeHero
+				data={data?.heroMedia}
+				mobileData={data?.mobileHeroMedia}
+				image={data?.heroImage}
+				heroMediaPlaceholderData={heroMediaPlaceholderData}
+				mobileHeroMediaPlaceholderData={mobileHeroMediaPlaceholderData}
+			/>
 			<HomeTitleBlocks data={data?.titleBlocks} />
 			<CaseStudies data={data?.caseStudies} />
 			{/* <HomeExploreBlocks
@@ -58,10 +71,32 @@ export async function getStaticProps() {
 	const siteSettings = await client.fetch(siteSettingsQueryString);
 	const data = await client.fetch(homePageQueryString);
 
+	const desktopHeroPlaybackId = data?.heroMedia?.asset.playbackId;
+	const mobileHeroPlaybackId = data?.mobileHeroMedia?.asset.playbackId;
+
+	const { blurHash, blurHashBase64, sourceWidth, sourceHeight } =
+		await muxBlurHash(desktopHeroPlaybackId);
+	const {
+		blurHash: mobileBlurHash,
+		blurHashBase64: mobileBlurHashBase64,
+		sourceWidth: mobileSourceWidth,
+		sourceHeight: mobileSourceHeight
+	} = await muxBlurHash(mobileHeroPlaybackId);
+
+	const heroMediaPlaceholderData = {
+		blurHashBase64
+	};
+
+	const mobileHeroMediaPlaceholderData = {
+		blurHashBase64: mobileBlurHashBase64
+	};
+
 	return {
 		props: {
 			siteSettings,
-			data
+			data,
+			heroMediaPlaceholderData,
+			mobileHeroMediaPlaceholderData
 		}
 	};
 }

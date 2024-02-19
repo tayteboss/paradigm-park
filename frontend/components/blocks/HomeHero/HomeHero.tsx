@@ -1,4 +1,4 @@
-import MuxPlayer from '@mux/mux-player-react';
+import MuxPlayer from '@mux/mux-player-react/lazy';
 import styled from 'styled-components';
 import { ImageType, MuxVideoType } from '../../../shared/types/types';
 import LayoutWrapper from '../../common/LayoutWrapper';
@@ -10,7 +10,10 @@ import Image from 'next/image';
 
 type Props = {
 	data: MuxVideoType;
+	mobileData: MuxVideoType;
 	image: ImageType;
+	heroMediaPlaceholderData: any;
+	mobileHeroMediaPlaceholderData: any;
 };
 
 const HomeHeroWrapper = styled(motion.section)`
@@ -30,6 +33,7 @@ const Inner = styled(motion.div)`
 
 	mux-player,
 	img {
+		object-fit: cover;
 		height: 100%;
 		width: 100%;
 	}
@@ -59,8 +63,33 @@ const LogoWrapper = styled.div`
 	}
 `;
 
+const Desktop = styled.div`
+	height: 100%;
+	width: 100%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		display: none;
+	}
+`;
+
+const Mobile = styled.div`
+	display: none;
+	height: 100%;
+	width: 100%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		display: block;
+	}
+`;
+
 const HomeHero = (props: Props) => {
-	const { data, image } = props;
+	const {
+		data,
+		mobileData,
+		heroMediaPlaceholderData,
+		mobileHeroMediaPlaceholderData,
+		image
+	} = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -72,18 +101,59 @@ const HomeHero = (props: Props) => {
 		<HomeHeroWrapper ref={ref}>
 			<LayoutWrapper>
 				<Inner>
-					{data?.asset?.playbackId && (
-						<MuxPlayer
-							streamType="on-demand"
-							playbackId={data.asset.playbackId}
-							autoPlay="muted"
-							loop={true}
-							thumbnailTime={0}
-							preload="auto"
-							muted
-							playsInline={true}
-						/>
-					)}
+					<Desktop>
+						{data?.asset?.playbackId && (
+							<MuxPlayer
+								streamType="on-demand"
+								playbackId={data.asset.playbackId}
+								autoPlay="muted"
+								loop={true}
+								thumbnailTime={1}
+								loading="page"
+								preload="auto"
+								muted
+								playsInline={true}
+								placeholder={
+									heroMediaPlaceholderData.blurHashBase64
+								}
+							/>
+						)}
+					</Desktop>
+					<Mobile>
+						{mobileData?.asset?.playbackId ? (
+							<MuxPlayer
+								streamType="on-demand"
+								playbackId={props.mobileData.asset.playbackId}
+								autoPlay="muted"
+								loop={true}
+								thumbnailTime={1}
+								preload="auto"
+								muted
+								playsInline={true}
+								placeholder={
+									mobileHeroMediaPlaceholderData.blurHashBase64
+								}
+							/>
+						) : (
+							<>
+								{data?.asset?.playbackId && (
+									<MuxPlayer
+										streamType="on-demand"
+										playbackId={data.asset.playbackId}
+										autoPlay="muted"
+										loop={true}
+										thumbnailTime={1}
+										preload="auto"
+										muted
+										playsInline={true}
+										placeholder={
+											heroMediaPlaceholderData.blurHashBase64
+										}
+									/>
+								)}
+							</>
+						)}
+					</Mobile>
 					{image?.asset?.url && (
 						<Image
 							src={image.asset.url}

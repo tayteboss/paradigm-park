@@ -10,6 +10,9 @@ export const homePageQueryString = `
 		heroMedia {
 			asset->
 		},
+		mobileHeroMedia {
+			asset->
+		},
 		heroImage {
 			asset->
 		},
