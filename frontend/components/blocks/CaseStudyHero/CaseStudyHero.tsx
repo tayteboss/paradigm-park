@@ -8,7 +8,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 type StyledProps = {
 	$bg: string;
-}
+};
 
 type Props = {
 	desktopHeroMask?: string;
@@ -37,7 +37,7 @@ const Outer = styled(motion.div)`
 const Inner = styled.div<StyledProps>`
 	overflow: hidden;
 	border-radius: var(--block-border-radius);
-	background-color: ${props => props.$bg};
+	background-color: ${(props) => props.$bg};
 	height: 100%;
 	width: 100%;
 	position: relative;
@@ -101,13 +101,8 @@ const Title = styled(motion.h1)`
 `;
 
 const CaseStudyHero = (props: Props) => {
-	const {
-		desktopHeroMask,
-		heroImage,
-		mobileHeroMask,
-		projectColor,
-		title
-	} = props;
+	const { desktopHeroMask, heroImage, mobileHeroMask, projectColor, title } =
+		props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
 
@@ -116,7 +111,7 @@ const CaseStudyHero = (props: Props) => {
 	const maskTransform = useTransform(
 		scrollY,
 		[0, windowHeight * 3],
-		['scale(1)', 'scale(5)']
+		['scale(1.05)', 'scale(5)']
 	);
 
 	const imageTransform = useTransform(
@@ -150,7 +145,11 @@ const CaseStudyHero = (props: Props) => {
 					}}
 				>
 					<Inner
-						$bg={projectColor ? projectColor?.hex : 'var(--colour-white)'}
+						$bg={
+							projectColor
+								? projectColor?.hex
+								: 'var(--colour-white)'
+						}
 					>
 						<ImageWrapper>
 							<MotionInner
