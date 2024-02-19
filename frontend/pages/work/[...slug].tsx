@@ -17,32 +17,32 @@ type Props = {
 const PageWrapper = styled(motion.div)``;
 
 const Page = (props: Props) => {
-	const {
-		data,
-		pageTransitionVariants,
-		setWorkModalContent
-	} = props;
+	const { data, pageTransitionVariants, setWorkModalContent } = props;
 
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
 
+	console.log('data', data);
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
-			initial='hidden'
-			animate='visible'
-			exit='hidden'
+			initial="hidden"
+			animate="visible"
+			exit="hidden"
 		>
 			<NextSeo
 				title={`Paradigm Park | ${data?.title}`}
-				description={data?.excerpt || ""}
+				description={data?.excerpt || ''}
 			/>
 			<CaseStudyHero
-				desktopHeroMask={data?.desktopHeroMask}
 				heroImage={data?.heroImage}
+				mobileHeroImage={data?.mobileHeroImage}
+				desktopHeroMask={data?.desktopHeroMask}
 				mobileHeroMask={data?.mobileHeroMask}
 				projectColor={data?.projectColor}
+				titleColor={data?.titleColor}
 				title={data?.title}
 			/>
 			<PageBuilder
@@ -69,7 +69,7 @@ export async function getStaticPaths() {
 		}),
 		fallback: true
 	};
-};
+}
 
 export async function getStaticProps({ params }: any) {
 	const caseStudyQuery = `
@@ -77,6 +77,7 @@ export async function getStaticProps({ params }: any) {
 			...,
 			"desktopHeroMask": desktopHeroMask.asset->url,
 			"heroImage": heroImage.asset->url,
+			"mobileHeroImage": mobileHeroImage.asset->url,
 			"mobileHeroMask": mobileHeroMask.asset->url,
 			"thumbnailImage": thumbnailImage.asset->url,
 			pageBuilder[] {
@@ -104,8 +105,8 @@ export async function getStaticProps({ params }: any) {
 
 	return {
 		props: {
-			data,
-		},
+			data
+		}
 	};
 }
 

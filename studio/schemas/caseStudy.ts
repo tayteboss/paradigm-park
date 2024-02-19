@@ -50,6 +50,12 @@ export default {
 			description: 'Please use a landscape image for the best result.'
 		},
 		{
+			title: 'Mobile Hero Image',
+			name: 'mobileHeroImage',
+			type: 'image',
+			description: 'Please use a portrait image for the best result.'
+		},
+		{
 			title: 'Thumbnail Image',
 			name: 'thumbnailImage',
 			type: 'image',
@@ -66,6 +72,11 @@ export default {
 			name: 'mobileHeroMask',
 			type: 'image',
 			description: 'Please use a SVG with a transparent shape mask. The image should also be 9:16 ratio for the best result.',
+		},
+		{
+			title: 'Title Color',
+			name: 'titleColor',
+			type: 'color',
 		},
 		{
 			title: 'Page Builder',

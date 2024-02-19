@@ -39,7 +39,8 @@ export type CaseStudyType = {
 	title?: string;
 	desktopHeroMask?: string;
 	excerpt?: string;
-	heroImage?: string;
+	heroImage: string;
+	mobileHeroImage: string;
 	inProgress?: boolean;
 	mobileHeroMask?: string;
 	pageBuilder?: any;
@@ -54,6 +55,7 @@ export type CaseStudyType = {
 	isFirstBlock?: boolean;
 	workInProgressExternalLink?: string;
 	isRelatedCaseStudy?: boolean;
+	titleColor?: ColorType;
 };
 
 export type SlugType = {

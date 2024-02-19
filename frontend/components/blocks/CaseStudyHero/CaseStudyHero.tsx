@@ -1,21 +1,23 @@
 import styled from 'styled-components';
 import LayoutWrapper from '../../common/LayoutWrapper';
 import { ColorType } from '../../../shared/types/types';
-import pxToRem from '../../../utils/pxToRem';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 type StyledProps = {
-	$bg: string;
+	$bg?: string;
+	$color?: string;
 };
 
 type Props = {
 	desktopHeroMask?: string;
-	heroImage?: string;
+	heroImage: string;
+	mobileHeroImage: string;
 	mobileHeroMask?: string;
 	title?: string;
 	projectColor?: ColorType;
+	titleColor?: ColorType;
 };
 
 const CaseStudyHeroWrapper = styled.section`
@@ -43,7 +45,7 @@ const Inner = styled.div<StyledProps>`
 	position: relative;
 `;
 
-const ImageWrapper = styled.div`
+const DesktopImageWrapper = styled.div`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -52,6 +54,26 @@ const ImageWrapper = styled.div`
 	width: 100%;
 	overflow: hidden;
 	z-index: 1;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
+`;
+
+const MobileImageWrapper = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	z-index: 1;
+	display: none;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: block;
+	}
 `;
 
 const MotionInner = styled(motion.div)`
@@ -91,18 +113,26 @@ const MobileMaskWrapper = styled.div`
 	}
 `;
 
-const Title = styled(motion.h1)`
+const Title = styled(motion.h1)<StyledProps>`
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	z-index: 3;
 	text-align: center;
+	color: ${(props) => props.$color};
 `;
 
 const CaseStudyHero = (props: Props) => {
-	const { desktopHeroMask, heroImage, mobileHeroMask, projectColor, title } =
-		props;
+	const {
+		desktopHeroMask,
+		heroImage,
+		mobileHeroImage,
+		mobileHeroMask,
+		projectColor,
+		titleColor,
+		title
+	} = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
 
@@ -151,7 +181,7 @@ const CaseStudyHero = (props: Props) => {
 								: 'var(--colour-white)'
 						}
 					>
-						<ImageWrapper>
+						<DesktopImageWrapper>
 							<MotionInner
 								style={{
 									transform: imageTransform
@@ -166,7 +196,30 @@ const CaseStudyHero = (props: Props) => {
 									/>
 								)}
 							</MotionInner>
-						</ImageWrapper>
+						</DesktopImageWrapper>
+						<MobileImageWrapper>
+							<MotionInner
+								style={{
+									transform: imageTransform
+								}}
+							>
+								{mobileHeroImage ? (
+									<Image
+										src={mobileHeroImage}
+										layout="fill"
+										objectFit="cover"
+										priority
+									/>
+								) : (
+									<Image
+										src={heroImage}
+										layout="fill"
+										objectFit="cover"
+										priority
+									/>
+								)}
+							</MotionInner>
+						</MobileImageWrapper>
 						<DesktopMaskWrapper>
 							<MotionInner
 								style={{
@@ -201,6 +254,11 @@ const CaseStudyHero = (props: Props) => {
 						</MobileMaskWrapper>
 						{title && (
 							<Title
+								$color={
+									titleColor?.hex
+										? titleColor.hex
+										: 'var(--colour-black)'
+								}
 								style={{
 									opacity: titleFade
 								}}
