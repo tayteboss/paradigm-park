@@ -13,10 +13,11 @@ import useHeaderHeight from '../hooks/useHeaderHeight';
 import ContentModal from '../components/blocks/ContentModal';
 import Cursor from '../components/elements/Cursor';
 import WorkContentModal from '../components/blocks/WorkContentModal';
+import Script from 'next/script';
 
 const pageTransitionVariants: TransitionsType = {
 	hidden: { opacity: 0, transition: { duration: 0.3 } },
-	visible: { opacity: 1, transition: { duration: 0.5, delay: 1 } },
+	visible: { opacity: 1, transition: { duration: 0.5, delay: 1 } }
 };
 
 type Props = {
@@ -25,17 +26,16 @@ type Props = {
 };
 
 const App = (props: Props) => {
-	const {
-		Component,
-		pageProps
-	} = props;
+	const { Component, pageProps } = props;
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
 	const [content, setContent] = useState<FrameItemType | false>(false);
-	const [workModalContent, setWorkModalContent] = useState<FrameItemType | false>(false);
+	const [workModalContent, setWorkModalContent] = useState<
+		FrameItemType | false
+	>(false);
 	const [appCursorRefresh, setAppCursorRefresh] = useState(0);
 
-	const router= useRouter();
+	const router = useRouter();
 	const routerEvents = router.events;
 
 	const handleExitComplete = (): void => {
@@ -49,7 +49,7 @@ const App = (props: Props) => {
 	useHeaderHeight();
 
 	useEffect(() => {
-		window.history.scrollRestoration = 'manual'
+		window.history.scrollRestoration = 'manual';
 
 		handleExitComplete();
 
@@ -65,7 +65,7 @@ const App = (props: Props) => {
 
 		return () => {
 			clearTimeout(timer);
-		}
+		};
 	}, []);
 
 	useEffect(() => {
@@ -75,12 +75,25 @@ const App = (props: Props) => {
 
 		return () => {
 			clearTimeout(timer);
-		}
+		};
 	}, [router.pathname]);
 
 	return (
 		<>
 			<GlobalStyles />
+			<Script
+				src="https://www.googletagmanager.com/gtag/js?id=G-BVL62HV6WK"
+				strategy="afterInteractive"
+			/>
+			<Script id="google-analytics" strategy="afterInteractive">
+				{`
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){window.dataLayer.push(arguments);}
+				gtag('js', new Date());
+
+				gtag('config', 'G-BVL62HV6WK');
+				`}
+			</Script>
 			<ThemeProvider theme={theme}>
 				<Layout>
 					<AnimatePresence
@@ -96,20 +109,19 @@ const App = (props: Props) => {
 						/>
 					</AnimatePresence>
 				</Layout>
-				<ContentModal
-					content={content}
-					setContent={setContent}
-				/>
+				<ContentModal content={content} setContent={setContent} />
 				<WorkContentModal
 					workModalContent={workModalContent}
 					setWorkModalContent={setWorkModalContent}
 				/>
 				<Cursor
-					cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)}
+					cursorRefresh={() =>
+						setAppCursorRefresh(appCursorRefresh + 1)
+					}
 				/>
 			</ThemeProvider>
 		</>
 	);
-}
+};
 
 export default App;
