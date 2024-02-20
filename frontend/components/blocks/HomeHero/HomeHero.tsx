@@ -113,9 +113,7 @@ const HomeHero = (props: Props) => {
 								preload="auto"
 								muted
 								playsInline={true}
-								placeholder={
-									heroMediaPlaceholderData.blurHashBase64
-								}
+								placeholder={heroMediaPlaceholderData}
 							/>
 						)}
 					</Desktop>
@@ -130,9 +128,7 @@ const HomeHero = (props: Props) => {
 								preload="auto"
 								muted
 								playsInline={true}
-								placeholder={
-									mobileHeroMediaPlaceholderData.blurHashBase64
-								}
+								placeholder={mobileHeroMediaPlaceholderData}
 							/>
 						) : (
 							<>
@@ -146,9 +142,7 @@ const HomeHero = (props: Props) => {
 										preload="auto"
 										muted
 										playsInline={true}
-										placeholder={
-											heroMediaPlaceholderData.blurHashBase64
-										}
+										placeholder={heroMediaPlaceholderData}
 									/>
 								)}
 							</>

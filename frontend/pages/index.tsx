@@ -71,32 +71,28 @@ export async function getStaticProps() {
 	const siteSettings = await client.fetch(siteSettingsQueryString);
 	const data = await client.fetch(homePageQueryString);
 
-	const desktopHeroPlaybackId = data?.heroMedia?.asset.playbackId;
-	const mobileHeroPlaybackId = data?.mobileHeroMedia?.asset.playbackId;
+	const desktopHeroPlaybackId = data?.heroMedia?.asset?.playbackId;
+	const mobileHeroPlaybackId = data?.mobileHeroMedia?.asset?.playbackId;
 
-	const { blurHash, blurHashBase64, sourceWidth, sourceHeight } =
-		await muxBlurHash(desktopHeroPlaybackId);
-	const {
-		blurHash: mobileBlurHash,
-		blurHashBase64: mobileBlurHashBase64,
-		sourceWidth: mobileSourceWidth,
-		sourceHeight: mobileSourceHeight
-	} = await muxBlurHash(mobileHeroPlaybackId);
+	let desktopBlurHashBase64 = '';
+	let mobileBlurHashBase64 = '';
 
-	const heroMediaPlaceholderData = {
-		blurHashBase64
-	};
+	if (desktopHeroPlaybackId) {
+		const { blurHashBase64 } = await muxBlurHash(desktopHeroPlaybackId);
+		desktopBlurHashBase64 = blurHashBase64;
+	}
 
-	const mobileHeroMediaPlaceholderData = {
-		blurHashBase64: mobileBlurHashBase64
-	};
+	if (mobileHeroPlaybackId) {
+		const { blurHashBase64 } = await muxBlurHash(mobileHeroPlaybackId);
+		mobileBlurHashBase64 = blurHashBase64;
+	}
 
 	return {
 		props: {
 			siteSettings,
 			data,
-			heroMediaPlaceholderData,
-			mobileHeroMediaPlaceholderData
+			desktopBlurHashBase64,
+			mobileBlurHashBase64
 		}
 	};
 }
