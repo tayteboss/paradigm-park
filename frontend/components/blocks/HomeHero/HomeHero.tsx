@@ -97,12 +97,30 @@ const HomeHero = (props: Props) => {
 		rootMargin: '-50px'
 	});
 
+	const highResDesktop = 'l87Jhs402lJ02UBgzVA3MoPWD00UhOkG1fl3KkRBiCgweY';
+
 	return (
 		<HomeHeroWrapper ref={ref}>
 			<LayoutWrapper>
 				<Inner>
 					<Desktop>
-						{data?.asset?.playbackId && (
+						{highResDesktop && (
+							<MuxPlayer
+								streamType="on-demand"
+								playbackId={highResDesktop}
+								autoPlay="muted"
+								loop={true}
+								thumbnailTime={1}
+								loading="page"
+								preload="auto"
+								muted
+								playsInline={true}
+								poster={
+									'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
+								}
+							/>
+						)}
+						{/* {data?.asset?.playbackId && (
 							<MuxPlayer
 								streamType="on-demand"
 								playbackId={data.asset.playbackId}
@@ -115,7 +133,7 @@ const HomeHero = (props: Props) => {
 								playsInline={true}
 								placeholder={heroMediaPlaceholderData}
 							/>
-						)}
+						)} */}
 					</Desktop>
 					<Mobile>
 						{mobileData?.asset?.playbackId ? (
