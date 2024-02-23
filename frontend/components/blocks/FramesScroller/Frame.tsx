@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FrameItemType } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
-import MuxPlayer from '@mux/mux-player-react';
+import MuxPlayer from '@mux/mux-player-react/lazy';
 
 type StyledProps = {
 	$maskType: string;
@@ -83,8 +83,16 @@ const Button = styled.div`
 `;
 
 const Frame = (props: FrameItemType) => {
-	const { title, subTitle, image, contentBlock, setContent, index, video } =
-		props;
+	const {
+		title,
+		subTitle,
+		image,
+		contentBlock,
+		setContent,
+		index,
+		video,
+		blurHashBase64
+	} = props;
 
 	const handleClick = () => {
 		setContent({
@@ -129,6 +137,7 @@ const Frame = (props: FrameItemType) => {
 						preload="auto"
 						muted
 						playsInline={true}
+						placeholder={blurHashBase64.blurHashBase64}
 					/>
 				)}
 				{image && <Image src={image} />}

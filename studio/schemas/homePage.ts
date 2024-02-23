@@ -37,6 +37,19 @@ export default {
 			description: 'This is the SEO description that appears in search engines.'
 		},
 		{
+			title: 'Logo Placement',
+			name: 'logoPlacement',
+			type: "string",
+			options: {
+				list: [
+				{ title: "Top", value: "flex-start" },
+				{ title: "Center", value: "center" },
+				{ title: "Bottom", value: "flex-end" },
+				],
+			},
+			validation: (Rule) => Rule.required(),
+		},
+		{
 			title: 'Hero Media',
 			name: 'heroMedia',
 			type: "mux.video",
@@ -51,6 +64,12 @@ export default {
 		{
 			title: 'Hero Image',
 			name: 'heroImage',
+			type: 'image',
+			description: 'Please only use a video or an image, not both'
+		},
+		{
+			title: 'Mobile Hero Image',
+			name: 'mobileHeroImage',
 			type: 'image',
 			description: 'Please only use a video or an image, not both'
 		},

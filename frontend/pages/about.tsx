@@ -2,10 +2,15 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import client from '../client';
 import { aboutPageQueryString, siteSettingsQueryString } from '../queries';
-import { AboutPageType, TransitionsType } from '../shared/types/types';
+import {
+	AboutPageType,
+	FrameItemType,
+	TransitionsType
+} from '../shared/types/types';
 import { motion } from 'framer-motion';
 import FramesScroller from '../components/blocks/FramesScroller';
 import { useEffect } from 'react';
+import muxBlurHash from '@mux/blurhash';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-white);
@@ -50,6 +55,19 @@ const Page = (props: Props) => {
 export async function getStaticProps() {
 	const siteSettings = await client.fetch(siteSettingsQueryString);
 	const data = await client.fetch(aboutPageQueryString);
+
+	const frameItems = data.frameItems.map(async (item: FrameItemType[]) => {
+		if (!item?.video?.playbackId) return item;
+
+		const blurHashBase64 = await muxBlurHash(item?.video.playbackId);
+
+		return {
+			...item,
+			blurHashBase64
+		};
+	});
+
+	data.frameItems = await Promise.all(frameItems);
 
 	return {
 		props: {

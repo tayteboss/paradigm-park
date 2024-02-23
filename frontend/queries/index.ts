@@ -16,6 +16,9 @@ export const homePageQueryString = `
 		heroImage {
 			asset->
 		},
+		mobileHeroImage {
+			asset->
+		},
 		titleBlocks-> {
 			...,
 			titleBlock[] {
@@ -27,6 +30,7 @@ export const homePageQueryString = `
 			...,
 			"thumbnailImageUrl": thumbnailImage.asset->url,
 		},
+		logoPlacement,
 		"exploreLearnBackgroundShape": exploreLearnBackgroundShape.asset->url,
 		"exploreProjectsBackgroundImage": exploreProjectsBackgroundImage.asset->url,
 		"exploreProjectsBackgroundShape": exploreProjectsBackgroundShape.asset->url,

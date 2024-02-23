@@ -96,6 +96,8 @@ export type HomePageType = {
 	heroMedia: MuxVideoType;
 	mobileHeroMedia: MuxVideoType;
 	heroImage: ImageType;
+	mobileHeroImage: ImageType;
+	logoPlacement: string;
 };
 
 export type FrameItemType = {
@@ -109,6 +111,7 @@ export type FrameItemType = {
 	video?: {
 		playbackId: string;
 	};
+	blurHashBase64: string;
 };
 
 export type AboutPageType = {

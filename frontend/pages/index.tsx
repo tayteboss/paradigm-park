@@ -46,8 +46,10 @@ const Page = (props: Props) => {
 				data={data?.heroMedia}
 				mobileData={data?.mobileHeroMedia}
 				image={data?.heroImage}
+				mobileImage={data?.mobileHeroImage}
 				heroMediaPlaceholderData={heroMediaPlaceholderData}
 				mobileHeroMediaPlaceholderData={mobileHeroMediaPlaceholderData}
+				placement={data?.logoPlacement}
 			/>
 			<HomeTitleBlocks data={data?.titleBlocks} />
 			<CaseStudies data={data?.caseStudies} />

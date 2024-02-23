@@ -169,7 +169,10 @@ const CaseStudyCard = (props: CaseStudyType) => {
 			}
 		};
 
-		if (isRelatedCaseStudy) return;
+		if (isRelatedCaseStudy) {
+			setIsSticky(true);
+			return;
+		}
 
 		const throttledHandleScroll = throttle(handleScroll, 50);
 		window.addEventListener('scroll', throttledHandleScroll);

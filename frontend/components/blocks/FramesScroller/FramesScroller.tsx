@@ -177,6 +177,7 @@ const FramesScroller = (props: Props) => {
 								contentBlock={item.contentBlock}
 								setContent={setContent}
 								video={item.video}
+								blurHashBase64={item.blurHashBase64}
 								index={i}
 							/>
 						))}

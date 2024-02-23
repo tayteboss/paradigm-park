@@ -8,12 +8,18 @@ import pxToRem from '../../../utils/pxToRem';
 import { useInView } from 'react-intersection-observer';
 import Image from 'next/image';
 
+type StyledProps = {
+	$placement: string;
+};
+
 type Props = {
 	data: MuxVideoType;
 	mobileData: MuxVideoType;
 	image: ImageType;
 	heroMediaPlaceholderData: any;
 	mobileHeroMediaPlaceholderData: any;
+	mobileImage: ImageType;
+	placement: string;
 };
 
 const HomeHeroWrapper = styled(motion.section)`
@@ -39,7 +45,7 @@ const Inner = styled(motion.div)`
 	}
 `;
 
-const LogoWrapper = styled.div`
+const LogoWrapper = styled.div<StyledProps>`
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -48,6 +54,11 @@ const LogoWrapper = styled.div`
 	width: 90%;
 	margin: 0 auto;
 	text-align: center;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: ${(props) => props.$placement};
+	padding: ${pxToRem(30)} 0;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		width: 80%;
@@ -88,7 +99,9 @@ const HomeHero = (props: Props) => {
 		mobileData,
 		heroMediaPlaceholderData,
 		mobileHeroMediaPlaceholderData,
-		image
+		image,
+		mobileImage,
+		placement
 	} = props;
 
 	const { ref, inView } = useInView({
@@ -134,6 +147,14 @@ const HomeHero = (props: Props) => {
 								placeholder={heroMediaPlaceholderData}
 							/>
 						)} */}
+						{image?.asset?.url && (
+							<Image
+								src={image.asset.url}
+								layout="fill"
+								objectFit="cover"
+								priority={true}
+							/>
+						)}
 					</Desktop>
 					<Mobile>
 						{mobileData?.asset?.playbackId ? (
@@ -165,21 +186,33 @@ const HomeHero = (props: Props) => {
 								)}
 							</>
 						)}
+						{mobileImage?.asset?.url ? (
+							<Image
+								src={mobileImage.asset.url}
+								layout="fill"
+								objectFit="cover"
+								priority={true}
+							/>
+						) : (
+							<>
+								{image?.asset?.url && (
+									<Image
+										src={image.asset.url}
+										layout="fill"
+										objectFit="cover"
+										priority={true}
+									/>
+								)}
+							</>
+						)}
 					</Mobile>
-					{image?.asset?.url && (
-						<Image
-							src={image.asset.url}
-							layout="fill"
-							objectFit="cover"
-							priority={true}
-						/>
-					)}
 				</Inner>
 			</LayoutWrapper>
 			<LogoWrapper
 				className={`view-element-fade-in ${
 					inView ? 'view-element-fade-in--in-view' : ''
 				}`}
+				$placement={placement}
 			>
 				<LogoTextSvg color="var(--colour-cream)" />
 			</LogoWrapper>
