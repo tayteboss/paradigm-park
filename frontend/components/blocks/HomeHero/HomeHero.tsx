@@ -110,7 +110,7 @@ const HomeHero = (props: Props) => {
 		rootMargin: '-50px'
 	});
 
-	const highResDesktop = 'E71xsh300bCUmEX2c00m02mQZ00Ic8sPqqffHAXWq83iBxg';
+	const highResDesktop = '2vIKshZukT12av00kRKOgHpR61tEv77PC8l8Vw002PjEE';
 
 	return (
 		<HomeHeroWrapper ref={ref}>
