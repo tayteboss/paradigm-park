@@ -51,8 +51,8 @@ const Page = (props: Props) => {
 				mobileHeroMediaPlaceholderData={mobileHeroMediaPlaceholderData}
 				placement={data?.logoPlacement}
 			/>
-			<HomeTitleBlocks data={data?.titleBlocks} />
-			<CaseStudies data={data?.caseStudies} />
+			{/* <HomeTitleBlocks data={data?.titleBlocks} />
+			<CaseStudies data={data?.caseStudies} /> */}
 			{/* <HomeExploreBlocks
 				learnBackgroundColor={data?.exploreLearnBackgroundColor}
 				learnBackgroundShape={data?.exploreLearnBackgroundShape}
