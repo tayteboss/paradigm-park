@@ -106,10 +106,8 @@ const HomeHero = (props: Props) => {
 		rootMargin: '-50px'
 	});
 
-	const highResDesktopOne = 'Ww00dguUXuU4a10102RQd101ZEAi9FZ3orndPwpKqUeCktY';
-	const highResDesktopTwo = 'qQtnssrtw21nPsBdYdc5KGx4s5L5JdH3PijCi6DbKeQ';
-	const highResDesktopThree =
-		'E71xsh300bCUmEX2c00m02mQZ00Ic8sPqqffHAXWq83iBxg';
+	const highResDesktopOne = 'yDrC6fUs1RJi5JygUoB4Q9fP3xu7yyexqPlEQfzTsLU';
+	const highResDesktopTwo = '02XNGfug9mW1JbggeaWexBUnPP6R7PWtrzDp7eHPL5d4';
 
 	return (
 		<>
@@ -129,7 +127,7 @@ const HomeHero = (props: Props) => {
 									muted
 									playsInline={true}
 									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
+										'https://image.mux.com/yDrC6fUs1RJi5JygUoB4Q9fP3xu7yyexqPlEQfzTsLU/thumbnail.png?width=214&height=121&time=2'
 									}
 								/>
 							)}
@@ -161,39 +159,7 @@ const HomeHero = (props: Props) => {
 									muted
 									playsInline={true}
 									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
-									}
-								/>
-							)}
-						</Desktop>
-					</Inner>
-				</LayoutWrapper>
-				<LogoWrapper
-					className={`view-element-fade-in ${
-						inView ? 'view-element-fade-in--in-view' : ''
-					}`}
-					$placement={placement}
-				>
-					<LogoTextSvg color="var(--colour-cream)" />
-				</LogoWrapper>
-			</HomeHeroWrapper>
-			<HomeHeroWrapper ref={ref}>
-				<LayoutWrapper>
-					<Inner>
-						<Desktop>
-							{highResDesktopThree && (
-								<MuxPlayer
-									streamType="on-demand"
-									playbackId={highResDesktopThree}
-									autoPlay="muted"
-									loop={true}
-									thumbnailTime={1}
-									loading="page"
-									preload="auto"
-									muted
-									playsInline={true}
-									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
+										'https://image.mux.com/02XNGfug9mW1JbggeaWexBUnPP6R7PWtrzDp7eHPL5d4/thumbnail.png?width=214&height=121&time=2'
 									}
 								/>
 							)}
