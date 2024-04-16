@@ -117,23 +117,7 @@ const HomeHero = (props: Props) => {
 			<LayoutWrapper>
 				<Inner>
 					<Desktop>
-						{highResDesktop && (
-							<MuxPlayer
-								streamType="on-demand"
-								playbackId={highResDesktop}
-								autoPlay="muted"
-								loop={true}
-								thumbnailTime={1}
-								loading="page"
-								preload="auto"
-								muted
-								playsInline={true}
-								poster={
-									'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
-								}
-							/>
-						)}
-						{/* {data?.asset?.playbackId && (
+						{data?.asset?.playbackId && (
 							<MuxPlayer
 								streamType="on-demand"
 								playbackId={data.asset.playbackId}
@@ -145,8 +129,9 @@ const HomeHero = (props: Props) => {
 								muted
 								playsInline={true}
 								placeholder={heroMediaPlaceholderData}
+								minResolution="1440p"
 							/>
-						)} */}
+						)}
 						{image?.asset?.url && (
 							<Image
 								src={image.asset.url}
