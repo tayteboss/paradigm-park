@@ -112,102 +112,93 @@ const HomeHero = (props: Props) => {
 
 	return (
 		<HomeHeroWrapper ref={ref}>
-			<HomeHeroWrapper ref={ref}>
-				<LayoutWrapper>
-					<Inner>
-						<Desktop>
-							{highResDesktopOne && (
-								<MuxPlayer
-									streamType="on-demand"
-									playbackId={highResDesktopOne}
-									autoPlay="muted"
-									loop={true}
-									thumbnailTime={1}
-									loading="page"
-									preload="auto"
-									muted
-									playsInline={true}
-									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
-									}
-								/>
-							)}
-						</Desktop>
-					</Inner>
-				</LayoutWrapper>
-				<LogoWrapper
-					className={`view-element-fade-in ${
-						inView ? 'view-element-fade-in--in-view' : ''
-					}`}
-					$placement={placement}
-				>
-					<LogoTextSvg color="var(--colour-cream)" />
-				</LogoWrapper>
-			</HomeHeroWrapper>
-			<HomeHeroWrapper ref={ref}>
-				<LayoutWrapper>
-					<Inner>
-						<Desktop>
-							{highResDesktopTwo && (
-								<MuxPlayer
-									streamType="on-demand"
-									playbackId={highResDesktopTwo}
-									autoPlay="muted"
-									loop={true}
-									thumbnailTime={1}
-									loading="page"
-									preload="auto"
-									muted
-									playsInline={true}
-									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
-									}
-								/>
-							)}
-						</Desktop>
-					</Inner>
-				</LayoutWrapper>
-				<LogoWrapper
-					className={`view-element-fade-in ${
-						inView ? 'view-element-fade-in--in-view' : ''
-					}`}
-					$placement={placement}
-				>
-					<LogoTextSvg color="var(--colour-cream)" />
-				</LogoWrapper>
-			</HomeHeroWrapper>
-			<HomeHeroWrapper ref={ref}>
-				<LayoutWrapper>
-					<Inner>
-						<Desktop>
-							{highResDesktopThree && (
-								<MuxPlayer
-									streamType="on-demand"
-									playbackId={highResDesktopThree}
-									autoPlay="muted"
-									loop={true}
-									thumbnailTime={1}
-									loading="page"
-									preload="auto"
-									muted
-									playsInline={true}
-									poster={
-										'https://image.mux.com/mZViVMVUgVLvqoTWOk2knYWRtFctWQrqZFa7EtmDEQw/thumbnail.png?width=214&height=121&time=2'
-									}
-								/>
-							)}
-						</Desktop>
-					</Inner>
-				</LayoutWrapper>
-				<LogoWrapper
-					className={`view-element-fade-in ${
-						inView ? 'view-element-fade-in--in-view' : ''
-					}`}
-					$placement={placement}
-				>
-					<LogoTextSvg color="var(--colour-cream)" />
-				</LogoWrapper>
-			</HomeHeroWrapper>
+			<LayoutWrapper>
+				<Inner>
+					<Desktop>
+						{data?.asset?.playbackId && (
+							<MuxPlayer
+								streamType="on-demand"
+								playbackId={data.asset.playbackId}
+								autoPlay="muted"
+								loop={true}
+								thumbnailTime={1}
+								loading="page"
+								preload="auto"
+								muted
+								playsInline={true}
+								placeholder={heroMediaPlaceholderData}
+								minResolution="1440p"
+							/>
+						)}
+						{image?.asset?.url && (
+							<Image
+								src={image.asset.url}
+								layout="fill"
+								objectFit="cover"
+								priority={true}
+							/>
+						)}
+					</Desktop>
+					<Mobile>
+						{mobileData?.asset?.playbackId ? (
+							<MuxPlayer
+								streamType="on-demand"
+								playbackId={props.mobileData.asset.playbackId}
+								autoPlay="muted"
+								loop={true}
+								thumbnailTime={1}
+								preload="auto"
+								muted
+								playsInline={true}
+								placeholder={mobileHeroMediaPlaceholderData}
+							/>
+						) : (
+							<>
+								{data?.asset?.playbackId && (
+									<MuxPlayer
+										streamType="on-demand"
+										playbackId={data.asset.playbackId}
+										autoPlay="muted"
+										loop={true}
+										thumbnailTime={1}
+										preload="auto"
+										muted
+										playsInline={true}
+										placeholder={heroMediaPlaceholderData}
+									/>
+								)}
+							</>
+						)}
+						{mobileImage?.asset?.url ? (
+							<Image
+								src={mobileImage.asset.url}
+								layout="fill"
+								objectFit="cover"
+								priority={true}
+							/>
+						) : (
+							<>
+								{image?.asset?.url && (
+									<Image
+										src={image.asset.url}
+										layout="fill"
+										objectFit="cover"
+										priority={true}
+									/>
+								)}
+							</>
+						)}
+					</Mobile>
+				</Inner>
+			</LayoutWrapper>
+			<LogoWrapper
+				className={`view-element-fade-in ${
+					inView ? 'view-element-fade-in--in-view' : ''
+				}`}
+				$placement={placement}
+			>
+				<LogoTextSvg color="var(--colour-cream)" />
+			</LogoWrapper>
 		</HomeHeroWrapper>
 	);
 };
