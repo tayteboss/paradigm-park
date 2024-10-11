@@ -57,7 +57,7 @@ const Image = styled.img`
 	width: 100%;
 `;
 
-const ButtonWrapper = styled.div`
+const MobileButtonWrapper = styled.div`
 	display: none;
 	position: absolute;
 	top: 50%;
@@ -67,6 +67,18 @@ const ButtonWrapper = styled.div`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		display: block;
+	}
+`;
+
+const DesktopButtonWrapper = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: left;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
 	}
 `;
 
@@ -121,12 +133,7 @@ const Frame = (props: FrameItemType) => {
 
 	return (
 		<FrameWrapper className="frame">
-			<ImageWrapper
-				onClick={() => handleClick()}
-				data-title={title}
-				className="frame-link"
-				$maskType={maskType}
-			>
+			<ImageWrapper onClick={() => handleClick()} $maskType={maskType}>
 				{video?.playbackId && (
 					<MuxPlayer
 						streamType="on-demand"
@@ -141,14 +148,22 @@ const Frame = (props: FrameItemType) => {
 					/>
 				)}
 				{image && <Image src={image} />}
+				{title && (
+					<DesktopButtonWrapper
+						className="frame__button"
+						onClick={() => handleClick()}
+					>
+						<Button>{title}</Button>
+					</DesktopButtonWrapper>
+				)}
 			</ImageWrapper>
 			{title && (
-				<ButtonWrapper
+				<MobileButtonWrapper
 					className="frame__button"
 					onClick={() => handleClick()}
 				>
 					<Button>{title}</Button>
-				</ButtonWrapper>
+				</MobileButtonWrapper>
 			)}
 		</FrameWrapper>
 	);
