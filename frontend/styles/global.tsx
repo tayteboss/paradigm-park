@@ -290,6 +290,7 @@ export const GlobalStyles = createGlobalStyle`
 		h5,
 		h6 {
 			margin-bottom: ${pxToRem(20)};
+
 			&:first-child {
 				margin-bottom: ${pxToRem(0)};
 			}
@@ -299,6 +300,19 @@ export const GlobalStyles = createGlobalStyle`
 		h6 {
 			@media ${theme.mediaBreakpoints.tabletPortrait} {
 				margin-bottom: ${pxToRem(10)};
+			}
+		}
+
+		&--margin-first-heading {
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				&:first-child {
+					margin-bottom: ${pxToRem(20)};
+				}
 			}
 		}
 

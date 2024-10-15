@@ -72,7 +72,7 @@ const MobileButtonWrapper = styled.div`
 
 const DesktopButtonWrapper = styled.div`
 	position: absolute;
-	top: 50%;
+	top: 75%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: left;

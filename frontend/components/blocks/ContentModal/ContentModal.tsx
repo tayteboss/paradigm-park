@@ -41,7 +41,7 @@ const Inner = styled(motion.div)`
 	}
 `;
 
-const Title = styled.h1`
+const Title = styled.h2`
 	margin-bottom: ${pxToRem(50)};
 	text-align: center;
 
@@ -241,7 +241,7 @@ const ContentModal = (props: Props) => {
 									<>
 										{usePortableText ? (
 											<>
-												<ContentWrapper className="content">
+												<ContentWrapper className="content content--margin-first-heading">
 													{item?.content && (
 														<PortableText
 															value={
