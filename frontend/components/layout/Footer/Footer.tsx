@@ -56,6 +56,7 @@ const LinksWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		flex-direction: column;
 		justify-content: center;
+		margin-bottom: ${pxToRem(30)};
 	}
 `;
 
@@ -101,7 +102,6 @@ const MobileCopyrightWrapper = styled.div`
 		display: block;
 
 		* {
-			display: block;
 			text-align: center;
 			margin-bottom: ${pxToRem(30)};
 		}
@@ -116,7 +116,7 @@ const Footer = () => {
 		addressUrl,
 		generalEmail,
 		generalEmailButtonTitle,
-		addressUrlButtonTitle,
+		addressUrlButtonTitle
 	} = siteOptions;
 
 	const [windowHeight, setWindowHeight] = useState(0);
@@ -129,7 +129,7 @@ const Footer = () => {
 
 	const transform = useTransform(
 		scrollY,
-		[documentHeight - (windowHeight * 2), documentHeight - windowHeight],
+		[documentHeight - windowHeight * 2, documentHeight - windowHeight],
 		['translateY(100px)', 'translateY(0px)']
 	);
 
@@ -137,17 +137,26 @@ const Footer = () => {
 		if (!ref?.current) return;
 
 		const footerHeight = ref.current.clientHeight;
-		document.documentElement.style.setProperty('--footer-height', `${footerHeight}px`);
+		document.documentElement.style.setProperty(
+			'--footer-height',
+			`${footerHeight}px`
+		);
 
 		setWindowHeight(window.innerHeight);
 
 		var body = document.body,
-		html = document.documentElement;
+			html = document.documentElement;
 
-		var height = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight );
+		var height = Math.max(
+			body.scrollHeight,
+			body.offsetHeight,
+			html.clientHeight,
+			html.scrollHeight,
+			html.offsetHeight
+		);
 
 		setDocumentHeight(height);
-	}
+	};
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -160,9 +169,7 @@ const Footer = () => {
 	}, []);
 
 	return (
-		<FooterWrapper
-			style={{ transform }}
-		>
+		<FooterWrapper style={{ transform }}>
 			<LayoutWrapper>
 				<Inner ref={ref}>
 					<TopContainer>
@@ -173,12 +180,16 @@ const Footer = () => {
 					</TopContainer>
 					<BottomContainer>
 						<LinksWrapper>
-							{(address && addressUrl) && (
+							{address && addressUrl && (
 								<Link href={addressUrl} passHref>
 									<LinkTag
 										className="type-h4 frame-link"
-										target='_blank'
-										data-title={addressUrlButtonTitle ? addressUrlButtonTitle : 'See on map'}
+										target="_blank"
+										data-title={
+											addressUrlButtonTitle
+												? addressUrlButtonTitle
+												: 'See on map'
+										}
 									>
 										{address}
 									</LinkTag>
@@ -188,7 +199,11 @@ const Footer = () => {
 								<Link href={`mailto:${generalEmail}`} passHref>
 									<LinkTag
 										className="type-h4 frame-link"
-										data-title={generalEmailButtonTitle ? generalEmailButtonTitle : 'Email Us'}
+										data-title={
+											generalEmailButtonTitle
+												? generalEmailButtonTitle
+												: 'Email Us'
+										}
 									>
 										{generalEmail}
 									</LinkTag>
@@ -209,7 +224,7 @@ const Footer = () => {
 				</Inner>
 			</LayoutWrapper>
 		</FooterWrapper>
-	)
+	);
 };
 
 export default Footer;
