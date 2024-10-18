@@ -56,14 +56,13 @@ const Link = styled.a`
 
 const MenuFooterCopyright = () => {
 	return (
-		<MenuFooterCopyrightWrapper>
-			<Copy>©</Copy>
-			<MobileText>Paradigm Park {new Date().getFullYear()}</MobileText>
+		<MenuFooterCopyrightWrapper className="mobile-footer-copyright">
+			<MobileText>© Paradigm Park {new Date().getFullYear()}</MobileText>
 			<DesktopText>
 				© Paradigm Park {new Date().getFullYear()}
 			</DesktopText>
 			<Span>
-				Website by{' '}
+				Website created in partnership with{' '}
 				<Link href="https://blurrbureau.com/" target="_blank">
 					Blurr
 				</Link>

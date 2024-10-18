@@ -101,9 +101,12 @@ const MobileCopyrightWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		display: block;
 
+		.mobile-footer-copyright {
+			margin-bottom: ${pxToRem(30)};
+		}
+
 		* {
 			text-align: center;
-			margin-bottom: ${pxToRem(30)};
 		}
 	}
 `;
