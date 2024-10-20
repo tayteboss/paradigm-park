@@ -8,16 +8,17 @@ const MenuFooterLinksWrapper = styled.div`
 	display: flex;
 	column-gap: ${pxToRem(12)};
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(32)};
+	}
+
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		column-gap: ${pxToRem(15)};
 	}
 `;
 
 const MenuFooterLinks = () => {
-	const {
-		instagramUrl,
-		generalEmail,
-	} = siteOptions;
+	const { instagramUrl, generalEmail } = siteOptions;
 
 	return (
 		<MenuFooterLinksWrapper>

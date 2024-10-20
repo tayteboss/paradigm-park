@@ -8,6 +8,14 @@ const MenuFooterCopyrightWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		gap: ${pxToRem(12)};
 		flex-direction: column;
+
+		.mobile-footer-copyright {
+			margin-bottom: ${pxToRem(30)};
+		}
+
+		* {
+			text-align: center;
+		}
 	}
 `;
 
